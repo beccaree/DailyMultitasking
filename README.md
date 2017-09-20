@@ -1,2 +1,2 @@
 # AdvHCI
-Advanced HCI - Daily Multitasking Application
+Advanced HCI - Daily Multitasking Personal Information System
