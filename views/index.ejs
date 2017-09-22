@@ -21,27 +21,40 @@
 
 </head>
 
-<body>
+<body class="no-menu smart-style-1">
 <div>
     <!-- HEADER -->
     <header id="header">
+        <!-- collapse menu button -->
+        <div id="hide-menu" class="btn-header">
+
+        </div>
+        <!-- end collapse menu -->
+
         <div id="logo-group">
-
-            <!-- PLACE YOUR LOGO HERE -->
-            <span id="logo"> <img src="img/logo.png" alt="TaskRacer"> </span>
-            <!-- END LOGO PLACEHOLDER -->
-
-            <!-- collapse menu button -->
-            <div id="hide-menu" class="btn-header">
-                <span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
-            </div>
-            <!-- end collapse menu -->
-
+            <!--span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span-->
+            <h2 id="logo" class="txt-color-white">TaskRacer </h2>
         </div>
 
         <!-- pulled right: nav area -->
         <div class="pull-right">
+            <ul class="list-inline">
+                <li>&nbsp;&nbsp;&nbsp;
+                    <span class="font-xs txt-color-white">Task</span>
+                    <div class="easy-pie-chart txt-color-green easyPieChart" data-percent="86" data-pie-size="45">
+                        <span class="percent percent-sign font-xs txt-color-white">86</span>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                </li>
+                <li>&nbsp;&nbsp;&nbsp;
+                    <span class="font-xs txt-color-white">Event</span>
+                    <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="20" data-pie-size="45">
 
+                        <span class="percent percent-sign font-xs txt-color-white">20</span>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;
+                </li>
+            </ul>
 
         </div>
         <!-- end pulled right: nav area -->
@@ -62,14 +75,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="widgets.html"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Widgets</span></a>
-                </li>
-                <li>
-                    <a href="#" title="Dashboard">
-                        <i class="fa fa-lg fa-fw fa-home"></i>
-                        <span class="menu-item-parent">Dashboard</span>
-                        <span class="badge pull-right inbox-badge margin-right-13">14</span>
-                    </a>
+                    <a href=".html"><i class="fa fa-lg fa-fw fa-list-alt"></i> <span class="menu-item-parent">Widgets</span></a>
                 </li>
             </ul>
         </nav>
@@ -86,7 +92,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                     <h1 class="page-title txt-color-blueDark"><i class="fa fa-desktop fa-fw "></i>
-                        Dashboard
+                        My Dashboard
                     </h1>
                 </div>
             </div>
@@ -96,192 +102,387 @@
 
                 <div class="col-sm-6 col-md-6 col-lg-6">
 
-                    <div class="well well-sm well-light">
-                        <h3>Jquery Tabs
-                            <br>
-                            <small>Simple Tabs</small></h3>
+                    <!-- new widget -->
+                    <div class="jarviswidget jarviswidget-color-blueDark">
 
-                        <div id="tabs">
-                            <ul>
-                                <li>
-                                    <a href="#tabs-a">First</a>
-                                </li>
-                                <li>
-                                    <a href="#tabs-b">Second</a>
-                                </li>
-                                <li>
-                                    <a href="#tabs-c">Third</a>
-                                </li>
-                            </ul>
-                            <div id="tabs-a">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                </p>
+                        <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                        -->
+                        <header>
+                            <h2> My Events </h2>
+                            <div class="widget-toolbar">
+                                <!-- add: non-hidden - to disable auto hide -->
+                                <div class="btn-group">
+                                    <a class="btn btn-default btn-xs" type="button" href="javascript:void(0);" id="td">Day</a>
+                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
+                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
+                                </div>
                             </div>
-                            <div id="tabs-b">
-                                <p>
-                                    Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.
-                                </p>
-                            </div>
-                            <div id="tabs-c">
-                                <p>
-                                    Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.
-                                </p>
-                            </div>
-                        </div>
+                        </header>
 
-                        <hr class="simple">
-                        <h3>Dynamic Tabs
-                            <br>
-                            <small>Click button to add another tab</small></h3>
+                        <!-- widget div-->
+                        <div>
+                            <div class="widget-body no-padding">
+                                <!-- content goes here -->
+                                <div class="widget-body-toolbar">
 
-                        <p>
-                            <button id="add_tab" class="btn btn-primary">
-                                Add Tab
-                            </button>
-                        </p>
+                                    <div id="calendar-buttons">
 
-                        <div id="tabs2">
-                            <ul>
-                                <li>
-                                    <a href="#tabs-1">Nunc tincidunt</a>
-                                </li>
-                            </ul>
-                            <div id="tabs-1">
-                                <p>
-                                    Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Demo -->
-                        <div id="addtab" title="<div class='widget-header'><h4><i class='fa fa-plus'></i> Add another tab</h4></div>">
-
-                            <form>
-
-                                <fieldset>
-                                    <input name="authenticity_token" type="hidden">
-                                    <div class="form-group">
-                                        <label>Tab Title</label>
-                                        <input class="form-control" id="tab_title" value="" placeholder="Text field" type="text">
+                                        <div class="btn-group">
+                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                                        </div>
                                     </div>
+                                </div>
+                                <div id="calendar"></div>
 
-                                    <div class="form-group">
-                                        <label>Content</label>
-                                        <textarea class="form-control" name="tab_content" id="tab_content" placeholder="Tab Content" rows="3"></textarea>
-                                    </div>
-
-                                </fieldset>
-
-                            </form>
+                                <!-- end content -->
+                            </div>
 
                         </div>
-
+                        <!-- end widget div -->
                     </div>
-
+                    <!-- end widget -->
                 </div>
 
                 <div class="col-sm-6 col-md-6 col-lg-6">
 
-                    <div class="well well-sm well-light">
-                        <h3>Jquery Tabs
-                            <br>
-                            <small>Simple Tabs</small></h3>
+                    <!-- new widget -->
+                    <div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
 
-                        <div id="tabs">
-                            <ul>
-                                <li>
-                                    <a href="#tabs-a">First</a>
-                                </li>
-                                <li>
-                                    <a href="#tabs-b">Second</a>
-                                </li>
-                                <li>
-                                    <a href="#tabs-c">Third</a>
-                                </li>
-                            </ul>
-                            <div id="tabs-a">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                </p>
+                        <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                        -->
+
+                        <header>
+                            <h2> Task List </h2>
+                            <div class="btn-group pull-right">
+                                <a id="btn_add_task" class="btn btn-default btn-circle"><i class="fa fa-plus"></i></a>
                             </div>
-                            <div id="tabs-b">
-                                <p>
-                                    Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.
-                                </p>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+                            <div class="widget-body no-padding smart-form">
+                                <!-- content goes here -->
+                                <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
+                                <ul id="sortable2" class="todo">
+                                    <li>
+                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                        <p>
+                                            <a href="javascript:void(0);" class="font-s">Email Karen</a>
+                                            <span class="date">Nov 22, 2013</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                        <p>
+                                            <a href="javascript:void(0);" class="font-s">call Grandma</a>
+                                            <span class="date">Nov 23, 2013</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                        <p>
+                                            <a href="javascript:void(0);" class="font-s">Take out the trash</a>
+                                            <span class="date">Nov 23, 2013</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                        <p>
+                                            <a href="javascript:void(0);" class="font-s">Walk the dog</a>
+                                            <span class="date">Nov 22, 2013</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                        <p>
+                                            <a href="javascript:void(0);" class="font-s">Call the rat exterminator</a>
+                                            <span class="date">Nov 22, 2013</span>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks (<small class="num-of-tasks">1</small>)</h5>
+                                <ul id="sortable3" class="todo">
+                                    <li class="complete">
+                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                        <p>
+                                            <a href="javascript:void(0);" class="font-s">Bake cake</a>
+                                            <span class="date">Nov 22, 2013</span>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <!-- end content -->
                             </div>
-                            <div id="tabs-c">
-                                <p>
-                                    Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.
-                                </p>
-                            </div>
+
                         </div>
-
-                        <hr class="simple">
-                        <h3>Dynamic Tabs
-                            <br>
-                            <small>Click button to add another tab</small></h3>
-
-                        <p>
-                            <button id="add_tab" class="btn btn-primary">
-                                Add Tab
-                            </button>
-                        </p>
-
-                        <div id="tabs2">
-                            <ul>
-                                <li>
-                                    <a href="#tabs-1">Nunc tincidunt</a>
-                                </li>
-                            </ul>
-                            <div id="tabs-1">
-                                <p>
-                                    Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Demo -->
-                        <div id="addtab" title="<div class='widget-header'><h4><i class='fa fa-plus'></i> Add another tab</h4></div>">
-
-                            <form>
-
-                                <fieldset>
-                                    <input name="authenticity_token" type="hidden">
-                                    <div class="form-group">
-                                        <label>Tab Title</label>
-                                        <input class="form-control" id="tab_title" value="" placeholder="Text field" type="text">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Content</label>
-                                        <textarea class="form-control" name="tab_content" id="tab_content" placeholder="Tab Content" rows="3"></textarea>
-                                    </div>
-
-                                </fieldset>
-
-                            </form>
-
-                        </div>
-
+                        <!-- end widget div -->
                     </div>
+                    <!-- end widget -->
 
                 </div>
 
             </div>
             <!-- end row -->
 
+            <!-- row -->
+            <div class="row">
+
+                <div class="col-sm-6 col-md-6 col-lg-6">
+
+                    <!-- new widget -->
+                    <div class="jarviswidget jarviswidget-color-blueDark">
+
+                        <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                        -->
+                        <header>
+                            <h2> Calendar </h2>
+                            <div class="widget-toolbar">
+                                <!-- add: non-hidden - to disable auto hide -->
+                                <div class="btn-group">
+                                    <button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
+                                        Showing <i class="fa fa-caret-down"></i>
+                                    </button>
+
+
+
+                                    <ul class="dropdown-menu js-status-update pull-right">
+                                        <li>
+                                            <a href="javascript:void(0);" id="mt">Month</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" id="ag">Week</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" id="td">Day</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <div class="widget-body no-padding">
+                                <!-- content goes here -->
+                                <div class="widget-body-toolbar">
+
+                                    <div id="calendar-buttons">
+
+                                        <div class="btn-group">
+                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="calendar"></div>
+
+                                <!-- end content -->
+                            </div>
+
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6">
+
+                    <div class="well well-sm" id="event-container">
+                        <form>
+                            <fieldset>
+                                <legend>
+                                    Draggable Events
+                                </legend>
+                                <ul id='external-events' class="list-unstyled">
+                                    <li>
+                                        <span class="bg-color-darken txt-color-white" data-description="Currently busy" data-icon="fa-time">Office Meeting</span>
+                                    </li>
+                                    <li>
+                                        <span class="bg-color-blue txt-color-white" data-description="No Description" data-icon="fa-pie">Lunch Break</span>
+                                    </li>
+                                    <li>
+                                        <span class="bg-color-red txt-color-white" data-description="Urgent Tasks" data-icon="fa-alert">URGENT</span>
+                                    </li>
+                                </ul>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="drop-remove" class="checkbox style-0" checked="checked">
+                                        <span>remove after drop</span> </label>
+
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- end row -->
+
+
+            <div id="modal_add_task" title="Dialog Simple Title">
+
+                <!-- new widget -->
+                <div class="jarviswidget jarviswidget-color-blueDark">
+                    <header>
+                        <h2> Add Events </h2>
+                    </header>
+
+                    <!-- widget div-->
+                    <div>
+
+                        <div class="widget-body">
+                            <!-- content goes here -->
+
+                            <form id="add-event-form">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <label>Select Event Icon</label>
+                                        <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
+                                            <label class="btn btn-default active">
+                                                <p>Event</p>
+                                                <input type="radio" name="iconselect" id="icon-1" value="fa-info" checked>
+                                                <i class="fa fa-info text-muted"></i>
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <p>Task</p>
+                                                <input type="radio" name="iconselect" id="icon-2" value="fa-warning">
+                                                <i class="fa fa-warning text-muted"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Event Title</label>
+                                        <input class="form-control"  id="title" name="title" maxlength="40" type="text" placeholder="Event Title">
+                                        <p class="note">Maxlength is set to 40 characters</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Event Description</label>
+                                        <textarea class="form-control" placeholder="Please be brief" rows="3" maxlength="255" id="description"></textarea>
+                                        <p class="note">Maxlength is set to 255 characters</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Select Task Priority</label>
+                                        <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
+                                            <label class="btn bg-color-red active">
+                                                <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
+                                                <i class="fa fa-check txt-color-white"></i>
+                                                <p class="txt-color-white">Very High</p>
+                                            </label>
+                                            <label class="btn bg-color-orange">
+                                                <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
+                                                <i class="fa fa-check txt-color-white"></i>
+                                                <p class="txt-color-white">High</p>
+                                            </label>
+                                            <label class="btn bg-color-greenLight">
+                                                <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
+                                                <i class="fa fa-check txt-color-white"></i>
+                                                <p class="txt-color-white">Medium</p>
+                                            </label>
+                                            <label class="btn bg-color-blueLight">
+                                                <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
+                                                <i class="fa fa-check txt-color-white"></i>
+                                                <p class="txt-color-white">Low</p>
+                                            </label>
+                                            <label class="btn bg-color-darken">
+                                                <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
+                                                <i class="fa fa-check txt-color-white"></i>
+                                                <p class="txt-color-white">Very Low</p>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label>Select a date:</label>
+                                        <div class="input-group">
+                                            <input type="text" name="mydate" placeholder="Select a date" class="form-control datepicker" data-dateformat="dd/mm/yy">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+
+                                        <label>Timepicker (default):</label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="timepicker" type="text" placeholder="Select time">
+                                            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                        </div>
+
+                                    </div>
+
+
+
+
+                                </fieldset>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-default" type="button" id="add-event" >
+                                                Add Event
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- end content -->
+                        </div>
+
+                    </div>
+                    <!-- end widget div -->
+                </div>
+                <!-- end widget -->
+
+            </div><!-- #dialog-message -->
+
         </div>
         <!-- END MAIN CONTENT -->
 
     </div>
     <!-- END MAIN PANEL -->
-
-
-  <div class="jumbotron">
-    <p>This is place to put your Sample Content.</p>
-  </div>
+    
 </div>
+
+
+
 <!--================================================== -->
 
 <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
@@ -335,78 +536,270 @@
 <!-- MAIN APP JS FILE -->
 <script src="js/app.min.js"></script>
 
+<!-- Time picker -->
+<script src="js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+
+<!-- PAGE RELATED PLUGIN(S) -->
+<script src="js/plugin/moment/moment.min.js"></script>
+<script src="js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+
+<!-- Page setup -->
 <script type="text/javascript">
-
-    // DO NOT REMOVE : GLOBAL FUNCTIONS!
-
     $(document).ready(function() {
 
         pageSetUp();
 
-        // menu
-        $("#menu").menu();
+        "use strict";
 
-        /*
-         * CONVERT DIALOG TITLE TO HTML
-         * REF: http://stackoverflow.com/questions/14488774/using-html-in-a-dialogs-title-in-jquery-ui-1-10
-         */
-        $.widget("ui.dialog", $.extend({}, $.ui.dialog.prototype, {
-            _title : function(title) {
-                if (!this.options.title) {
-                    title.html("&#160;");
-                } else {
-                    title.html(this.options.title);
-                }
-            }
-        }));
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
 
+        var hdr = {
+            left: 'title',
+            center: 'month,agendaWeek,agendaDay',
+            right: 'prev,today,next'
+        };
 
-        /*
-         * DIALOG SIMPLE
-         */
+        var initDrag = function (e) {
+            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+            // it doesn't need to have a start or end
 
-        // Dialog click
-        $('#dialog_link').click(function() {
-            $('#dialog_simple').dialog('open');
-            return false;
+            var eventObject = {
+                title: $.trim(e.children().text()), // use the element's text as the event title
+                description: $.trim(e.children('span').attr('data-description')),
+                icon: $.trim(e.children('span').attr('data-icon')),
+                className: $.trim(e.children('span').attr('class')) // use the element's children as the event class
+            };
+            // store the Event Object in the DOM element so we can get to it later
+            e.data('eventObject', eventObject);
 
+            // make the event draggable using jQuery UI
+            e.draggable({
+                zIndex: 999,
+                revert: true, // will cause the event to go back to its
+                revertDuration: 0 //  original position after the drag
+            });
+        };
+
+        var addEvent = function (title, priority, description, icon) {
+            title = title.length === 0 ? "Untitled Event" : title;
+            description = description.length === 0 ? "No Description" : description;
+            icon = icon.length === 0 ? " " : icon;
+            priority = priority.length === 0 ? "label label-default" : priority;
+
+            var html = $('<li><span class="' + priority + '" data-description="' + description + '" data-icon="' +
+                icon + '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
+
+            $("#event-container").effect("highlight", 800);
+
+            initDrag(html);
+        };
+
+        /* initialize the external events
+         -----------------------------------------------------------------*/
+
+        $('#external-events > li').each(function () {
+            initDrag($(this));
         });
 
-        $('#dialog_simple').dialog({
-            autoOpen : false,
-            width : 600,
-            resizable : false,
-            modal : true,
-            title : "<div class='widget-header'><h4><i class='fa fa-warning'></i> Empty the recycle bin?</h4></div>",
-            buttons : [{
-                html : "<i class='fa fa-trash-o'></i>&nbsp; Delete all items",
-                "class" : "btn btn-danger",
-                click : function() {
-                    $(this).dialog("close");
+        $('#add-event').click(function () {
+            var title = $('#title').val(),
+                priority = $('input:radio[name=priority]:checked').val(),
+                description = $('#description').val(),
+                icon = $('input:radio[name=iconselect]:checked').val();
+
+            addEvent(title, priority, description, icon);
+        });
+
+        /* initialize the calendar
+         -----------------------------------------------------------------*/
+
+        $('#calendar').fullCalendar({
+
+            header: hdr,
+            editable: true,
+            droppable: true, // this allows things to be dropped onto the calendar !!!
+
+            drop: function (date, allDay) { // this function is called when something is dropped
+
+                // retrieve the dropped element's stored Event Object
+                var originalEventObject = $(this).data('eventObject');
+
+                // we need to copy it, so that multiple events don't have a reference to the same object
+                var copiedEventObject = $.extend({}, originalEventObject);
+
+                // assign it the date that was reported
+                copiedEventObject.start = date;
+                copiedEventObject.allDay = allDay;
+
+                // render the event on the calendar
+                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+                // is the "remove after drop" checkbox checked?
+                if ($('#drop-remove').is(':checked')) {
+                    // if so, remove the element from the "Draggable Events" list
+                    $(this).remove();
                 }
+
+            },
+
+            select: function (start, end, allDay) {
+                var title = prompt('Event Title:');
+                if (title) {
+                    calendar.fullCalendar('renderEvent', {
+                            title: title,
+                            start: start,
+                            end: end,
+                            allDay: allDay
+                        }, true // make the event "stick"
+                    );
+                }
+                calendar.fullCalendar('unselect');
+            },
+
+            events: [{
+                title: 'Call the rat Gay',
+                start: new Date(y, m, 1),
+                description: 'long description',
+                className: ["event", "bg-color-greenLight"],
+                icon: 'fa-check'
             }, {
-                html : "<i class='fa fa-times'></i>&nbsp; Cancel",
-                "class" : "btn btn-default",
-                click : function() {
-                    $(this).dialog("close");
+                title: 'Email Karen about ...',
+                start: new Date(y, m, d, 10, 30),
+                allDay: false,
+                className: ["event", "bg-color-red"]
+            }, {
+                title: 'Lunch',
+                start: new Date(y, m, d, 12, 0),
+                end: new Date(y, m, d, 14, 0),
+                allDay: false,
+                className: ["event", "bg-color-darken"]
+            }, {
+                title: 'Birthday Party',
+                start: new Date(y, m, d + 1, 19, 0),
+                end: new Date(y, m, d + 1, 22, 30),
+                allDay: false,
+                className: ["event", "bg-color-darken"]
+            }, {
+                title: 'Call Grandma',
+                start: new Date(y, m, 28),
+                end: new Date(y, m, 29),
+                className: ["event", "bg-color-darken"]
+            }],
+
+            eventRender: function (event, element, icon) {
+                if (!event.description == "") {
+                    element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description +
+                        "</span>");
                 }
-            }]
+                if (!event.icon == "") {
+                    element.find('.fc-title').append("<i class='air air-top-right fa " + event.icon +
+                        " '></i>");
+                }
+            },
+
+            windowResize: function (event, ui) {
+                $('#calendar').fullCalendar('render');
+            }
         });
 
-        /*
-         * DIALOG HEADER ICON
-         */
+        /* hide default buttons */
+        $('.fc-right, .fc-center').hide();
 
-        // Modal Link
-        $('#modal_link').click(function() {
-            $('#dialog-message').dialog('open');
+
+        $('#calendar-buttons #btn-prev').click(function () {
+            $('.fc-prev-button').click();
             return false;
         });
 
-        $("#dialog-message").dialog({
+        $('#calendar-buttons #btn-next').click(function () {
+            $('.fc-next-button').click();
+            return false;
+        });
+
+        $('#calendar-buttons #btn-today').click(function () {
+            $('.fc-today-button').click();
+            return false;
+        });
+
+        $('#mt').click(function () {
+            $('#calendar').fullCalendar('changeView', 'month');
+        });
+
+        $('#ag').click(function () {
+            $('#calendar').fullCalendar('changeView', 'agendaWeek');
+        });
+
+        $('#td').click(function () {
+            $('#calendar').fullCalendar('changeView', 'agendaDay');
+        });
+
+        $(".js-status-update a").click(function() {
+            var selText = $(this).text();
+            var $this = $(this);
+            $this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+            $this.parents('.dropdown-menu').find('li').removeClass('active');
+            $this.parent().addClass('active');
+        });
+
+        /*
+         * TODO: add a way to add more todo's to list
+         */
+
+        // initialize sortable
+        $(function() {
+            $("#sortable1, #sortable2").sortable({
+                handle : '.handle',
+                connectWith : ".todo",
+                update : countTasks
+            }).disableSelection();
+        });
+
+        // check and uncheck
+        $('.todo .checkbox > input[type="checkbox"]').click(function() {
+            var $this = $(this).parent().parent().parent();
+
+            if ($(this).prop('checked')) {
+                $this.addClass("complete");
+
+                // remove this if you want to undo a check list once checked
+                //$(this).attr("disabled", true);
+                $(this).parent().hide();
+
+                // once clicked - add class, copy to memory then remove and add to sortable3
+                $this.slideUp(500, function() {
+                    $this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
+                    $this.remove();
+                    countTasks();
+                });
+            } else {
+                // insert undo code here...
+            }
+
+        })
+        // count tasks
+        function countTasks() {
+
+            $('.todo-group-title').each(function() {
+                var $this = $(this);
+                $this.find(".num-of-tasks").text($this.next().find("li").size());
+            });
+
+        }
+
+        $('#btn_add_task').click(function() {
+            $('#modal_add_task').dialog('open');
+            return false;
+        });
+
+        $("#modal_add_task").dialog({
             autoOpen : false,
             modal : true,
-            title : "<div class='widget-header'><h4><i class='icon-ok'></i> jQuery UI Dialog</h4></div>",
+            width : 800,
+            title : "Add New Task",
             buttons : [{
                 html : "Cancel",
                 "class" : "btn btn-default",
@@ -414,7 +807,7 @@
                     $(this).dialog("close");
                 }
             }, {
-                html : "<i class='fa fa-check'></i>&nbsp; OK",
+                html : "<i class='fa fa-check'></i>&nbsp; Create",
                 "class" : "btn btn-primary",
                 click : function() {
                     $(this).dialog("close");
@@ -423,114 +816,7 @@
 
         });
 
-        /*
-         * Remove focus from buttons
-         */
-        $('.ui-dialog :button').blur();
-
-        /*
-         * Just Tabs
-         */
-
-        $('#tabs').tabs();
-
-        /*
-         *  Simple tabs adding and removing
-         */
-
-        $('#tabs2').tabs();
-
-        // Dynamic tabs
-        var tabTitle = $("#tab_title"), tabContent = $("#tab_content"), tabTemplate = "<li style='position:relative;'> <span class='air air-top-left delete-tab' style='top:7px; left:7px;'><button class='btn btn-xs font-xs btn-default hover-transparent'><i class='fa fa-times'></i></button></span></span><a href='#{href}'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #{label}</a></li>", tabCounter = 2;
-
-        var tabs = $("#tabs2").tabs();
-
-        // modal dialog init: custom buttons and a "close" callback reseting the form inside
-        var dialog = $("#addtab").dialog({
-            autoOpen : false,
-            width : 600,
-            resizable : false,
-            modal : true,
-            buttons : [{
-                html : "<i class='fa fa-times'></i>&nbsp; Cancel",
-                "class" : "btn btn-default",
-                click : function() {
-                    $(this).dialog("close");
-
-                }
-            }, {
-
-                html : "<i class='fa fa-plus'></i>&nbsp; Add",
-                "class" : "btn btn-danger",
-                click : function() {
-                    addTab();
-                    $(this).dialog("close");
-                }
-            }]
-        });
-
-        // addTab form: calls addTab function on submit and closes the dialog
-        var form = dialog.find("form").submit(function(event) {
-            addTab();
-            dialog.dialog("close");
-            event.preventDefault();
-        });
-
-        // actual addTab function: adds new tab using the input from the form above
-        function addTab() {
-            var label = tabTitle.val() || "Tab " + tabCounter, id = "tabs-" + tabCounter, li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label)), tabContentHtml = tabContent.val() || "Tab " + tabCounter + " content.";
-
-            tabs.find(".ui-tabs-nav").append(li);
-            tabs.append("<div id='" + id + "'><p>" + tabContentHtml + "</p></div>");
-            tabs.tabs("refresh");
-            tabCounter++;
-
-            // clear fields
-            $("#tab_title").val("");
-            $("#tab_content").val("");
-        }
-
-        // addTab button: just opens the dialog
-        $("#add_tab").button().click(function() {
-            dialog.dialog("open");
-        });
-
-        // close icon: removing the tab on click
-        $("#tabs2").on("click", 'span.delete-tab', function() {
-
-            var panelId = $(this).closest("li").remove().attr("aria-controls");
-            $("#" + panelId).remove();
-            tabs.tabs("refresh");
-        });
-
-        /*
-         * ACCORDION
-         */
-        //jquery accordion
-
-        var accordionIcons = {
-            header: "fa fa-plus",    // custom icon class
-            activeHeader: "fa fa-minus" // custom icon class
-        };
-
-        $("#accordion").accordion({
-            autoHeight : false,
-            heightStyle : "content",
-            collapsible : true,
-            animate : 300,
-            icons: accordionIcons,
-            header : "h4",
-        })
-
-        /*
-         * PROGRESS BAR
-         */
-        $("#progressbar").progressbar({
-            value: 25,
-            create: function( event, ui ) {
-                $(this).removeClass("ui-corner-all").addClass('progress').find(">:first-child").removeClass("ui-corner-left").addClass('progress-bar progress-bar-success');
-            }
-        });
+        $('#timepicker').timepicker();
 
     })
 
