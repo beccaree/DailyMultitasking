@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
 
+    <link rel="stylesheet" type="text/css" media="screen" href="css/custom.css">
+
 </head>
 
 <body class="no-menu smart-style-1">
@@ -119,7 +121,7 @@
 
                         -->
                         <header>
-                            <h2> My Events </h2>
+                            <h2> Calendar  </h2>
                             <div class="widget-toolbar">
                                 <!-- add: non-hidden - to disable auto hide -->
                                 <div class="btn-group">
@@ -158,22 +160,7 @@
                 <div class="col-sm-6 col-md-6 col-lg-6">
 
                     <!-- new widget -->
-                    <div class="jarviswidget jarviswidget-color-blue" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
-
-                        <!-- widget options:
-                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                        data-widget-colorbutton="false"
-                        data-widget-editbutton="false"
-                        data-widget-togglebutton="false"
-                        data-widget-deletebutton="false"
-                        data-widget-fullscreenbutton="false"
-                        data-widget-custombutton="false"
-                        data-widget-collapsed="true"
-                        data-widget-sortable="false"
-
-                        -->
-
+                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
                         <header>
                             <h2> Task List </h2>
                             <div class="btn-group pull-right">
@@ -254,72 +241,8 @@
 
                 <div class="col-sm-6 col-md-6 col-lg-6">
 
-                    <!-- new widget -->
-                    <div class="jarviswidget jarviswidget-color-blueDark">
+                    <!-- Empty space right now -->
 
-                        <!-- widget options:
-                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                        data-widget-colorbutton="false"
-                        data-widget-editbutton="false"
-                        data-widget-togglebutton="false"
-                        data-widget-deletebutton="false"
-                        data-widget-fullscreenbutton="false"
-                        data-widget-custombutton="false"
-                        data-widget-collapsed="true"
-                        data-widget-sortable="false"
-
-                        -->
-                        <header>
-                            <h2> Calendar </h2>
-                            <div class="widget-toolbar">
-                                <!-- add: non-hidden - to disable auto hide -->
-                                <div class="btn-group">
-                                    <button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
-                                        Showing <i class="fa fa-caret-down"></i>
-                                    </button>
-
-
-
-                                    <ul class="dropdown-menu js-status-update pull-right">
-                                        <li>
-                                            <a href="javascript:void(0);" id="mt">Month</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" id="ag">Week</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0);" id="td">Day</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </header>
-
-                        <!-- widget div-->
-                        <div>
-
-                            <div class="widget-body no-padding">
-                                <!-- content goes here -->
-                                <div class="widget-body-toolbar">
-
-                                    <div id="calendar-buttons">
-
-                                        <div class="btn-group">
-                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
-                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="calendar"></div>
-
-                                <!-- end content -->
-                            </div>
-
-                        </div>
-                        <!-- end widget div -->
-                    </div>
-                    <!-- end widget -->
                 </div>
 
                 <div class="col-sm-6 col-md-6 col-lg-6">
@@ -359,12 +282,6 @@
 
             <div id="modal_add_task" title="Dialog Simple Title">
 
-                <!-- new widget -->
-                <div class="jarviswidget jarviswidget-color-blueDark">
-                    <header>
-                        <h2> Add Events </h2>
-                    </header>
-
                     <!-- widget div-->
                     <div>
 
@@ -374,93 +291,120 @@
                             <form id="add-event-form">
                                 <fieldset>
 
+                                    <!-- Event Type field-->
                                     <div class="form-group">
-                                        <label>Select Event Icon</label>
-                                        <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
-                                            <label class="btn btn-default active">
-                                                <p>Event</p>
-                                                <input type="radio" name="iconselect" id="icon-1" value="fa-info" checked>
-                                                <i class="fa fa-info text-muted"></i>
-                                            </label>
-                                            <label class="btn btn-default">
-                                                <p>Task</p>
-                                                <input type="radio" name="iconselect" id="icon-2" value="fa-warning">
-                                                <i class="fa fa-warning text-muted"></i>
-                                            </label>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label>Type:</label>
+                                                <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
+                                                    <label class="btn btn-default active">
+                                                        <p class=""><i class="fa fa-calendar text-muted"> </i> Event</p>
+                                                        <input type="radio" name="iconselect" id="icon-1" value="fa-info" checked>
+                                                    </label>
+                                                    <label class="btn btn-default">
+                                                        <p class=""><i class="fa fa-bookmark-o text-muted"> </i> Task</p>
+                                                        <input type="radio" name="iconselect" id="icon-2" value="fa-warning">
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
+                                    <!-- Title field-->
                                     <div class="form-group">
-                                        <label>Event Title</label>
-                                        <input class="form-control"  id="title" name="title" maxlength="40" type="text" placeholder="Event Title">
-                                        <p class="note">Maxlength is set to 40 characters</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Event Description</label>
-                                        <textarea class="form-control" placeholder="Please be brief" rows="3" maxlength="255" id="description"></textarea>
-                                        <p class="note">Maxlength is set to 255 characters</p>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Select Task Priority</label>
-                                        <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
-                                            <label class="btn bg-color-red active">
-                                                <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
-                                                <i class="fa fa-check txt-color-white"></i>
-                                                <p class="txt-color-white">Very High</p>
-                                            </label>
-                                            <label class="btn bg-color-orange">
-                                                <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
-                                                <i class="fa fa-check txt-color-white"></i>
-                                                <p class="txt-color-white">High</p>
-                                            </label>
-                                            <label class="btn bg-color-greenLight">
-                                                <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
-                                                <i class="fa fa-check txt-color-white"></i>
-                                                <p class="txt-color-white">Medium</p>
-                                            </label>
-                                            <label class="btn bg-color-blueLight">
-                                                <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
-                                                <i class="fa fa-check txt-color-white"></i>
-                                                <p class="txt-color-white">Low</p>
-                                            </label>
-                                            <label class="btn bg-color-darken">
-                                                <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
-                                                <i class="fa fa-check txt-color-white"></i>
-                                                <p class="txt-color-white">Very Low</p>
-                                            </label>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label>Event Title</label>
+                                                <input class="form-control"  id="title" name="title" maxlength="40" type="text" placeholder="Event Title">
+                                                <p class="note">Maxlength is set to 40 characters</p>
+                                            </div>
                                         </div>
                                     </div>
 
+                                    <!-- Description field-->
+
                                     <div class="form-group">
-
-                                        <label>Select a date:</label>
-                                        <div class="input-group">
-                                            <input type="text" name="mydate" placeholder="Select a date" class="form-control datepicker" data-dateformat="dd/mm/yy">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label>Event Description</label>
+                                                <textarea class="form-control" placeholder="Please be brief" rows="3" maxlength="255" id="description"></textarea>
+                                                <p class="note">Maxlength is set to 255 characters</p>
+                                            </div>
                                         </div>
-
-                                        <label>Timepicker (default):</label>
-                                        <div class="input-group">
-                                            <input class="form-control" id="timepicker" type="text" placeholder="Select time">
-                                            <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                        </div>
-
                                     </div>
 
+                                    <!-- Task Priority field-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label>Select Task Priority</label>
+                                                <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
+                                                    <label class="btn bg-color-red active">
+                                                        <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
+                                                        <i class="fa fa-check txt-color-white"></i>
+                                                        <p class="txt-color-white">Very High</p>
+                                                    </label>
+                                                    <label class="btn bg-color-orange">
+                                                        <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
+                                                        <i class="fa fa-check txt-color-white"></i>
+                                                        <p class="txt-color-white">High</p>
+                                                    </label>
+                                                    <label class="btn bg-color-greenLight">
+                                                        <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
+                                                        <i class="fa fa-check txt-color-white"></i>
+                                                        <p class="txt-color-white">Medium</p>
+                                                    </label>
+                                                    <label class="btn bg-color-blueLight">
+                                                        <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
+                                                        <i class="fa fa-check txt-color-white"></i>
+                                                        <p class="txt-color-white">Low</p>
+                                                    </label>
+                                                    <label class="btn bg-color-darken">
+                                                        <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
+                                                        <i class="fa fa-check txt-color-white"></i>
+                                                        <p class="txt-color-white">Very Low</p>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <!-- Date and time field-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <label>Select a start and end date</label>
+                                            </div>
 
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control" id="from" type="text" placeholder="From">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input class="form-control" id="to" type="text" placeholder="Select a date">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-12">
+                                                <label>Timepicker (default):</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" id="timepicker" type="text" placeholder="Select time">
+                                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </fieldset>
-                                <div class="form-actions">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button class="btn btn-default" type="button" id="add-event" >
-                                                Add Event
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
 
                             <!-- end content -->
@@ -468,9 +412,6 @@
 
                     </div>
                     <!-- end widget div -->
-                </div>
-                <!-- end widget -->
-
             </div><!-- #dialog-message -->
 
         </div>
@@ -604,6 +545,7 @@
             initDrag($(this));
         });
 
+        // Add event button
         $('#add-event').click(function () {
             var title = $('#title').val(),
                 priority = $('input:radio[name=priority]:checked').val(),
@@ -790,11 +732,13 @@
 
         }
 
+        // Open the Add task modal
         $('#btn_add_task').click(function() {
             $('#modal_add_task').dialog('open');
             return false;
         });
 
+        // Add task modal
         $("#modal_add_task").dialog({
             autoOpen : false,
             modal : true,
@@ -810,14 +754,47 @@
                 html : "<i class='fa fa-check'></i>&nbsp; Create",
                 "class" : "btn btn-primary",
                 click : function() {
+
+                    var title = $('#title').val(),
+                        priority = $('input:radio[name=priority]:checked').val(),
+                        description = $('#description').val(),
+                        icon = $('input:radio[name=iconselect]:checked').val();
+
+                    addEvent(title, priority, description, icon);
+
                     $(this).dialog("close");
                 }
             }]
 
         });
 
+        //Timepicker
         $('#timepicker').timepicker();
 
+
+
+        // Date Range Picker
+        $("#from").datepicker({
+            defaultDate: "+1w",
+            changeMonth: false,
+            numberOfMonths: 1,
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            onClose: function (selectedDate) {
+                $("#to").datepicker("option", selectedDate);
+            }
+
+        });
+        $("#to").datepicker({
+            defaultDate: "+1w",
+            changeMonth: false,
+            numberOfMonths: 1,
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            onClose: function (selectedDate) {
+                $("#from").datepicker("option", selectedDate);
+            }
+        });
     })
 
 </script>
