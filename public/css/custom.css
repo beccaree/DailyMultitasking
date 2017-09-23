@@ -17,3 +17,7 @@
  * - BODY
  * - CUSTOM STYLES
  */
+
+#ui-datepicker-div{
+    z-index: 1060;
+}
