@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manuel Create new TAsk</title>
+</head>
+
+<body>
+
+<form  action="/api/" method="POST" >
+    type:
+    <select>
+        <option value="task">Task</option>
+        <option value="event">Event</option>
+    </select> <br>
+    title:          <input type="text"     name="title" />      <br>
+    description:    <input type="text"     name="description" /><br>
+    prio:           <input type="number"   name="prio" />       <br>
+    id:             <input type="number"   name="id" />         <br>
+    done:           <input type="checkbox"  name="done" />       <br>
+    <input type="submit" value="Create task" />
+</form>
+
+</body>
+</html>
+
