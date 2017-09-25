@@ -4,6 +4,36 @@
 This is the last CSS file which are included. Which here should overwrite the rest of the predefined styles in both
  */
 
+
+/* datepicker calendar modal is on top */
 #ui-datepicker-div{
     z-index: 1060 !important;
 }
+
+/* center the header text so our 2 view icons appear in the center */
+#header {
+    text-align:center;
+}
+
+div#tab-icons {
+    float:none;
+}
+
+.glyphicon {
+    font-size: 30px;
+    padding-top: 5px;
+    color:white;
+}
+
+.glyphicon:hover {
+    color:lightskyblue;
+}
+
+li.active>a>.glyphicon {
+    color:lightskyblue;
+}
+
+
+
+
+
