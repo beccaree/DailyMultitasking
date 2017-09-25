@@ -13,15 +13,19 @@ This is the last CSS file which are included. Which here should overwrite the re
 /* center the header text so our 2 view icons appear in the center */
 #header {
     text-align:center;
+    padding-top: 10px;
 }
 
 div#tab-icons {
     float:none;
 }
 
+#tab-icons li:first-child {
+    border-right:1px solid white;
+}
+
 .glyphicon {
     font-size: 30px;
-    padding-top: 5px;
     color:white;
 }
 
