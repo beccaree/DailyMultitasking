@@ -1,0 +1,26 @@
+
+<div>
+    <h1>Achievements</h1>
+
+<%
+    var achievement = [
+            { name: 'First Task', description: 'Create Your First Task' },
+            { name: 'First Event', description: 'Create Your First Event' },
+            { name: 'Complete Task', description: 'Complete Your First Task' },
+            { name: 'All Task', description: 'Complete All Tasks in Your List' },
+            { name: 'Speedy', description: 'Complete a Task Before the Day it is Due' }
+        ];
+  %>
+
+
+
+        <ul style="list-style-type:node">
+            <% achievement.forEach(function(achievement) { %>
+                <li><img src="images/star.PNG" width="30" height="30"/> <%= achievement.name %> - <%= achievement.description %></li>
+            <% }); %>
+        </ul>
+
+
+
+
+</div>
