@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var index   =   require('./routes/app/index');
 var tasks   =   require('./routes/app/tasks');
 var newtask =   require('./routes/app/newtask');
+var progress =  require('./routes/app/progress');
 
 // All API routes
 var api     =   require('./routes/api/task');
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', api);
 app.use('/tasks', tasks);
 app.use('/newtask', newtask);
+app.use('/progress', progress)
 app.use('/', index);
 
 
