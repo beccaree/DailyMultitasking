@@ -20,6 +20,9 @@ var taskschema = new mongoose.Schema({
     done: Boolean,
     created: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },
+    start: { type: Date, default: Date.now },
+    end: { type: Date, default: Date.now },
+    allday: Boolean
 });
 
 var task = mongoose.model('task', taskschema);
@@ -35,6 +38,9 @@ s.id            = 1;
 s.done          = false;
 s.created       = new Date;
 s.updated       = new Date;
+s.start         = new Date;
+s.end           = new Date;
+s.allday        = false;
 
 task.find(function (err, d) {
     if (err) return next(err);

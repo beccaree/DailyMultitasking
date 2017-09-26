@@ -59,6 +59,7 @@
                                     <a class="btn btn-default btn-xs" type="button" href="javascript:void(0);" id="td">Day</a>
                                     <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
                                     <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
+                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ld">List</a>
                                 </div>
                             </div>
                         </header>
@@ -383,7 +384,7 @@
 
         var hdr = {
             left: 'title',
-            center: 'month,agendaWeek,agendaDay',
+            center: 'month,agendaWeek,agendaDay,listDay',
             right: 'prev,today,next'
         };
 
@@ -443,12 +444,20 @@
          -----------------------------------------------------------------*/
 
         $('#calendar').fullCalendar({
-
             header: hdr,
             editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
-
-            drop: function (date, allDay) { // this function is called when something is dropped
+            droppable: false, // this allows things to be dropped onto the calendar !!!
+            eventSources: [
+                // your event source
+                {
+                    url: '/api/', // use the `url` property
+                    error: function() {
+                        alert('there was an error while fetching events!');
+                    },
+                }
+                // any other sources...
+            ],
+            /*      drop: function (date, allDay) { // this function is called when something is dropped
 
                 // retrieve the dropped element's stored Event Object
                 var originalEventObject = $(this).data('eventObject');
@@ -471,8 +480,8 @@
                 }
 
             },
-
-            select: function (start, end, allDay) {
+             */
+           select: function (start, end, allDay) {
                 var title = prompt('Event Title:');
                 if (title) {
                     calendar.fullCalendar('renderEvent', {
@@ -486,48 +495,22 @@
                 calendar.fullCalendar('unselect');
             },
 
-            events: [{
-                title: 'Call the rat Gay',
-                start: new Date(y, m, 1),
-                description: 'long description',
-                className: ["event", "bg-color-greenLight"],
-                icon: 'fa-check'
-            }, {
-                title: 'Email Karen about ...',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false,
-                className: ["event", "bg-color-red"]
-            }, {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                allDay: false,
-                className: ["event", "bg-color-darken"]
-            }, {
-                title: 'Birthday Party',
-                start: new Date(y, m, d + 1, 19, 0),
-                end: new Date(y, m, d + 1, 22, 30),
-                allDay: false,
-                className: ["event", "bg-color-darken"]
-            }, {
-                title: 'Call Grandma',
-                start: new Date(y, m, 28),
-                end: new Date(y, m, 29),
-                className: ["event", "bg-color-darken"]
-            }],
-
             eventRender: function (event, element, icon) {
-                if (!event.description == "") {
-                    element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description +
+                if (!event.type == "") {
+                    element.find('.fc-type').append("<br/><span class='ultra-light'>" + event.type +
                         "</span>");
                 }
-                if (!event.icon == "") {
-                    element.find('.fc-title').append("<i class='air air-top-right fa " + event.icon +
-                        " '></i>");
+                if (!event.title == "") {
+                    element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.title +
+                        "</span>");
+                }
+                if (!event.description == "") {
+                    element.find('.fc-description').append("<br/><span class='ultra-light'>" + event.description +
+                        "</span>");
                 }
             },
 
-            windowResize: function (event, ui) {
+            windowResize: function (eventSources, ui) {
                 $('#calendar').fullCalendar('render');
             }
         });
@@ -562,6 +545,11 @@
         $('#td').click(function () {
             $('#calendar').fullCalendar('changeView', 'agendaDay');
         });
+
+        $('#ld').click(function () {
+            $('#calendar').fullCalendar('changeView', 'listDay');
+        });
+
 
         $(".js-status-update a").click(function() {
             var selText = $(this).text();
@@ -606,6 +594,7 @@
             }
 
         })
+
         // count tasks
         function countTasks() {
 
@@ -652,12 +641,12 @@
 
         });
 
-        //Timepicker
+        // Elements use in the Add task modal
+
+        //Timepicker element in the add task modal
         $('#timepicker').timepicker();
 
-
-
-        // Date Range Picker
+        // Date Range Picker used in the add task modal
         $("#from").datepicker({
             defaultDate: "+1w",
             changeMonth: false,
