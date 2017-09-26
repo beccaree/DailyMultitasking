@@ -1,658 +1,601 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <% include ../partials/htmlhead %>
-</head>
+    <head>
+        <% include ../partials/htmlhead %>
+    </head>
 
-<body class="no-menu smart-style-1">
+    <body class="no-menu smart-style-1">
+        <!-- General JS includes-->
+        <% include ../Partials/generalJS.ejs %>
+        <!-- END GENERAL JS INCLUDES -->
+        <div>
+            <!-- HEADER -->
+            <% include ../partials/header %>
+            <!-- END HEADER -->
 
-<!-- General JS includes-->
-<% include ../Partials/generalJS.ejs %>
-<!-- END GENERAL JS INCLUDES -->
-<div>
-    <!-- HEADER -->
-    <% include ../partials/header %>
-    <!-- END HEADER -->
+            <!-- Left panel : Navigation area -->
+            <% include ../partials/leftpanel %>
+            <!-- END NAVIGATION -->
 
-    <!-- Left panel : Navigation area -->
-    <% include ../partials/leftpanel %>
-    <!-- END NAVIGATION -->
+            <!-- MAIN PANEL -->
+            <div id="main" role="main">
 
-    <!-- MAIN PANEL -->
-    <div id="main" role="main">
+                <!-- MAIN CONTENT -->
+                <div id="content">
 
-        <!-- MAIN CONTENT -->
-        <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                            <h1 class="page-title txt-color-blueDark"><i class="fa fa-desktop fa-fw "></i> My Dashboard
+                            </h1>
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                    <h1 class="page-title txt-color-blueDark"><i class="fa fa-desktop fa-fw "></i> My Dashboard
-                    </h1>
-                </div>
-            </div>
+                    <!-- row -->
+                    <div class="row">
 
-            <!-- row -->
-            <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <!-- new widget -->
+                            <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1">
 
-                <div class="col-sm-6 col-md-6 col-lg-6">
-
-                    <!-- new widget -->
-                    <div class="jarviswidget jarviswidget-color-blueDark">
-
-                        <!-- widget options:
-        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-        data-widget-colorbutton="false"
-        data-widget-editbutton="false"
-        data-widget-togglebutton="false"
-        data-widget-deletebutton="false"
-        data-widget-fullscreenbutton="false"
-        data-widget-custombutton="false"
-        data-widget-collapsed="true"
-        data-widget-sortable="false"
-
-        -->
-                        <header>
-                            <h2> Calendar </h2>
-                            <div class="widget-toolbar">
-                                <!-- add: non-hidden - to disable auto hide -->
-                                <div class="btn-group">
-                                    <a class="btn btn-default btn-xs" type="button" href="javascript:void(0);" id="td">Day</a>
-                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
-                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
-                                </div>
-                                <!-- style part should change- small hack to make it look right for now -->
-                                <a id="btn_add_event" class="btn btn-default btn-circle"><i style="padding-top:7px" class="fa fa-plus"></i></a>
-                            </div>
-                        </header>
-
-                        <!-- widget div-->
-                        <div>
-                            <div class="widget-body no-padding">
-                                <!-- content goes here -->
-                                <div class="widget-body-toolbar">
-
-                                    <div id="calendar-buttons">
-
+                                <header>
+                                    <h2> Calendar </h2>
+                                    <div class="widget-toolbar">
+                                        <!-- add: non-hidden - to disable auto hide -->
                                         <div class="btn-group">
-                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
-                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                                            <a class="btn btn-default btn-xs" type="button" href="javascript:void(0);" id="td">Day</a>
+                                            <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
+                                            <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
                                         </div>
                                     </div>
-                                </div>
-                                <div id="calendar"></div>
+                                </header>
 
-                                <!-- end content -->
+                                <!-- widget div-->
+                                <div>
+                                    <div class="widget-body no-padding">
+                                        <!-- content goes here -->
+                                        <div class="widget-body-toolbar">
+                                            <div id="calendar-buttons">
+                                                <div class="btn-group">
+                                                    <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
+                                                    <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="calendar">
+
+                                        </div>
+                                        <!-- end content -->
+                                    </div>
+                                </div>
+                                <!-- end widget div -->
                             </div>
+                            <!-- end widget -->
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+
+                            <!-- new widget -->
+                            <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2">
+                                <header>
+                                    <h2> Task List </h2>
+                                    <div class="btn-group pull-right">
+                                        <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px"><i class="fa fa-plus"></i></a>
+                                    </div>
+
+                                </header>
+
+                                <!-- widget div-->
+                                <div>
+                                    <div class="widget-body no-padding smart-form">
+                                        <!-- content goes here -->
+                                        <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
+                                        <ul id="sortable2" class="todo">
+                                            <li>
+                                                <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                                <p>
+                                                    <a href="javascript:void(0);" class="font-s">Email Karen</a>
+                                                    <span class="date">Nov 22, 2013</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                                <p>
+                                                    <a href="javascript:void(0);" class="font-s">call Grandma</a>
+                                                    <span class="date">Nov 23, 2013</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                                <p>
+                                                    <a href="javascript:void(0);" class="font-s">Take out the trash</a>
+                                                    <span class="date">Nov 23, 2013</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                                <p>
+                                                    <a href="javascript:void(0);" class="font-s">Walk the dog</a>
+                                                    <span class="date">Nov 22, 2013</span>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                                <p>
+                                                    <a href="javascript:void(0);" class="font-s">Call the rat exterminator</a>
+                                                    <span class="date">Nov 22, 2013</span>
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                        <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks (<small class="num-of-tasks">1</small>)</h5>
+                                        <ul id="sortable3" class="todo">
+                                            <li class="complete">
+                                                <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                                <p>
+                                                    <a href="javascript:void(0);" class="font-s">Bake cake</a>
+                                                    <span class="date">Nov 22, 2013</span>
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                        <!-- end content -->
+                                    </div>
+
+                                </div>
+                                <!-- end widget div -->
+                            </div>
+                            <!-- end widget -->
 
                         </div>
-                        <!-- end widget div -->
+
                     </div>
-                    <!-- end widget -->
-                </div>
+                    <!-- end row -->
 
-                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <!-- row -->
+                    <div class="row">
 
-                    <!-- new widget -->
-                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-4" data-widget-editbutton="false" data-widget-colorbutton="false">
-                        <header>
-                            <h2> Task List </h2>
-                            <div class="btn-group pull-right">
-                                <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px"><i class="fa fa-plus"></i></a>
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+
+                            <!-- Empty space right now -->
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+
+                            <div class="well well-sm" id="event-container">
+                                <form>
+                                    <fieldset>
+                                        <legend>
+                                            Draggable Events
+                                        </legend>
+                                        <ul id='external-events' class="list-unstyled">
+                                            <li>
+                                                <span class="bg-color-darken txt-color-white" data-description="Currently busy" data-icon="fa-time">Office Meeting</span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-color-blue txt-color-white" data-description="No Description" data-icon="fa-pie">Lunch Break</span>
+                                            </li>
+                                            <li>
+                                                <span class="bg-color-red txt-color-white" data-description="Urgent Tasks" data-icon="fa-alert">URGENT</span>
+                                            </li>
+                                        </ul>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="drop-remove" class="checkbox style-0" checked="checked">
+                                                <span>remove after drop</span> </label>
+
+                                        </div>
+                                    </fieldset>
+                                </form>
+
                             </div>
+                        </div>
 
-                        </header>
+                    </div>
+                    <!-- end row -->
 
+                    <!-- Modal div-->
+                    <div id="modal_add_task" title="Dialog Simple Title">
                         <!-- widget div-->
                         <div>
-                            <div class="widget-body no-padding smart-form">
+                            <div class="widget-body">
                                 <!-- content goes here -->
-                                <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
-                                <ul id="sortable2" class="todo">
-                                    <li>
-                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                        <p>
-                                            <a href="javascript:void(0);" class="font-s">Email Karen</a>
-                                            <span class="date">Nov 22, 2013</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                        <p>
-                                            <a href="javascript:void(0);" class="font-s">call Grandma</a>
-                                            <span class="date">Nov 23, 2013</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                        <p>
-                                            <a href="javascript:void(0);" class="font-s">Take out the trash</a>
-                                            <span class="date">Nov 23, 2013</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                        <p>
-                                            <a href="javascript:void(0);" class="font-s">Walk the dog</a>
-                                            <span class="date">Nov 22, 2013</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                        <p>
-                                            <a href="javascript:void(0);" class="font-s">Call the rat exterminator</a>
-                                            <span class="date">Nov 22, 2013</span>
-                                        </p>
-                                    </li>
-                                </ul>
+                                <form id="add-event-form">
+                                    <fieldset>
 
-                                <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks (<small class="num-of-tasks">1</small>)</h5>
-                                <ul id="sortable3" class="todo">
-                                    <li class="complete">
-                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                        <p>
-                                            <a href="javascript:void(0);" class="font-s">Bake cake</a>
-                                            <span class="date">Nov 22, 2013</span>
-                                        </p>
-                                    </li>
-                                </ul>
+                                        <!-- Event Type field-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label>Type:</label>
+                                                    <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
+                                                        <label class="btn btn-default active">
+                                                            <p class=""><i class="fa fa-calendar text-muted"> </i> Event</p>
+                                                            <input type="radio" name="iconselect" id="icon-1" value="fa-info" checked>
+                                                        </label>
+                                                        <label class="btn btn-default">
+                                                            <p class=""><i class="fa fa-bookmark-o text-muted"> </i> Task</p>
+                                                            <input type="radio" name="iconselect" id="icon-2" value="fa-warning">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <!-- Title field-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label>Event Title</label>
+                                                    <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Event Title">
+                                                    <p class="note">Maxlength is set to 40 characters</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Description field-->
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label>Event Description</label>
+                                                    <textarea class="form-control" placeholder="Please be brief" rows="3" maxlength="255" id="description"></textarea>
+                                                    <p class="note">Maxlength is set to 255 characters</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Task Priority field-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label>Select Task Priority</label>
+                                                    <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
+                                                        <label class="btn bg-color-red active">
+                                                            <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Very High</p>
+                                                        </label>
+                                                        <label class="btn bg-color-orange">
+                                                            <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">High</p>
+                                                        </label>
+                                                        <label class="btn bg-color-greenLight">
+                                                            <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Medium</p>
+                                                        </label>
+                                                        <label class="btn bg-color-blueLight">
+                                                            <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Low</p>
+                                                        </label>
+                                                        <label class="btn bg-color-darken">
+                                                            <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Very Low</p>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Date and time field-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label>Select a start and end date</label>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" id="from" type="text" placeholder="From">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" id="to" type="text" placeholder="Select a date">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <label>Timepicker (default):</label>
+                                                    <div class="input-group">
+                                                        <input class="form-control" id="timepicker" type="text" placeholder="Select time">
+                                                        <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
                                 <!-- end content -->
                             </div>
-
                         </div>
                         <!-- end widget div -->
                     </div>
-                    <!-- end widget -->
+                    <!-- #End of new add task modal-->
 
                 </div>
+                <!-- END MAIN CONTENT -->
 
             </div>
-            <!-- end row -->
-
-            <!-- row -->
-            <div class="row">
-
-                <div class="col-sm-6 col-md-6 col-lg-6">
-
-                    <!-- Empty space right now -->
-
-                </div>
-
-                <div class="col-sm-6 col-md-6 col-lg-6">
-
-                    <div class="well well-sm" id="event-container">
-                        <form>
-                            <fieldset>
-                                <legend>
-                                    Draggable Events
-                                </legend>
-                                <ul id='external-events' class="list-unstyled">
-                                    <li>
-                                        <span class="bg-color-darken txt-color-white" data-description="Currently busy" data-icon="fa-time">Office Meeting</span>
-                                    </li>
-                                    <li>
-                                        <span class="bg-color-blue txt-color-white" data-description="No Description" data-icon="fa-pie">Lunch Break</span>
-                                    </li>
-                                    <li>
-                                        <span class="bg-color-red txt-color-white" data-description="Urgent Tasks" data-icon="fa-alert">URGENT</span>
-                                    </li>
-                                </ul>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" id="drop-remove" class="checkbox style-0" checked="checked">
-                                        <span>remove after drop</span> </label>
-
-                                </div>
-                            </fieldset>
-                        </form>
-
-                    </div>
-                </div>
-
-            </div>
-            <!-- end row -->
-
-
-            <div id="modal_add_task" title="Dialog Simple Title">
-
-                <!-- widget div-->
-                <div>
-
-                    <div class="widget-body">
-                        <!-- content goes here -->
-
-                        <form id="add-event-form">
-                            <fieldset>
-
-                                <!-- Event Type field-->
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <label>Type:</label>
-                                            <div class="btn-group btn-group-sm btn-group-justified" data-toggle="buttons">
-                                                <label class="btn btn-default active">
-                                                    <p class=""><i class="fa fa-calendar text-muted"> </i> Event</p>
-                                                    <input type="radio" name="iconselect" id="icon-1" value="fa-info" checked>
-                                                </label>
-                                                <label class="btn btn-default">
-                                                    <p class=""><i class="fa fa-bookmark-o text-muted"> </i> Task</p>
-                                                    <input type="radio" name="iconselect" id="icon-2" value="fa-warning">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Title field-->
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <label>Event Title</label>
-                                            <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Event Title">
-                                            <p class="note">Maxlength is set to 40 characters</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Description field-->
-
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <label>Event Description</label>
-                                            <textarea class="form-control" placeholder="Please be brief" rows="3" maxlength="255" id="description"></textarea>
-                                            <p class="note">Maxlength is set to 255 characters</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Task Priority field-->
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <label>Select Task Priority</label>
-                                            <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
-                                                <label class="btn bg-color-red active">
-                                                    <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
-                                                    <i class="fa fa-check txt-color-white"></i>
-                                                    <p class="txt-color-white">Very High</p>
-                                                </label>
-                                                <label class="btn bg-color-orange">
-                                                    <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
-                                                    <i class="fa fa-check txt-color-white"></i>
-                                                    <p class="txt-color-white">High</p>
-                                                </label>
-                                                <label class="btn bg-color-greenLight">
-                                                    <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
-                                                    <i class="fa fa-check txt-color-white"></i>
-                                                    <p class="txt-color-white">Medium</p>
-                                                </label>
-                                                <label class="btn bg-color-blueLight">
-                                                    <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
-                                                    <i class="fa fa-check txt-color-white"></i>
-                                                    <p class="txt-color-white">Low</p>
-                                                </label>
-                                                <label class="btn bg-color-darken">
-                                                    <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
-                                                    <i class="fa fa-check txt-color-white"></i>
-                                                    <p class="txt-color-white">Very Low</p>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Date and time field-->
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <label>Select a start and end date</label>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" id="from" type="text" placeholder="From">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" id="to" type="text" placeholder="Select a date">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                            <label>Timepicker (default):</label>
-                                            <div class="input-group">
-                                                <input class="form-control" id="timepicker" type="text" placeholder="Select time">
-                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-
-                        <!-- end content -->
-                    </div>
-
-                </div>
-                <!-- end widget div -->
-            </div>
-            <!-- #dialog-message -->
-
+            <!-- END MAIN PANEL -->
         </div>
-        <!-- END MAIN CONTENT -->
+        <!-- the following are page-specific js -->
+        <!--================================================== -->
 
-    </div>
-    <!-- END MAIN PANEL -->
+        <!-- Time picker -->
+        <script src="js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
 
-</div>
+        <!-- PAGE RELATED PLUGIN(S) -->
+        <script src="js/plugin/moment/moment.min.js"></script>
+        <script src="js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
 
+        <!-- Page inline JS setup -->
+        <script type="text/javascript">
+            $(document).ready(function () {
 
-<!-- the following are page-specific js -->
-<!--================================================== -->
+                pageSetUp();
 
-<!-- Time picker -->
-<script src="js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+                "use strict";
 
-<!-- PAGE RELATED PLUGIN(S) -->
-<script src="js/plugin/moment/moment.min.js"></script>
-<script src="js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+                var date = new Date();
+                var d = date.getDate();
+                var m = date.getMonth();
+                var y = date.getFullYear();
 
-<!-- Page setup -->
-<script type="text/javascript">
-    $(document).ready(function () {
+                var hdr = {
+                    left: 'title',
+                    center: 'month,agendaWeek,agendaDay,listDay',
+                    right: 'prev,today,next'
+                };
 
-        pageSetUp();
+                var initDrag = function (e) {
+                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                    // it doesn't need to have a start or end
 
-        "use strict";
+                    // make the event draggable using jQuery UI
+                    e.draggable({
+                        zIndex: 999,
+                        revert: true, // will cause the event to go back to its
+                        revertDuration: 0 //  original position after the drag
+                    });
+                };
 
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-        
-        var initDrag = function (e) {
-            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-            // it doesn't need to have a start or end
+                var addEvent = function (title, priority, description, icon) {
+                    title = title.length === 0 ? "Untitled Event" : title;
+                    description = description.length === 0 ? "No Description" : description;
+                    icon = icon.length === 0 ? " " : icon;
+                    priority = priority.length === 0 ? "label label-default" : priority;
 
-            // make the event draggable using jQuery UI
-            e.draggable({
-                zIndex: 999,
-                revert: true, // will cause the event to go back to its
-                revertDuration: 0 //  original position after the drag
-            });
-        };
+                    var html = $('<li><span class="' + priority + '" data-description="' + description +
+                        '" data-icon="' +
+                        icon + '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
 
-        var addEvent = function (title, priority, description, icon) {
-            title = title.length === 0 ? "Untitled Event" : title;
-            description = description.length === 0 ? "No Description" : description;
-            icon = icon.length === 0 ? " " : icon;
-            priority = priority.length === 0 ? "label label-default" : priority;
+                    $("#event-container").effect("highlight", 800);
 
-            var html = $('<li><span class="' + priority + '" data-description="' + description +
-                '" data-icon="' +
-                icon + '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
+                    initDrag(html);
+                };
 
-            $("#event-container").effect("highlight", 800);
+                /* initialize the external events
+                 -----------------------------------------------------------------*/
 
-            initDrag(html);
-        };
-
-        /* initialize the external events
-         -----------------------------------------------------------------*/
-
-        $('#external-events > li').each(function () {
-            initDrag($(this));
-        });
-
-        // Add event button
-        $('#add-event').click(function () {
-            var title = $('#title').val(),
-                priority = $('input:radio[name=priority]:checked').val(),
-                description = $('#description').val(),
-                icon = $('input:radio[name=iconselect]:checked').val();
-
-            addEvent(title, priority, description, icon);
-        });
-
-        /* initialize the calendar
-         -----------------------------------------------------------------*/
-
-        var hdr = {
-            left: 'title',
-            center: 'month,agendaWeek,agendaDay,listDay',
-            right: 'prev,today,next'
-        };
-
-        $('#calendar').fullCalendar({
-            header: hdr,
-            editable: true,
-            droppable: false, // this allows things to be dropped onto the calendar !!!
-            eventSources: [
-                {
-                    url: '/api/', // use the `url` property
-                    error: function () {
-                        alert('there was an error while fetching events!');
-                    },
-                }
-            ],
-            events: [   // Just a static event which have to be deleted at some point
-                {
-                    title: 'Call Grandpa',
-                    start: '2017-09-26',
-                    description: 'This is a cool event'
-                }
-            ],
-            /*  drop: function (date, allDay) { // this function is called when something is dropped
-
-             // retrieve the dropped element's stored Event Object
-             var originalEventObject = $(this).data('eventObject');
-
-             // render the event on the calendar
-             // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-             $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-             // is the "remove after drop" checkbox checked?
-             if ($('#drop-remove').is(':checked')) {
-             // if so, remove the element from the "Draggable Events" list
-             $(this).remove();
-             }
-
-             },
-
-             select: function (start, end, allDay) {
-             var title = prompt('Event Title:');
-             if (title) {
-             calendar.fullCalendar('renderEvent', {
-             title: title,
-             start: start,
-             end: end,
-             allDay: allDay
-             }, true // make the event "stick"
-             );
-             }
-             calendar.fullCalendar('unselect');
-             },
-
-             },
-             */
-            select: function (start, end, allDay) {
-                var title = prompt('Event Title:');
-                if (title) {
-                    calendar.fullCalendar('renderEvent', {
-                            title: title,
-                            start: start,
-                            end: end,
-                            allDay: allDay
-                        }, true // make the event "stick"
-                    );
-                }
-                calendar.fullCalendar('unselect');
-            },
-
-            eventRender: function (event, element) {
-                if (!event.title == "") {
-                    element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.type +
-                        "</span>");
-                }
-            },
-
-            windowResize: function (eventSources, ui) {
-                $('#calendar').fullCalendar('render');
-            }
-        });
-
-        $('#calendar-buttons #btn-prev').click(function () {
-            $('.fc-prev-button').click();
-            return false;
-        });
-
-        $('#calendar-buttons #btn-next').click(function () {
-            $('.fc-next-button').click();
-            return false;
-        });
-
-        $('#calendar-buttons #btn-today').click(function () {
-            $('.fc-today-button').click();
-            return false;
-        });
-
-        $('#mt').click(function () {
-            $('#calendar').fullCalendar('changeView', 'month');
-        });
-
-        $('#ag').click(function () {
-            $('#calendar').fullCalendar('changeView', 'agendaWeek');
-        });
-
-        $('#td').click(function () {
-            $('#calendar').fullCalendar('changeView', 'agendaDay');
-        });
-
-        $(".js-status-update a").click(function () {
-            var selText = $(this).text();
-            var $this = $(this);
-            $this.parents('.btn-group').find('.dropdown-toggle').html(selText +
-                ' <span class="caret"></span>');
-            $this.parents('.dropdown-menu').find('li').removeClass('active');
-            $this.parent().addClass('active');
-        });
-
-        /*
-         * TODO: add a way to add more todo's to list
-         */
-
-        $('#ld').click(function () {
-            $('#calendar').fullCalendar('changeView', 'listDay');
-        });
-
-
-        $(".js-status-update a").click(function () {
-            var selText = $(this).text();
-            var $this = $(this);
-            $this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
-            $this.parents('.dropdown-menu').find('li').removeClass('active');
-            $this.parent().addClass('active');
-        });
-        // check and uncheck
-        $('.todo .checkbox > input[type="checkbox"]').click(function () {
-            var $this = $(this).parent().parent().parent();
-
-            if ($(this).prop('checked')) {
-                $this.addClass("complete");
-
-                // remove this if you want to undo a check list once checked
-                //$(this).attr("disabled", true);
-                $(this).parent().hide();
-
-                // once clicked - add class, copy to memory then remove and add to sortable3
-                $this.slideUp(500, function () {
-                    $this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
-                    $this.remove();
-                    countTasks();
+                $('#external-events > li').each(function () {
+                    initDrag($(this));
                 });
-            } else {
-                // insert undo code here...
-            }
 
-        })
+                // Add event button
+                $('#add-event').click(function () {
+                    var title = $('#title').val(),
+                        priority = $('input:radio[name=priority]:checked').val(),
+                        description = $('#description').val(),
+                        icon = $('input:radio[name=iconselect]:checked').val();
 
-        // count tasks
-        function countTasks() {
+                    addEvent(title, priority, description, icon);
+                });
 
-            // Open the Add task modal
-            $('#btn_add_task').click(function () {
-                $('#modal_add_task').dialog('open');
-                return false;
-            });
+                /* initialize the calendar
+                 -----------------------------------------------------------------*/
 
-            //Open the Add event modal
-            $('#btn_add_event').click(function () {
-                $('#modal_add_task').dialog('open');
-                return false;
-            });
+                $('#calendar').fullCalendar({
+                    header: hdr,
+                    editable: true,
+                    droppable: false, // this allows things to be dropped onto the calendar !!!
+                    eventSources: [
+                        {
+                            url: '/api/', // use the `url` property
+                            error: function() {
+                                alert('there was an error while fetching events!');
+                            },
+                        }
+                    ],
+                    events: [   // Just a static event which have to be deleted at some point
+                        {
+                            title: 'Call Grandpa',
+                            start: '2017-09-26',
+                            description: 'This is a cool event'
+                        }
+                    ],
 
-            // Add task modal
-            $("#modal_add_task").dialog({
-                autoOpen: false,
-                modal: true,
-                width: 800,
-                title: "Add New Task",
-                buttons: [{
-                    html: "Cancel",
-                    "class": "btn btn-default",
-                    click: function () {
-                        $(this).dialog("close");
+                    select: function (start, end, allDay) {
+                        var title = prompt('Event Title:');
+                        if (title) {
+                            calendar.fullCalendar('renderEvent', {
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    allDay: allDay
+                                }, true // make the event "stick"
+                            );
+                        }
+                        calendar.fullCalendar('unselect');
+                    },
+
+                    eventRender: function (event, element) {
+                        if (!event.title == "") {
+                            element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.type +
+                                "</span>");
+                        }
+                    },
+
+                    windowResize: function (eventSources, ui) {
+                        $('#calendar').fullCalendar('render');
+                    },
+                });
+
+                $('#calendar-buttons #btn-prev').click(function () {
+                    $('.fc-prev-button').click();
+                    return false;
+                });
+
+                $('#calendar-buttons #btn-next').click(function () {
+                    $('.fc-next-button').click();
+                    return false;
+                });
+
+                $('#calendar-buttons #btn-today').click(function () {
+                    $('.fc-today-button').click();
+                    return false;
+                });
+
+                /* hide default buttons */
+                $('.fc-right, .fc-center').hide();
+
+                $('#mt').click(function () {
+                    $('#calendar').fullCalendar('changeView', 'month');
+                });
+                $('#ag').click(function () {
+                    $('#calendar').fullCalendar('changeView', 'agendaWeek');
+                });
+                $('#td').click(function () {
+                    $('#calendar').fullCalendar('changeView', 'agendaDay');
+                });
+                $('#ld').click(function () {
+                    $('#calendar').fullCalendar('changeView', 'listDay');
+                });
+
+                $(".js-status-update a").click(function () {
+                    var selText = $(this).text();
+                    var $this = $(this);
+                    $this.parents('.btn-group').find('.dropdown-toggle').html(selText +
+                        ' <span class="caret"></span>');
+                    $this.parents('.dropdown-menu').find('li').removeClass('active');
+                    $this.parent().addClass('active');
+                });
+
+                /*
+                 * TODO: add a way to add more todo's to list
+                 */
+
+
+                $(".js-status-update a").click(function () {
+                    var selText = $(this).text();
+                    var $this = $(this);
+                    $this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+                    $this.parents('.dropdown-menu').find('li').removeClass('active');
+                    $this.parent().addClass('active');
+                });
+                // check and uncheck
+                $('.todo .checkbox > input[type="checkbox"]').click(function () {
+                    var $this = $(this).parent().parent().parent();
+
+                    if ($(this).prop('checked')) {
+                        $this.addClass("complete");
+
+                        // remove this if you want to undo a check list once checked
+                        //$(this).attr("disabled", true);
+                        $(this).parent().hide();
+
+                        // once clicked - add class, copy to memory then remove and add to sortable3
+                        $this.slideUp(500, function () {
+                            $this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
+                            $this.remove();
+                            countTasks();
+                        });
+                    } else {
+                        // insert undo code here...
                     }
-                }, {
-                    html: "<i class='fa fa-check'></i>&nbsp; Create",
-                    "class": "btn btn-primary",
-                    click: function () {
 
-                        var title = $('#title').val(),
-                            priority = $('input:radio[name=priority]:checked').val(),
-                            description = $('#description').val(),
-                            icon = $('input:radio[name=iconselect]:checked').val();
+                })
 
-                        addEvent(title, priority, description, icon);
+                // count tasks
+                function countTasks() {
 
-                        $(this).dialog("close");
-                    }
-                }]
+                    // Open the Add task modal
+                    $('#btn_add_task').click(function () {
+                        $('#modal_add_task').dialog('open');
+                        return false;
+                    });
 
-            });
+                    //Open the Add event modal
+                    $('#btn_add_event').click(function () {
+                        $('#modal_add_task').dialog('open');
+                        return false;
+                    });
 
-            //Timepicker
-            $('#timepicker').timepicker();
+                    // Add task modal
+                    $("#modal_add_task").dialog({
+                        autoOpen: false,
+                        modal: true,
+                        width: 800,
+                        title: "Add New Task",
+                        buttons: [{
+                            html: "Cancel",
+                            "class": "btn btn-default",
+                            click: function () {
+                                $(this).dialog("close");
+                            }
+                        }, {
+                            html: "<i class='fa fa-check'></i>&nbsp; Create",
+                            "class": "btn btn-primary",
+                            click: function () {
 
-            // Elements use in the Add task modal
+                                var title = $('#title').val(),
+                                    priority = $('input:radio[name=priority]:checked').val(),
+                                    description = $('#description').val(),
+                                    icon = $('input:radio[name=iconselect]:checked').val();
 
-            //Timepicker element in the add task modal
-            $('#timepicker').timepicker();
+                                addEvent(title, priority, description, icon);
 
-            // Date Range Picker used in the add task modal
-            $("#from").datepicker({
-                defaultDate: "+1w",
-                changeMonth: false,
-                numberOfMonths: 1,
-                prevText: '<i class="fa fa-chevron-left"></i>',
-                nextText: '<i class="fa fa-chevron-right"></i>',
-                onClose: function (selectedDate) {
-                    $("#to").datepicker("option", selectedDate);
+                                $(this).dialog("close");
+                            }
+                        }]
+
+                    });
+
+                    //Timepicker
+                    $('#timepicker').timepicker();
+
+                    // Elements use in the Add task modal
+
+                    //Timepicker element in the add task modal
+                    $('#timepicker').timepicker();
+
+                    // Date Range Picker used in the add task modal
+                    $("#from").datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: false,
+                        numberOfMonths: 1,
+                        prevText: '<i class="fa fa-chevron-left"></i>',
+                        nextText: '<i class="fa fa-chevron-right"></i>',
+                        onClose: function (selectedDate) {
+                            $("#to").datepicker("option", selectedDate);
+                        }
+                    })
                 }
-            })
-        }
-    });
-</script>
-</body>
+            });
+        </script>
+
+    </body>
+</html>
