@@ -391,14 +391,11 @@
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
 
-                    var eventObject = {
-                        title: $.trim(e.children().text()), // use the element's text as the event title
-                        description: $.trim(e.children('span').attr('data-description')),
-                        icon: $.trim(e.children('span').attr('data-icon')),
-                        className: $.trim(e.children('span').attr('class')) // use the element's children as the event class
-                    };
-                    // store the Event Object in the DOM element so we can get to it later
-                    e.data('eventObject', eventObject);
+        var hdr = {
+            left: 'title',
+            center: 'month,agendaWeek,agendaDay,listDay',
+            right: 'prev,today,next'
+        };
 
                     // make the event draggable using jQuery UI
                     e.draggable({
@@ -449,17 +446,29 @@
                     editable: true,
                     droppable: true, // this allows things to be dropped onto the calendar !!!
 
-                    drop: function (date, allDay) { // this function is called when something is dropped
+        $('#calendar').fullCalendar({
+            header: hdr,
+            editable: true,
+            droppable: false, // this allows things to be dropped onto the calendar !!!
+            eventSources: [
+                {
+                    url: '/api/', // use the `url` property
+                    error: function() {
+                        alert('there was an error while fetching events!');
+                    },
+                }
+            ],
+                events: [   // Just a static event which have to be deleted at some point
+                {
+                    title: 'Call Grandpa',
+                    start: '2017-09-26',
+                    description: 'This is a cool event'
+                }
+            ],
+            /*  drop: function (date, allDay) { // this function is called when something is dropped
 
-                        // retrieve the dropped element's stored Event Object
-                        var originalEventObject = $(this).data('eventObject');
-
-                        // we need to copy it, so that multiple events don't have a reference to the same object
-                        var copiedEventObject = $.extend({}, originalEventObject);
-
-                        // assign it the date that was reported
-                        copiedEventObject.start = date;
-                        copiedEventObject.allDay = allDay;
+                // retrieve the dropped element's stored Event Object
+                var originalEventObject = $(this).data('eventObject');
 
                         // render the event on the calendar
                         // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
@@ -487,57 +496,33 @@
                         calendar.fullCalendar('unselect');
                     },
 
-                    events: [{
-                        title: 'Call the rat Gay',
-                        start: new Date(y, m, 1),
-                        description: 'long description',
-                        className: ["event", "bg-color-greenLight"],
-                        icon: 'fa-check'
-                    }, {
-                        title: 'Email Karen about ...',
-                        start: new Date(y, m, d, 10, 30),
-                        allDay: false,
-                        className: ["event", "bg-color-red"]
-                    }, {
-                        title: 'Lunch',
-                        start: new Date(y, m, d, 12, 0),
-                        end: new Date(y, m, d, 14, 0),
-                        allDay: false,
-                        className: ["event", "bg-color-darken"]
-                    }, {
-                        title: 'Birthday Party',
-                        start: new Date(y, m, d + 1, 19, 0),
-                        end: new Date(y, m, d + 1, 22, 30),
-                        allDay: false,
-                        className: ["event", "bg-color-darken"]
-                    }, {
-                        title: 'Call Grandma',
-                        start: new Date(y, m, 28),
-                        end: new Date(y, m, 29),
-                        className: ["event", "bg-color-darken"]
-                    }],
+            },
+             */
+           select: function (start, end, allDay) {
+                var title = prompt('Event Title:');
+                if (title) {
+                    calendar.fullCalendar('renderEvent', {
+                            title: title,
+                            start: start,
+                            end: end,
+                            allDay: allDay
+                        }, true // make the event "stick"
+                    );
+                }
+                calendar.fullCalendar('unselect');
+            },
 
-                    eventRender: function (event, element, icon) {
-                        if (!event.description == "") {
-                            element.find('.fc-title').append("<br/><span class='ultra-light'>" +
-                                event.description +
-                                "</span>");
-                        }
-                        if (!event.icon == "") {
-                            element.find('.fc-title').append("<i class='air air-top-right fa " +
-                                event.icon +
-                                " '></i>");
-                        }
-                    },
+            eventRender: function (event, element) {
+                if (!event.title == "") {
+                    element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.type +
+                        "</span>");
+                }
+            },
 
-                    windowResize: function (event, ui) {
-                        $('#calendar').fullCalendar('render');
-                    }
-                });
-
-                /* hide default buttons */
-                $('.fc-right, .fc-center').hide();
-
+            windowResize: function (eventSources, ui) {
+                $('#calendar').fullCalendar('render');
+            }
+        });
 
                 $('#calendar-buttons #btn-prev').click(function () {
                     $('.fc-prev-button').click();
@@ -579,14 +564,18 @@
                  * TODO: add a way to add more todo's to list
                  */
 
-                // initialize sortable
-                $(function () {
-                    $("#sortable1, #sortable2").sortable({
-                        handle: '.handle',
-                        connectWith: ".todo",
-                        update: countTasks
-                    }).disableSelection();
-                });
+        $('#ld').click(function () {
+            $('#calendar').fullCalendar('changeView', 'listDay');
+        });
+
+
+        $(".js-status-update a").click(function() {
+            var selText = $(this).text();
+            var $this = $(this);
+            $this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+            $this.parents('.dropdown-menu').find('li').removeClass('active');
+            $this.parent().addClass('active');
+        });
 
                 // check and uncheck
                 $('.todo .checkbox > input[type="checkbox"]').click(function () {
@@ -618,7 +607,10 @@
                         $this.find(".num-of-tasks").text($this.next().find("li").size());
                     });
 
-                }
+        })
+
+        // count tasks
+        function countTasks() {
 
                 // Open the Add task modal
                 $('#btn_add_task').click(function () {
@@ -665,31 +657,20 @@
                 //Timepicker
                 $('#timepicker').timepicker();
 
+        // Elements use in the Add task modal
 
+        //Timepicker element in the add task modal
+        $('#timepicker').timepicker();
 
-                // Date Range Picker
-                $("#from").datepicker({
-                    defaultDate: "+1w",
-                    changeMonth: false,
-                    numberOfMonths: 1,
-                    prevText: '<i class="fa fa-chevron-left"></i>',
-                    nextText: '<i class="fa fa-chevron-right"></i>',
-                    onClose: function (selectedDate) {
-                        $("#to").datepicker("option", selectedDate);
-                    }
-
-                });
-                $("#to").datepicker({
-                    defaultDate: "+1w",
-                    changeMonth: false,
-                    numberOfMonths: 1,
-                    prevText: '<i class="fa fa-chevron-left"></i>',
-                    nextText: '<i class="fa fa-chevron-right"></i>',
-                    onClose: function (selectedDate) {
-                        $("#from").datepicker("option", selectedDate);
-                    }
-                });
-            })
-        </script>
+        // Date Range Picker used in the add task modal
+        $("#from").datepicker({
+            defaultDate: "+1w",
+            changeMonth: false,
+            numberOfMonths: 1,
+            prevText: '<i class="fa fa-chevron-left"></i>',
+            nextText: '<i class="fa fa-chevron-right"></i>',
+            onClose: function (selectedDate) {
+                $("#to").datepicker("option", selectedDate);
+            }
 
 </body>

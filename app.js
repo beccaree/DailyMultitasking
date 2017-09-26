@@ -5,7 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+// All APP routes
+var index   =   require('./routes/app/index');
+var tasks   =   require('./routes/app/tasks');
+var newtask =   require('./routes/app/newtask');
+
+// All API routes
+var api     =   require('./routes/api/task');
 
 var app = express();
 
@@ -23,8 +29,13 @@ app.use(cookieParser());
 // Public resources
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // All pages need to be catched here
+app.use('/api', api);
+app.use('/tasks', tasks);
+app.use('/newtask', newtask);
 app.use('/', index);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -45,3 +56,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
