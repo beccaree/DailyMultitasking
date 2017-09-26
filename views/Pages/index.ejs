@@ -448,16 +448,21 @@
             editable: true,
             droppable: false, // this allows things to be dropped onto the calendar !!!
             eventSources: [
-                // your event source
                 {
                     url: '/api/', // use the `url` property
                     error: function() {
                         alert('there was an error while fetching events!');
                     },
                 }
-                // any other sources...
             ],
-            /*      drop: function (date, allDay) { // this function is called when something is dropped
+                events: [   // Just a static event which have to be deleted at some point
+                {
+                    title: 'Call Grandpa',
+                    start: '2017-09-26',
+                    description: 'This is a cool event'
+                }
+            ],
+            /*  drop: function (date, allDay) { // this function is called when something is dropped
 
                 // retrieve the dropped element's stored Event Object
                 var originalEventObject = $(this).data('eventObject');
@@ -495,17 +500,9 @@
                 calendar.fullCalendar('unselect');
             },
 
-            eventRender: function (event, element, icon) {
-                if (!event.type == "") {
-                    element.find('.fc-type').append("<br/><span class='ultra-light'>" + event.type +
-                        "</span>");
-                }
+            eventRender: function (event, element) {
                 if (!event.title == "") {
-                    element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.title +
-                        "</span>");
-                }
-                if (!event.description == "") {
-                    element.find('.fc-description').append("<br/><span class='ultra-light'>" + event.description +
+                    element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.type +
                         "</span>");
                 }
             },
