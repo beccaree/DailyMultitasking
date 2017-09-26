@@ -196,7 +196,7 @@
                     <!-- end row -->
 
                     <!-- Modal div-->
-                    <div id="modal_add_task" title="Dialog Simple Title">
+                    <div id="modal_add_task" title="Add new Entity">
                         <!-- widget div-->
                         <div>
                             <div class="widget-body">
@@ -235,7 +235,6 @@
                                         </div>
 
                                         <!-- Description field-->
-
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -299,7 +298,6 @@
                                                 </div>
 
                                                 <div class="col-sm-6">
-
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <input class="form-control" id="to" type="text" placeholder="Select a date">
@@ -315,8 +313,10 @@
                                                         <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
+
                                     </fieldset>
                                 </form>
                                 <!-- end content -->
@@ -498,7 +498,6 @@
                  * TODO: add a way to add more todo's to list
                  */
 
-
                 $(".js-status-update a").click(function () {
                     var selText = $(this).text();
                     var $this = $(this);
@@ -531,47 +530,41 @@
 
                 // count tasks
                 function countTasks() {
-
-                    // Open the Add task modal
-                    $('#btn_add_task').click(function () {
-                        $('#modal_add_task').dialog('open');
-                        return false;
+                    $('.todo-group-title').each(function() {
+                        var $this = $(this);
+                        $this.find(".num-of-tasks").text($this.next().find("li").size());
                     });
-
-                    //Open the Add event modal
-                    $('#btn_add_event').click(function () {
+                }
+                    // Open the Add task modal
+                    $('#btn_add_task').click(function() {
                         $('#modal_add_task').dialog('open');
                         return false;
                     });
 
                     // Add task modal
                     $("#modal_add_task").dialog({
-                        autoOpen: false,
-                        modal: true,
-                        width: 800,
-                        title: "Add New Task",
-                        buttons: [{
-                            html: "Cancel",
-                            "class": "btn btn-default",
-                            click: function () {
+                        autoOpen : false,
+                        modal : true,
+                        width : 800,
+                        title : "Add New Task",
+                        buttons : [{
+                            html : "Cancel",
+                            "class" : "btn btn-default",
+                            click : function() {
                                 $(this).dialog("close");
                             }
                         }, {
-                            html: "<i class='fa fa-check'></i>&nbsp; Create",
-                            "class": "btn btn-primary",
-                            click: function () {
-
+                            html : "<i class='fa fa-check'></i>&nbsp; Create",
+                            "class" : "btn btn-primary",
+                            click : function() {
                                 var title = $('#title').val(),
                                     priority = $('input:radio[name=priority]:checked').val(),
                                     description = $('#description').val(),
                                     icon = $('input:radio[name=iconselect]:checked').val();
-
                                 addEvent(title, priority, description, icon);
-
                                 $(this).dialog("close");
                             }
                         }]
-
                     });
 
                     //Timepicker
@@ -593,7 +586,6 @@
                             $("#to").datepicker("option", selectedDate);
                         }
                     })
-                }
             });
         </script>
 
