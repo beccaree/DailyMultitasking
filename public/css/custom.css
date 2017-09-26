@@ -1,7 +1,7 @@
 
 
 /*
-This is the last CSS file which are included. Which here should overwrite the rest of the predefined styles in both
+This is the last CSS file which is included. This should overwrite the rest of the predefined styles in both
  */
 
 
@@ -35,6 +35,10 @@ div#tab-icons {
 
 li.active>a>.glyphicon {
     color:lightskyblue;
+}
+
+h1.page-title {
+    margin-bottom:12px;
 }
 
 

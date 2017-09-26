@@ -10,9 +10,6 @@
     <% include ../Partials/generalJS.ejs %>
         <!-- END GENERAL JS INCLUDES -->
         <div>
-
-
-
             <!-- HEADER -->
             <% include ../partials/header %>
                 <!-- END HEADER -->
@@ -64,6 +61,8 @@
                                                     <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
                                                     <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
                                                 </div>
+                                                <!-- style part should change- small hack to make it look right for now -->
+                                                <a id="btn_add_event" class="btn btn-default btn-circle"><i style="padding-top:7px" class="fa fa-plus"></i></a>
                                             </div>
                                         </header>
 
@@ -99,7 +98,7 @@
                                         <header>
                                             <h2> Task List </h2>
                                             <div class="btn-group pull-right">
-                                                <a id="btn_add_task" class="btn btn-default btn-circle"><i class="fa fa-plus"></i></a>
+                                                <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px"><i class="fa fa-plus"></i></a>
                                             </div>
 
                                         </header>
@@ -623,6 +622,12 @@
 
                 // Open the Add task modal
                 $('#btn_add_task').click(function () {
+                    $('#modal_add_task').dialog('open');
+                    return false;
+                });
+
+                //Open the Add event modal
+                $('#btn_add_event').click(function () {
                     $('#modal_add_task').dialog('open');
                     return false;
                 });
