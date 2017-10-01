@@ -91,44 +91,16 @@
                                                 <!-- content goes here -->
                                                 <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
                                                 <ul id="sortable2" class="todo">
-                                                    <li>
-                                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                                        <p>
-                                                            <a href="javascript:void(0);" class="font-s">Email Karen</a>
-                                                            <span class="date">Nov 22, 2013</span>
-                                                        </p>
-                                                    </li>
-                                                    <li>
+                                                    <li> // This is an example of an event
                                                         <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
                                                         <p>
                                                             <a href="javascript:void(0);" class="font-s">call Grandma</a>
                                                             <span class="date">Nov 23, 2013</span>
                                                         </p>
                                                     </li>
-                                                    <li>
-                                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                                        <p>
-                                                            <a href="javascript:void(0);" class="font-s">Take out the trash</a>
-                                                            <span class="date">Nov 23, 2013</span>
-                                                        </p>
-                                                    </li>
-                                                    <li>
-                                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                                        <p>
-                                                            <a href="javascript:void(0);" class="font-s">Walk the dog</a>
-                                                            <span class="date">Nov 22, 2013</span>
-                                                        </p>
-                                                    </li>
-                                                    <li>
-                                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                                        <p>
-                                                            <a href="javascript:void(0);" class="font-s">Call the rat exterminator</a>
-                                                            <span class="date">Nov 22, 2013</span>
-                                                        </p>
-                                                    </li>
                                                 </ul>
 
-                                                <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks (<small class="num-of-tasks">1</small>)</h5>
+                                                <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks Today(<small class="num-of-tasks">1</small>)</h5>
                                                 <ul id="sortable3" class="todo">
                                                     <li class="complete">
                                                         <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
@@ -155,42 +127,6 @@
                             <!-- row -->
                             <div class="row">
 
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-
-                                    <!-- Empty space right now -->
-
-                                </div>
-
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-
-                                    <div class="well well-sm" id="event-container">
-                                        <form>
-                                            <fieldset>
-                                                <legend>
-                                                    Draggable Events
-                                                </legend>
-                                                <ul id='external-events' class="list-unstyled">
-                                                    <li>
-                                                        <span class="bg-color-darken txt-color-white" data-description="Currently busy" data-icon="fa-time">Office Meeting</span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="bg-color-blue txt-color-white" data-description="No Description" data-icon="fa-pie">Lunch Break</span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="bg-color-red txt-color-white" data-description="Urgent Tasks" data-icon="fa-alert">URGENT</span>
-                                                    </li>
-                                                </ul>
-                                                <div class="checkbox">
-                                                    <label>
-                                                <input type="checkbox" id="drop-remove" class="checkbox style-0" checked="checked">
-                                                <span>remove after drop</span> </label>
-
-                                                </div>
-                                            </fieldset>
-                                        </form>
-
-                                    </div>
-                                </div>
 
                             </div>
                             <!-- end row -->
@@ -338,7 +274,7 @@
 
                 var hdr = {
                     left: 'title',
-                    center: 'month,agendaWeek,agendaDay,listDay',
+                    center: 'month,agendaWeek,agendaDay',
                     right: 'prev,today,next'
                 };
 
@@ -359,18 +295,44 @@
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "label label-default" : priority;
 
-                    var html = $('<li><span class="' + priority + '" data-description="' + description +
-                        '">' + title + '</span></li>').prependTo('ul#external-events').hide().fadeIn();
+                    /* Post the event to the API */
+                    $.post( "/api/task/", { title: title, description: description, priority: priority } );
 
-                    $("#event-container").effect("highlight", 800);
+
+                    /* Add the event to the HTML list */
+                    var html = $('<li class="" ><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' + title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo('ul#sortable2').hide().fadeIn();
+
+                    $("#sortable2").effect("highlight", 800);
 
                     initDrag(html);
+
+
                 };
 
-                /* initialize the external events
+                /* initialize the events
                  -----------------------------------------------------------------*/
 
-                $('#external-events > li').each(function () {
+
+                // Add events from the API
+                var fetchEvent = function () {
+                    $.getJSON("api/task/", function (data) {
+                        $.each(data, function (key, val) {
+                            var html = $('<li class="incomplete" ><span class="handle"><label class="todo checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' + val.title + ' </a> <span class="date">' + val.updated + '</span> </p> </li>').prependTo('ul#sortable2');
+                            initDrag(html);
+                        });
+                    });
+                };
+
+                // Remove all events from the list
+                var removeEvents = function(){
+                    $('ul#sortable2').empty();
+                };
+                removeEvents();
+                fetchEvent();
+
+
+                // Make items draggable
+                $('#sortable2 > li').each(function () {
                     initDrag($(this));
                 });
 
@@ -390,18 +352,11 @@
                     editable: true,
                     droppable: true, // this allows things to be dropped onto the calendar !!!
                     eventSources: [{
-                        url: '/api/', // use the `url` property
+                        url: '/api/task/', // use the `url` property
                         error: function () {
                             alert('there was an error while fetching events!');
                         },
                     }],
-                    events: [ // Just a static event which have to be deleted at some point
-                        {
-                            title: 'Call Grandpa',
-                            start: '2017-09-26',
-                            description: 'This is a cool event'
-                        }
-                    ],
 
                     select: function (start, end, allDay) {
                         var title = prompt('Event Title:');
@@ -457,10 +412,8 @@
                 $('#td').click(function () {
                     $('#calendar').fullCalendar('changeView', 'agendaDay');
                 });
-                $('#ld').click(function () {
-                    $('#calendar').fullCalendar('changeView', 'listDay');
-                });
 
+                /*
                 $(".js-status-update a").click(function () {
                     var selText = $(this).text();
                     var $this = $(this);
@@ -469,21 +422,23 @@
                     $this.parents('.dropdown-menu').find('li').removeClass('active');
                     $this.parent().addClass('active');
                 });
+                */
 
                 /*
                  * TODO: add a way to add more todo's to list
                  */
 
-                $(".js-status-update a").click(function () {
-                    var selText = $(this).text();
-                    var $this = $(this);
-                    $this.parents('.btn-group').find('.dropdown-toggle').html(selText +
-                        ' <span class="caret"></span>');
-                    $this.parents('.dropdown-menu').find('li').removeClass('active');
-                    $this.parent().addClass('active');
+                // initialize sortable
+                $(function() {
+                    $("#sortable2").sortable({
+                        handle : '.handle',
+                        connectWith : ".todo",
+                        update : countTasks
+                    }).disableSelection();
                 });
+
                 // check and uncheck
-                $('.todo .checkbox > input[type="checkbox"]').click(function () {
+                $('.todo .checkbox > input[type="checkbox"]').click(function() {
                     var $this = $(this).parent().parent().parent();
 
                     if ($(this).prop('checked')) {
@@ -494,7 +449,7 @@
                         $(this).parent().hide();
 
                         // once clicked - add class, copy to memory then remove and add to sortable3
-                        $this.slideUp(500, function () {
+                        $this.slideUp(500, function() {
                             $this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
                             $this.remove();
                             countTasks();
@@ -540,6 +495,7 @@
                                 description = $('#description').val();
                             addEvent(title, priority, description);
                             $(this).dialog("close");
+                            location.reload();
                         }
                     }]
                 });
