@@ -7,9 +7,9 @@ var achievement = require('../../mongo/achievementModel.js');
 
 /* GET /tasks listing. */
 router.get('/achivements/', function(req, res, next) {
-    achievement.find(function (err, task) {
+    achievement.find(function (err, achievement) {
         if (err) return next(err);
-        res.json(task);
+        res.json(achievement);
     });
 });
 
