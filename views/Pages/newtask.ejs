@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Manuel Create new TAsk</title>
@@ -7,62 +8,52 @@
 
 <body>
 
-<form  action="/api/" method="POST" >
+    <form action="/api/" method="POST">
+        <!-- Title field -->
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" />
+        <br>
 
-    <!-- Type field -->
-    <label for="type">Type</label>
-    <input list="types" name="type" /></label>
-    <datalist id="types">
-        <option value="Task">
-        <option value="Event">
-    </datalist>
-    <br>
+        <!-- Description field -->
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" />
+        <br>
 
-    <!-- Title field -->
-    <label for="title">Title</label>
-    <input type="text" id="title" name="title"/>
-    <br>
+        <!-- Priority field - -->
+        <label for="priority">Priority</label>
+        <input type="number" id="priority" name="prio" />
+        <br>
 
-    <!-- Description field -->
-    <label for="description">Description</label>
-    <input type="text" id="description" name="description"/>
-    <br>
+        <!-- ID field - -->
+        <label for="ID">ID</label>
+        <input type="number" id="ID" name="id" />
+        <br>
 
-    <!-- Priority field - -->
-    <label for="priority">Priority</label>
-    <input type="number" id="priority" name="prio"/>
-    <br>
+        <!-- Done field -->
+        <label for="done">Done</label>
+        <input type="checkbox" id="done" name="done" />
+        <input type="hidden" name="done" value="false" />
+        <br>
 
-    <!-- ID field - -->
-    <label for="ID">ID</label>
-    <input type="number" id="ID" name="id" />
-    <br>
+        <!-- Start field -->
+        <label for="start">Start</label>
+        <input type="text" id="start" name="start" />
+        <br>
 
-    <!-- Done field -->
-    <label for="done">Done</label>
-    <input type="checkbox" id="done" name="done" />
-    <input type="hidden" name="done" value="false" />
-    <br>
+        <!-- End field -->
+        <label for="end">End</label>
+        <input type="text" id="end" name="end" />
+        <br>
 
-    <!-- Start field -->
-    <label for="start">Start</label>
-    <input type="text" id="start" name="start"/>
-    <br>
+        <!-- Allday field -->
+        <label for="allday">Allday</label>
+        <input type="checkbox" id="allday" name="allday" />
+        <input type="hidden" name="allday" value="false" />
+        <br>
 
-    <!-- End field -->
-    <label for="end">End</label>
-    <input type="text" id="end" name="end"/>
-    <br>
-
-    <!-- Allday field -->
-    <label for="allday">Allday</label>
-    <input type="checkbox" id="allday" name="allday"/>
-    <input type="hidden" name="allday" value="false" />
-    <br>
-
-    <input type="submit" value="Create task" />
-</form>
+        <input type="submit" value="Create task" />
+    </form>
 
 </body>
-</html>
 
+</html>
