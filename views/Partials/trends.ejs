@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
     <!-- Widget ID (each widget will need unique ID)-->
     <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
         <!-- widget options:
@@ -45,6 +45,18 @@
     <!-- end widget -->
 </div>
 
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="easy-pie-chart txt-color-greenLight easyPieChart" data-percent="56" data-pie-size="110">
+        <span class="percent percent-sign txt-color-greenLight font-md">56</span>
+    </div>
+    <div class="easy-pie-chart txt-color-red easyPieChart" data-percent="50" data-size="180" data-pie-size="50">
+        <span class="percent percent-sign txt-color-red font-xl semi-bold">49</span>
+    </div>
+</div>
+
+<!-- EASY PIE CHARTS -->
+<script src="js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
 <!-- Morris Chart Dependencies -->
 <script src="js/plugin/morris/raphael.min.js"></script>
 <script src="js/plugin/morris/morris.min.js"></script>
@@ -55,44 +67,46 @@
     /*
      * Run all morris chart on this page
      */
-    $(document).ready(function() {       
+    $(document).ready(function() {
+        
+        pageSetUp();      
 
         if ($('#trends-graph').length) {
 
             Morris.Area({
                 element : 'trends-graph',
                 data : [{
-                    period : '2010 Q1',
+                    date : '2010 Q1',
                     numTasks : 2666,
                 }, {
-                    period : '2010 Q2',
+                    date : '2010 Q2',
                     numTasks : 2778,
                 }, {
-                    period : '2010 Q3',
+                    date : '2010 Q3',
                     numTasks : 4912,
                 }, {
-                    period : '2010 Q4',
+                    date : '2010 Q4',
                     numTasks : 3767,
                 }, {
-                    period : '2011 Q1',
+                    date : '2011 Q1',
                     numTasks : 6810,
                 }, {
-                    period : '2011 Q2',
+                    date : '2011 Q2',
                     numTasks : 5670,
                 }, {
-                    period : '2011 Q3',
+                    date : '2011 Q3',
                     numTasks : 4820,
                 }, {
-                    period : '2011 Q4',
+                    date : '2011 Q4',
                     numTasks : 15073,
                 }, {
-                    period : '2012 Q1',
+                    date : '2012 Q1',
                     numTasks : 10687,
                 }, {
-                    period : '2012 Q2',
+                    date : '2012 Q2',
                     numTasks : 8432,
                 }],
-                xkey : 'period',
+                xkey : 'date',
                 ykeys : ['numTasks'],
                 labels : ["Tasks Complete"],
                 pointSize : 2,
