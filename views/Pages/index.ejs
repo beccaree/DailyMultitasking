@@ -306,6 +306,13 @@
 
                     initDrag(html);
 
+                    //check if this is the first event that has been created
+                    allAchievements.forEach(function(ach) {
+                      if(ach.id == 2 && !ach.achieved){
+                        ach.achieved == true;
+                        //popup message
+                      }
+                    });
 
                 };
 
