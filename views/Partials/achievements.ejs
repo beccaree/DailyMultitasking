@@ -12,6 +12,7 @@
         <ul id="achievementList" style="list-style-type:node">
           <script type="text/javascript">
             allAchievements.forEach(function(ach){
+              console.log(ach.name + " is "+ach.achieved);
               if(ach.achieved){
                   $('<li> <img src="images/ic_check_box_black_24dp_2x.png" width="40" height="40">'+ach.name+'</li>').appendTo('ul#achievementList');
               }else{

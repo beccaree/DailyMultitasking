@@ -7,6 +7,10 @@ function achievementType(name, description, id, achieved, dateAchieved) {
     this.dateAchieved = dateAchieved;
 }
 
+console.log("load achievementType");
+
+
+
 var a1 = new achievementType("Created First Task","YAY, created your first task",1,false,new Date());
 var a2 = new achievementType("Created First Event","YAY, created your first event",2,false,new Date());
 var a3 = new achievementType("Completed First Task","YAY, you completed your first task",3,false,new Date());
