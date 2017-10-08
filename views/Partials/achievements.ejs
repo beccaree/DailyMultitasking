@@ -1,25 +1,57 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type='text/javascript' src='js/achievementsType.js'></script>
 
-<div>
-    <h1>Achievements</h1>
-
-<%
-    var achievement = [
-            { name: 'First Task', description: 'Create Your First Task' },
-            { name: 'First Event', description: 'Create Your First Event' },
-            { name: 'Complete Task', description: 'Complete Your First Task' },
-            { name: 'All Task', description: 'Complete All Tasks in Your List' },
-            { name: 'Speedy', description: 'Complete a Task Before the Day it is Due' }
-        ];
-  %>
+</head>
 
 
+<div id='achievementDiv'>
+    <h1><img src="images/ic_stars_black_24dp_2x.png" width="35" height="35"> Achievements</h1>
 
-        <ul style="list-style-type:node">
-            <% achievement.forEach(function(achievement) { %>
-                <li><img src="images/star.PNG" width="30" height="30"/> <%= achievement.name %> - <%= achievement.description %></li>
-            <% }); %>
+
+        <ul id="achievementList" style="list-style: none">
+          <script type="text/javascript">
+            allAchievements.forEach(function(ach){
+              console.log(ach.name + " is "+ach.achieved);
+              if(ach.achieved){
+                  $('<li> <img src="images/ic_check_box_black_24dp_2x.png" width="40" height="40"> '+ach.name+": "+ach.description+'</li>').appendTo('ul#achievementList');
+              }else{
+                $('<li> <img src="images/ic_check_box_outline_blank_black_24dp_2x.png" width="40" height="40"> '+ach.name+": "+ach.description+'</li>').appendTo('ul#achievementList');
+              }
+            });
+          </script>
         </ul>
 
+        <script  type="text/javascript">
+
+          // Add events from the API
+          var fetchAchievements = function () {
+              $.getJSON("api/achievement/", function (data){
+                  $.each(data, function (key, val) {
+                    console.log("in");
+                    console.log(val.name+"");
+                    //if achieved
+                    if(val.achieved){
+                      $('<li> <img src="images/star.PNG" width="30" height="30">'+val.name +'-'+ val.description+'</li>').prependTo('ul#achievementList');
+
+                    }else{
+                      $('<li>'+val.name +'-'+ val.description+'</li>').prependTo('ul#achievementList');
+                    }
+
+                  });
+              });
+          };
+
+
+            console.log("script");
+
+            $(document).ready(function () {
+              //your code here
+              fetchAchievements();
+            });
+
+
+        </script>
 
 
 
