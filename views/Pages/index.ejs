@@ -8,7 +8,7 @@
 <body class="no-menu smart-style-1">
 
     <!-- General JS includes-->
-    <% include ../Partials/generalJS.ejs %>
+    <% include ../Partials/generalJS %>
         <!-- END GENERAL JS INCLUDES -->
         <div>
             <!-- HEADER -->
@@ -296,11 +296,18 @@
                     priority = priority.length === 0 ? "label label-default" : priority;
 
                     /* Post the event to the API */
-                    $.post( "/api/task/", { title: title, description: description, priority: priority } );
+                    $.post("/api/task/", {
+                        title: title,
+                        description: description,
+                        priority: priority
+                    });
 
 
                     /* Add the event to the HTML list */
-                    var html = $('<li class="" ><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' + title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo('ul#sortable2').hide().fadeIn();
+                    var html = $(
+                        '<li class="" ><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                        title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo(
+                        'ul#sortable2').hide().fadeIn();
 
                     $("#sortable2").effect("highlight", 800);
 
@@ -317,14 +324,17 @@
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
-                            var html = $('<li class="incomplete" ><span class="handle"><label class="todo checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' + val.title + ' </a> <span class="date">' + val.updated + '</span> </p> </li>').prependTo('ul#sortable2');
+                            var html = $(
+                                '<li class="incomplete" ><span class="handle"><label class="todo checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                                val.title + ' </a> <span class="date">' + val.updated +
+                                '</span> </p> </li>').prependTo('ul#sortable2');
                             initDrag(html);
                         });
                     });
                 };
 
                 // Remove all events from the list
-                var removeEvents = function(){
+                var removeEvents = function () {
                     $('ul#sortable2').empty();
                 };
                 removeEvents();
@@ -429,16 +439,16 @@
                  */
 
                 // initialize sortable
-                $(function() {
+                $(function () {
                     $("#sortable2").sortable({
-                        handle : '.handle',
-                        connectWith : ".todo",
-                        update : countTasks
+                        handle: '.handle',
+                        connectWith: ".todo",
+                        update: countTasks
                     }).disableSelection();
                 });
 
                 // check and uncheck
-                $('.todo .checkbox > input[type="checkbox"]').click(function() {
+                $('.todo .checkbox > input[type="checkbox"]').click(function () {
                     var $this = $(this).parent().parent().parent();
 
                     if ($(this).prop('checked')) {
@@ -449,7 +459,7 @@
                         $(this).parent().hide();
 
                         // once clicked - add class, copy to memory then remove and add to sortable3
-                        $this.slideUp(500, function() {
+                        $this.slideUp(500, function () {
                             $this.clone().prependTo("#sortable3").effect("highlight", {}, 800);
                             $this.remove();
                             countTasks();
