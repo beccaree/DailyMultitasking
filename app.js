@@ -10,6 +10,7 @@ var index   =   require('./routes/app/index');
 var tasks   =   require('./routes/app/tasks');
 var newtask =   require('./routes/app/newtask');
 var progress =  require('./routes/app/progress');
+//var achievement =  require('./routes/app/achievements');
 
 // All API routes
 var api     =   require('./routes/api/apiroutes');
@@ -58,4 +59,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-

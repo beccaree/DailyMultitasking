@@ -3,6 +3,7 @@
 
 <head>
     <% include ../partials/htmlhead %>
+    <script type='text/javascript' src='js/achievementsType.js'></script>
 </head>
 
 <body class="no-menu smart-style-1">
@@ -337,6 +338,16 @@
                     $("#sortable2").effect("highlight", 800);
 
                     initDrag(html);
+
+                    //check if this is the first event that has been created
+                    allAchievements.forEach(function(ach) {
+                      if(ach.id == 2 && !ach.achieved){
+                        ach.achieved = true;
+                        //popup message
+                         alert("Achievement Complete: \""+ach.name+"\"\n"+ach.congratulatoryMessage);
+                      }
+                    });
+
                 };
 
                 /* initialize the events
@@ -497,6 +508,20 @@
                             $this.remove();
                             countTasks();
                         });
+
+                        //check if this is the first task ever completed
+                        allAchievements.forEach(function(ach) {
+                          if(ach.id == 3 && !ach.achieved){
+                            ach.achieved = true;
+                            //popup message
+                             alert("Achievement Complete: \""+ach.name+"\"\n"+ach.congratulatoryMessage);
+
+                               console.log(ach.name + " is "+ach.achieved);
+                          }
+                        });
+
+
+
                     } else {
                         // insert undo code here...
                     }
@@ -544,6 +569,18 @@
                             addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
                             $(this).dialog("close");
                             location.reload();
+
+                            //check if this is the first task created
+                            allAchievements.forEach(function(ach) {
+                              if(ach.id == 1 && !ach.achieved){
+                                ach.achieved = true;
+                                //popup message
+                                 alert("Achievement Complete: \""+ach.name+"\"\n"+ach.congratulatoryMessage);
+
+                                   console.log(ach.name + " is "+ach.achieved);
+                              }
+                            });
+
                         }
                     }]
                 });
