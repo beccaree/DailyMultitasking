@@ -305,7 +305,7 @@
 
                     /* Add the event to the HTML list */
                     var html = $(
-                        '<li class="" ><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                        '<li><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                         title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo(
                         'ul#sortable2').hide().fadeIn();
 
@@ -313,19 +313,16 @@
 
                     initDrag(html);
 
-
                 };
 
                 /* initialize the events
                  -----------------------------------------------------------------*/
-
-
                 // Add events from the API
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
                             var html = $(
-                                '<li class="incomplete" ><span class="handle"><label class="todo checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                                '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.updated +
                                 '</span> </p> </li>').prependTo('ul#sortable2');
                             initDrag(html);
@@ -344,6 +341,10 @@
                 // Make items draggable
                 $('#sortable2 > li').each(function () {
                     initDrag($(this));
+                });
+
+                $(document.body).on('click', '.loadedListItem', function () {
+                    console.log("this worked");
                 });
 
                 // Add event button
@@ -423,19 +424,19 @@
                     $('#calendar').fullCalendar('changeView', 'agendaDay');
                 });
 
-                /*
-                $(".js-status-update a").click(function () {
-                    var selText = $(this).text();
-                    var $this = $(this);
-                    $this.parents('.btn-group').find('.dropdown-toggle').html(selText +
-                        ' <span class="caret"></span>');
-                    $this.parents('.dropdown-menu').find('li').removeClass('active');
-                    $this.parent().addClass('active');
-                });
-                */
+
+                // $(".js-status-update a").click(function () {
+                //     var selText = $(this).text();
+                //     var $this = $(this);
+                //     $this.parents('.btn-group').find('.dropdown-toggle').html(selText +
+                //         ' <span class="caret"></span>');
+                //     $this.parents('.dropdown-menu').find('li').removeClass('active');
+                //     $this.parent().addClass('active');
+                // });
+
 
                 /*
-                 * TODO: add a way to add more todo's to list
+                 * TODO: add a way to add more todos to list
                  */
 
                 // initialize sortable
@@ -448,10 +449,11 @@
                 });
 
                 // check and uncheck
-                $('.todo .checkbox > input[type="checkbox"]').click(function () {
+                $(document.body).on('click', '.todo .checkbox > input[type="checkbox"]', function () {
+                    console.log("in the checkbox onclick!")
                     var $this = $(this).parent().parent().parent();
-
                     if ($(this).prop('checked')) {
+                        $this.removeClass("incomplete");
                         $this.addClass("complete");
 
                         // remove this if you want to undo a check list once checked
