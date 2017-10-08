@@ -6,33 +6,37 @@
 </head>
 
 <body class="no-menu smart-style-1">
-<div>
+    <div>
 
-    <!-- HEADER -->
-    <% include ../partials/header %>
-    <!-- END HEADER -->
+        <!-- General JS includes-->
+        <% include ../Partials/generalJS %>
+            <!-- END GENERAL JS INCLUDES -->
 
-    <!-- Left panel : Navigation area -->
-    <% include ../partials/leftpanel %>
-    <!-- END NAVIGATION -->
+            <!-- HEADER -->
+            <% include ../partials/header %>
+                <!-- END HEADER -->
 
-    <!-- MAIN PANEL -->
-    <div id="main" role="main">
+                <!-- Left panel : Navigation area -->
+                <% include ../partials/leftpanel %>
+                    <!-- END NAVIGATION -->
 
-        <!-- MAIN CONTENT -->
-        <div id="content">
-            <div class="row">
-                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                    <h1 class="page-title txt-color-blueDark"><i class="fa fa-area-chart fa-fw "></i>My Progress</h1>
-                </div>
-            </div>
+                    <!-- MAIN PANEL -->
+                    <div id="main" role="main">
 
-            <% include ../partials/trends %>
+                        <!-- MAIN CONTENT -->
+                        <div id="content">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                                    <h1 class="page-title txt-color-blueDark"><i class="fa fa-area-chart fa-fw "></i>My Progress</h1>
+                                </div>
+                            </div>
 
-            <!-- KRISTY HERE -->
-            <% include ../partials/achievements %>
+                            <% include ../partials/trends %>
 
-        </div>
+                                <!-- KRISTY HERE -->
+                                <% include ../partials/achievements %>
+
+                        </div>
+                    </div>
+
     </div>
-
-</div>
