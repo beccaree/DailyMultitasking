@@ -12,7 +12,7 @@ var newtask =   require('./routes/app/newtask');
 var progress =  require('./routes/app/progress');
 
 // All API routes
-var api     =   require('./routes/api/task');
+var api     =   require('./routes/api/apiroutes');
 
 var app = express();
 
