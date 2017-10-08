@@ -13,8 +13,7 @@ var progress =  require('./routes/app/progress');
 //var achievement =  require('./routes/app/achievements');
 
 // All API routes
-var api     =   require('./routes/api/task');
-var apiAchievement   =   require('./routes/api/achievement');
+var api     =   require('./routes/api/apiroutes');
 
 var app = express();
 

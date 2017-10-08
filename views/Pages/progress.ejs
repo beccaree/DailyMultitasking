@@ -6,37 +6,38 @@
 </head>
 
 <body class="no-menu smart-style-1">
+
+    <!-- General JS includes-->
+    <% include ../Partials/generalJS.ejs %>
+    <!-- END GENERAL JS INCLUDES -->
     <div>
+        <% include ../partials/header %>
 
-        <!-- General JS includes-->
-        <% include ../Partials/generalJS %>
-            <!-- END GENERAL JS INCLUDES -->
+        <% include ../partials/leftpanel %>
 
-            <!-- HEADER -->
-            <% include ../partials/header %>
-                <!-- END HEADER -->
+        <!-- MAIN PANEL -->
+        <div id="main" role="main">
 
-                <!-- Left panel : Navigation area -->
-                <% include ../partials/leftpanel %>
-                    <!-- END NAVIGATION -->
-
-                    <!-- MAIN PANEL -->
-                    <div id="main" role="main">
-
-                        <!-- MAIN CONTENT -->
-                        <div id="content">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                                    <h1 class="page-title txt-color-blueDark"><i class="fa fa-area-chart fa-fw "></i>My Progress</h1>
-                                </div>
-                            </div>
-
-                            <% include ../partials/trends %>
-
-                                <!-- KRISTY HERE -->
-                                <% include ../partials/achievements %>
-
-                        </div>
+            <!-- MAIN CONTENT -->
+            <div id="content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                        <h1 class="page-title txt-color-blueDark"><i class="fa fa-area-chart fa-fw "></i>My Progress</h1>
                     </div>
+                </div>
+
+                <div class="row">
+                    <% include ../partials/trends %>
+                </div>
+
+                <div class="row">
+                    <% include ../partials/achievements %>
+                </div>
+                
+            </div>
+        </div>
 
     </div>
+</body>
+</html>
+
