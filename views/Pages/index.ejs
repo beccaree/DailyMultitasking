@@ -324,7 +324,8 @@
 
 
                 // Add event function
-                var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto, timeto) {
+                var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
+                    timeto) {
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "no priority" : priority;
@@ -334,18 +335,33 @@
                     dateto = dateto.length === 0 ? "no date" : dateto;
                     timeto = timeto.length === 0 ? "no time" : timeto;
 
-                    if (allday == 'true'){
+                    if (allday == 'true') {
                         /* Post the event to the API */
-                        $.post( "/api/task/", { title: title, description: description, priority: priority, allday: allday, datefrom: datefrom, dateto: dateto } );
-                    }
-                    else {
+                        $.post("/api/task/", {
+                            title: title,
+                            description: description,
+                            priority: priority,
+                            allday: allday,
+                            datefrom: datefrom,
+                            dateto: dateto
+                        });
+                    } else {
                         /* Post the event to the API */
-                        $.post( "/api/task/", { title: title, description: description, priority: priority, allday: allday, datefrom: datefrom, timefrom: timefrom, dateto: dateto, timeto: timeto  } );
+                        $.post("/api/task/", {
+                            title: title,
+                            description: description,
+                            priority: priority,
+                            allday: allday,
+                            datefrom: datefrom,
+                            timefrom: timefrom,
+                            dateto: dateto,
+                            timeto: timeto
+                        });
                     }
 
                     /* Add the event to the HTML list */
                     var html = $(
-                        '<li class="" ><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                        '<li><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                         title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo(
                         'ul#sortable2').hide().fadeIn();
 
@@ -360,13 +376,12 @@
 
                 /* initialize the events
                  -----------------------------------------------------------------*/
-
                 // Add events from the API
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
                             var html = $(
-                                '<li class="incomplete" ><span class="handle"><label class="todo checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                                '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.updated +
                                 '</span> </p> </li>').prependTo('ul#sortable2');
                             initDrag(html);
@@ -387,6 +402,7 @@
                 $('#sortable2 > li').each(function () {
                     initDrag($(this));
                 });
+                // This seems like it can be manually deleted, because the addevent is called from the modal function instead.
 
                 /* initialize the calendar
                  -----------------------------------------------------------------*/
@@ -473,10 +489,11 @@
                 });
 
                 // check and uncheck
-                $('.todo .checkbox > input[type="checkbox"]').click(function () {
+                $(document.body).on('click', '.todo .checkbox > input[type="checkbox"]', function () {
+                    console.log("in the checkbox onclick!")
                     var $this = $(this).parent().parent().parent();
-
                     if ($(this).prop('checked')) {
+                        $this.removeClass("incomplete");
                         $this.addClass("complete");
 
                         // remove this if you want to undo a check list once checked
@@ -491,14 +508,14 @@
                         });
 
                         //check if this is the first task ever completed
-                        allAchievements.forEach(function(ach) {
-                          if(ach.id == 3 && !ach.achieved){
-                            ach.achieved = true;
-                            //popup message
-                             alert("Achievement Complete: \""+ach.name+"\"\n"+ach.congratulatoryMessage);
+                        allAchievements.forEach(function (ach) {
+                            if (ach.id == 3 && !ach.achieved) {
+                                ach.achieved = true;
+                                //popup message
+                                alert("Achievement Complete: \"" + ach.name + "\"\n" + ach.congratulatoryMessage);
 
-                               console.log(ach.name + " is "+ach.achieved);
-                          }
+                                console.log(ach.name + " is " + ach.achieved);
+                            }
                         });
 
                     } else {
