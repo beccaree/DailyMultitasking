@@ -3,7 +3,6 @@
 
 <head>
     <% include ../partials/htmlhead %>
-        <script type='text/javascript' src='js/achievementsType.js'></script>
 </head>
 
 <body class="no-menu smart-style-1">
@@ -356,12 +355,14 @@
                     initDrag(html);
 
                     //check if this is the first event that has been created
-                    allAchievements.forEach(function (ach) {
-                        if (ach.id == 2 && !ach.achieved) {
-                            ach.achieved = true;
+                    $.getJSON("api/achievement/", function (data){
+                      $.each(data, function (key, val) {
+                        if (val.id == 2 && !val.achieved) {
+                            val.achieved = true;
                             //popup message
-                            alert("Achievement Complete: \"" + ach.name + "\"\n" + ach.congratulatoryMessage);
+                            alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
                         }
+                      });
                     });
 
                 };
@@ -524,17 +525,25 @@
                             countTasks();
                         });
 
-                        //check if this is the first task ever completed
-                        allAchievements.forEach(function (ach) {
-                            if (ach.id == 3 && !ach.achieved) {
-                                ach.achieved = true;
+                        //check if this is the first task completed
+                        $.getJSON("api/achievement/", function (data){
+                          $.each(data, function (key, val) {
+                            if (val.id == 3 && !val.achieved) {
+                              var objID = val._id;;
+                              console.log("/api/achievement/"+objID);
+
+                              $.post("/api/achievement/"+objID, {
+                                name: val.name,
+                                description: val.description,
+                                id: val.id,
+                                achieved: true,
+                                dateAchieved: Date.now
+                              });
                                 //popup message
-                                alert("Achievement Complete: \"" + ach.name + "\"\n" + ach.congratulatoryMessage);
-
-                                console.log(ach.name + " is " + ach.achieved);
+                                alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
                             }
+                          });
                         });
-
 
 
                     } else {
@@ -587,15 +596,24 @@
                             location.reload();
 
                             //check if this is the first task created
-                            allAchievements.forEach(function (ach) {
-                                if (ach.id == 1 && !ach.achieved) {
-                                    ach.achieved = true;
+                            $.getJSON("api/achievement/", function (data){
+                              $.each(data, function (key, val) {
+                                if (val.id == 2 && !val.achieved) {
                                     //popup message
-                                    alert("Achievement Complete: \"" + ach.name +
-                                        "\"\n" + ach.congratulatoryMessage);
+                                      var objID = val._id;
+                                      console.log("/api/achievement/"+objID);
 
-                                    console.log(ach.name + " is " + ach.achieved);
+                                      $.post("/api/achievement/"+objID, {
+                                        name: val.name,
+                                        description: val.description,
+                                        id: val.id,
+                                        achieved: true,
+                                        dateAchieved: Date.now
+                                      });
+
+                                    alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
                                 }
+                              });
                             });
 
                         }

@@ -6,7 +6,7 @@ var achievementSchema = new mongoose.Schema({
     description: String,
     id: Number,
     achieved: { type: Boolean, default: false},
-    dateAchieved: { type: Date, default: Date.now },
+    dateAchieved: { type: Date, default: Date.now }
 });
 
 var achievement = mongoose.model('achievements', achievementSchema);
