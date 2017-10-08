@@ -11,11 +11,12 @@
 
     <div id="tab-icons" class="pull-center">
         <ul class="list-inline">
-            <li class="active"><a class="tab-icon-item" href="/" data-toggle="tooltip" data-placement="bottom" title="Task Manager"><i class="glyphicon glyphicon-calendar"></i></a></li>
-            <li style="padding-left:0;"><a class="tab-icon-item" href="/progress" data-toggle="tooltip" data-placement="bottom" title="Progress"><i class="glyphicon glyphicon-stats"></i></a></li>
+            <li id="homeTab" class="active tab-item"><a class="tab-icon-item" href="/" onclick="switchTab(this, true)" data-toggle="tooltip" data-placement="bottom"
+                    title="Task Manager"><i class="glyphicon glyphicon-calendar"></i></a></li>
+            <li id="progressTab" class="tab-item" style="padding-left:0;"><a class="tab-icon-item" onclick="switchTab(this, false)" href="/progress" data-toggle="tooltip" data-placement="bottom"
+                    title="Progress"><i class="glyphicon glyphicon-stats"></i></a></li>
         </ul>
     </div>
-
     <!-- pulled right: nav area -->
     <div class="pull-right">
         <span class="font-xs txt-color-white">Task</span>
@@ -27,9 +28,16 @@
     <!-- end pulled right: nav area -->
 
 </header>
-
 <script>
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+    if ('<%= currentPage %>' === "main") {
+        $('#homeTab').addClass("active");
+        $('#progressTab').removeClass("active");
+    } else {
+        $('#homeTab').removeClass("active");
+        $('#progressTab').addClass("active");
+    }
 </script>

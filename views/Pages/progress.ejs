@@ -6,6 +6,7 @@
 </head>
 
 <body class="no-menu smart-style-1">
+<<<<<<< HEAD
 
 <!-- General JS includes-->
 <% include ../Partials/generalJS.ejs %>
@@ -14,18 +15,26 @@
     <% include ../partials/header %>
 
     <% include ../partials/leftpanel %>
+=======
+    <div>
 
-    <!-- MAIN PANEL -->
-    <div id="main" role="main">
+        <!-- General JS includes-->
+        <% include ../Partials/generalJS %>
+            <!-- END GENERAL JS INCLUDES -->
 
-        <!-- MAIN CONTENT -->
-        <div id="content">
-            <div class="row">
-                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                    <h1 class="page-title txt-color-blueDark"><i class="fa fa-area-chart fa-fw "></i>My Progress</h1>
-                </div>
-            </div>
+            <!-- HEADER -->
+            <% include ../partials/header %>
+                <!-- END HEADER -->
+>>>>>>> 3d35997a79d3e0e6bebbf91647ca2bc00a379834
 
+                <!-- Left panel : Navigation area -->
+                <% include ../partials/leftpanel %>
+                    <!-- END NAVIGATION -->
+
+                    <!-- MAIN PANEL -->
+                    <div id="main" role="main">
+
+<<<<<<< HEAD
             <div class="row">
                 <% include ../partials/trends %>
             </div>
@@ -37,5 +46,22 @@
             
         </div>
     </div>
+=======
+                        <!-- MAIN CONTENT -->
+                        <div id="content">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                                    <h1 class="page-title txt-color-blueDark"><i class="fa fa-area-chart fa-fw "></i>My Progress</h1>
+                                </div>
+                            </div>
 
-</div>
+                            <% include ../partials/trends %>
+
+                                <!-- KRISTY HERE -->
+                                <% include ../partials/achievements %>
+>>>>>>> 3d35997a79d3e0e6bebbf91647ca2bc00a379834
+
+                        </div>
+                    </div>
+
+    </div>
