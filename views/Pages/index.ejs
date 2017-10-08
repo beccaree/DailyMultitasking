@@ -308,6 +308,21 @@
                     });
                 };
 
+                var CheckAchievement = function () {
+                    //check if this is the first task created
+                /*    allAchievements.forEach(function (ach) {
+                        if (ach.id == 1 && !ach.achieved) {
+                            ach.achieved = true;
+                            //popup message
+                            alert("Achievement Complete: \"" + ach.name + "\"\n" + ach.congratulatoryMessage);
+
+                            console.log(ach.name + " is " + ach.achieved);
+                        }
+                    });
+                    */
+                };
+
+
                 // Add event function
                 var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto, timeto) {
                     title = title.length === 0 ? "Untitled Event" : title;
@@ -339,13 +354,7 @@
                     initDrag(html);
 
                     //check if this is the first event that has been created
-                    allAchievements.forEach(function(ach) {
-                      if(ach.id == 2 && !ach.achieved){
-                        ach.achieved = true;
-                        //popup message
-                         alert("Achievement Complete: \""+ach.name+"\"\n"+ach.congratulatoryMessage);
-                      }
-                    });
+                    CheckAchievement();
 
                 };
 
@@ -536,20 +545,10 @@
                                 timefrom = $('#timefrom').val(),
                                 dateto = $('#dateto').val(),
                                 timeto = $('#timeto').val();
+
                             addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
                             $(this).dialog("close");
                             location.reload();
-
-                            //check if this is the first task created
-                            allAchievements.forEach(function(ach) {
-                              if(ach.id == 1 && !ach.achieved){
-                                ach.achieved = true;
-                                //popup message
-                                 alert("Achievement Complete: \""+ach.name+"\"\n"+ach.congratulatoryMessage);
-
-                                   console.log(ach.name + " is "+ach.achieved);
-                              }
-                            });
 
                         }
                     }]
@@ -580,7 +579,6 @@
                         $("#to").datepicker("option", selectedDate);
                     }
                 })
-
             });
         </script>
 
