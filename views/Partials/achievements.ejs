@@ -1,7 +1,6 @@
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id='achievementDiv'>
     <h1><img src="images/ic_stars_black_24dp_2x.png" width="35" height="35"> Achievements</h1>
 
-
 	<ul id="achievementList" style="list-style: none">
 		<script type="text/javascript">
 		allAchievements.forEach(function(ach){
@@ -17,32 +16,51 @@
 
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type='text/javascript' src='js/achievementsType.js'></script>
-
 <script  type="text/javascript">
 
+    
 	// Add events from the API
 	var fetchAchievements = function () {
 		$.getJSON("api/achievement/", function (data){
 			$.each(data, function (key, val) {
-			console.log("in");
-			console.log(val.name+"");
-			//if achieved
-			if(val.achieved){
-				$('<li> <img src="images/star.PNG" width="30" height="30">'+val.name +'-'+ val.description+'</li>').prependTo('ul#achievementList');
-
-			}else{
-				$('<li>'+val.name +'-'+ val.description+'</li>').prependTo('ul#achievementList');
-			}
-
+                $('ul#achievementList').append('<li> <img src="images/star.PNG" width="30" height="30">'+val.name +'-'+ val.description+'</li>');
 			});
 		});
 	};
+
+    // if(val.achieved){
+    //         $('<li> <img src="images/star.PNG" width="30" height="30">'+val.name +'-'+ val.description+'</li>').prependTo('ul#achievementList');
+    //
+    //    }else{
+    //        $('<li>'+val.name +'-'+ val.description+'</li>').prependTo('ul#achievementList');
+    //    }
 
 	$(document).ready(function () {
 		//your code here
 		fetchAchievements();
 	});
+
+
+    function achievementType(name, description, congratulatoryMessage, id, achieved, dateAchieved) {
+        this.name = name;
+        this.description = description;
+        this.congratulatoryMessage = congratulatoryMessage;
+        this.id = id;
+        this.achieved = achieved;
+        this.dateAchieved = dateAchieved;
+    }
+
+    console.log("load achievementType");
+
+
+
+    var a1 = new achievementType("Taskmaker","Create your first task","Good Job, you created your first task",1,false,new Date());
+    var a2 = new achievementType("Event planner","Create your first event","YAY, created your first event",2,true,new Date());
+    var a3 = new achievementType("One Down","Complete your first task","YAY, you completed your first task",3,false,new Date());
+    var a4 = new achievementType("All Star","Complete all the tasks in your task list","YAY, you completed all the tasks in your task list",4,false,new Date());
+    var a5 = new achievementType("Speedster","Complete task before it is due","Woah, you completed a task before it was due",5,false, new Date());
+    var a6 = new achievementType("Gimme Five","Complete at least one task, five days in a row","You re on fire !!! thats a five day streak",5,false, new Date());
+
+    var allAchievements = [a1,a2,a3,a4,a5,a6];
 
 </script>
