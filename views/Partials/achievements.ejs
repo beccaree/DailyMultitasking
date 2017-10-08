@@ -6,17 +6,17 @@
 
 
 <div id='achievementDiv'>
-    <h1>Achievements</h1>
+    <h1><img src="images/ic_stars_black_24dp_2x.png" width="35" height="35"> Achievements</h1>
 
 
-        <ul id="achievementList" style="list-style-type:node">
+        <ul id="achievementList" style="list-style: none">
           <script type="text/javascript">
             allAchievements.forEach(function(ach){
               console.log(ach.name + " is "+ach.achieved);
               if(ach.achieved){
-                  $('<li> <img src="images/ic_check_box_black_24dp_2x.png" width="40" height="40">'+ach.name+'</li>').appendTo('ul#achievementList');
+                  $('<li> <img src="images/ic_check_box_black_24dp_2x.png" width="40" height="40"> '+ach.name+": "+ach.description+'</li>').appendTo('ul#achievementList');
               }else{
-                $('<li> <img src="images/ic_check_box_outline_blank_black_24dp_2x.png" width="40" height="40">'+ach.name+'</li>').appendTo('ul#achievementList');
+                $('<li> <img src="images/ic_check_box_outline_blank_black_24dp_2x.png" width="40" height="40"> '+ach.name+": "+ach.description+'</li>').appendTo('ul#achievementList');
               }
             });
           </script>
