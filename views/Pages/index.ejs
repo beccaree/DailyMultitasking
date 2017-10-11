@@ -308,22 +308,29 @@
                     });
                 };
 
-                var CheckAchievement = function () {
-                    //check if this is the first task created
-                /*    allAchievements.forEach(function (ach) {
-                        if (ach.id == 1 && !ach.achieved) {
-                            ach.achieved = true;
-                            //popup message
-                            alert("Achievement Complete: \"" + ach.name + "\"\n" + ach.congratulatoryMessage);
 
-                            console.log(ach.name + " is " + ach.achieved);
-                        }
-                    });
-                    */
-                };
+                //
+                var updateAchievementToDatabase = function (val){
+                  var objID = val._id;;
+                  console.log("/api/achievement/"+objID);
 
+                  $.ajax({
+                    url: "/api/achievement/"+objID,
+                    type: 'PUT',
+                    data: {
+                      name: val.name,
+                      description: val.description,
+                      id: val.id,
+                      achieved: true,
+                      dateAchieved: Date.now
+                    },
+                    success: function(data) {
+                      alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
+                    }
+                  });
+                }
 
-                // Add event function
+              // Add event function
                 var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
                     timeto) {
                     title = title.length === 0 ? "Untitled Event" : title;
@@ -373,13 +380,10 @@
                     $.getJSON("api/achievement/", function (data){
                       $.each(data, function (key, val) {
                         if (val.id == 2 && !val.achieved) {
-                            val.achieved = true;
-                            //popup message
-                            alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
+                            updateAchievementToDatabase(val);
                         }
                       });
                     });
-                    CheckAchievement();
                 };
 
                 /* initialize the events
@@ -519,18 +523,8 @@
                         $.getJSON("api/achievement/", function (data){
                           $.each(data, function (key, val) {
                             if (val.id == 3 && !val.achieved) {
-                              var objID = val._id;;
-                              console.log("/api/achievement/"+objID);
+                              putToDatabase(val);
 
-                              $.post("/api/achievement/"+objID, {
-                                name: val.name,
-                                description: val.description,
-                                id: val.id,
-                                achieved: true,
-                                dateAchieved: Date.now
-                              });
-                                //popup message
-                                alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
                             }
                           });
                         });
@@ -541,6 +535,9 @@
                     }
 
                 })
+
+
+
 
                 // count tasks
                 function countTasks() {
@@ -582,29 +579,21 @@
                                 timeto = $('#timeto').val();
 
                             addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
-                            $(this).dialog("close");
-                            location.reload();
-
+                            console.log("check achievement");
                             //check if this is the first task created
                             $.getJSON("api/achievement/", function (data){
                               $.each(data, function (key, val) {
-                                if (val.id == 2 && !val.achieved) {
-                                    //popup message
-                                      var objID = val._id;
-                                      console.log("/api/achievement/"+objID);
-
-                                      $.post("/api/achievement/"+objID, {
-                                        name: val.name,
-                                        description: val.description,
-                                        id: val.id,
-                                        achieved: true,
-                                        dateAchieved: Date.now
-                                      });
-
-                                    alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
+                                if (val.id == 1 && !val.achieved) {
+                                  putToDatabase(val);
                                 }
                               });
                             });
+
+
+
+                            $(this).dialog("close");
+                            location.reload();
+
 
                         }
                     }]
