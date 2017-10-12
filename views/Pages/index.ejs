@@ -309,11 +309,10 @@
                     });
                 };
 
-
                 //
                 var updateAchievementToDatabase = function (val){
                   var objID = val._id;;
-                  console.log("/api/achievement/"+objID);
+                  console.log("updating /api/achievement/"+objID);
 
                   $.ajax({
                     url: "/api/achievement/"+objID,
@@ -333,7 +332,7 @@
 
               // Add event function
                 var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
-                    timeto) {
+                    timeto, callback) {
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "no priority" : priority;
@@ -367,15 +366,6 @@
                         });
                     }
 
-                    //check if this is the first item that has been created
-                    $.getJSON("api/achievement/", function (data){
-                      $.each(data, function (key, val) {
-                        if (val.id == 1 && !val.achieved) {
-                            updateAchievementToDatabase(val);
-                        }
-                      });
-                    });
-
                     /* Add the event to the HTML list */
                     var html = $(
                         '<li><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
@@ -385,6 +375,23 @@
                     $("#sortable2").effect("highlight", 800);
 
                     initDrag(html);
+
+
+                      console.log("before call")
+
+
+                    //check if this is the first item that has been created
+                    $.getJSON("api/achievement/", function (data){
+                      $.each(data, function (key, val) {
+                        if (val.id == 1 && !val.achieved) {
+                            updateAchievementToDatabase(val);
+                            callback()
+                        }
+                        else{
+                          callback()
+                        }
+                      });
+                    });
                 };
 
                 /* initialize the events
@@ -604,7 +611,14 @@
                                 dateto = $('#dateto').val(),
                                 timeto = $('#timeto').val();
 
-                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
+
+                                var callback = function(){
+                                  console.log("in callback")
+                                  $("#modal_add_task").dialog("close");
+                                  location.reload();
+                                }
+
+                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto,callback );
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
