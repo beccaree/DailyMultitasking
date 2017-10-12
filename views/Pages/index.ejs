@@ -129,7 +129,7 @@
                         <!-- end row -->
 
                         <!-- Modal div-->
-                        <div id="modal_add_task" title="Add new Entity">
+                        <div id="modal_add_task" style="display: none;" title="Add new Entity">
                             <!-- widget div-->
                             <div>
                                 <div class="widget-body">
@@ -479,7 +479,7 @@
                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
                        }); */
 
-                /* initialize the calendar
+                /* initialise the calendar
                  -----------------------------------------------------------------*/
 
                 $('#calendar').fullCalendar({
@@ -487,9 +487,9 @@
                     firstDay: 0,
                     header: hdr,
                     editable: true,
-                    droppable: true, // this allows things to be dropped onto the calendar !!!
+                    droppable: true, // this allows things to be dropped onto the calendar
                     eventSources: [{
-                        url: '/api/task/', // use the `url` property
+                        url: '/api/task/',
                         error: function () {
                             alert('there was an error while fetching events!');
                         },
