@@ -3,6 +3,7 @@
 
 <head>
     <% include ../partials/htmlhead %>
+        <script type='text/javascript' src='js/achievementsType.js'></script>
 </head>
 
 <body class="no-menu smart-style-1">
@@ -36,7 +37,7 @@
 
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <!-- new widget -->
-                                    <div class="jarviswidget" id="wid-id-1">
+                                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1">
 
                                         <header>
                                             <h2> Calendar </h2>
@@ -76,7 +77,7 @@
                                 <div class="col-sm-6 col-md-6 col-lg-6">
 
                                     <!-- new widget -->
-                                    <div class="jarviswidget" id="wid-id-2">
+                                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2">
                                         <header>
                                             <h2> Task List </h2>
                                             <div class="btn-group pull-right">
@@ -168,31 +169,31 @@
                                                         <div class="col-sm-12">
                                                             <label>Select Task Priority</label>
                                                             <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
-                                                                <label class="btn bg-color-darken">
-                                                                    <input type="radio" name="priority" id="option1" value="VL">
-                                                                    <i class="fa fa-check txt-color-white"></i>
-                                                                    <p class="txt-color-white">Very Low</p>
-                                                                </label>
-                                                                <label class="btn bg-color-blueLight">
-                                                                    <input type="radio" name="priority" id="option2" value="L">
-                                                                    <i class="fa fa-check txt-color-white"></i>
-                                                                    <p class="txt-color-white">Low</p>
-                                                                </label>
-                                                                <label class="btn bg-color-greenLight">
-                                                                    <input type="radio" name="priority" id="option3" value="M" checked>
-                                                                    <i class="fa fa-check txt-color-white"></i>
-                                                                    <p class="txt-color-white">Medium</p>
-                                                                </label>
-                                                                <label class="btn bg-color-orange">
-                                                                    <input type="radio" name="priority" id="option4" value="H">
-                                                                    <i class="fa fa-check txt-color-white"></i>
-                                                                    <p class="txt-color-white">High</p>
-                                                                </label>
                                                                 <label class="btn bg-color-red active">
-                                                                    <input type="radio" name="priority" id="option5" value="VH">
-                                                                    <i class="fa fa-check txt-color-white"></i>
-                                                                    <p class="txt-color-white">Very High</p>
-                                                                </label>
+                                                            <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Very High</p>
+                                                        </label>
+                                                                <label class="btn bg-color-orange">
+                                                            <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">High</p>
+                                                        </label>
+                                                                <label class="btn bg-color-greenLight">
+                                                            <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Medium</p>
+                                                        </label>
+                                                                <label class="btn bg-color-blueLight">
+                                                            <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Low</p>
+                                                        </label>
+                                                                <label class="btn bg-color-darken">
+                                                            <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Very Low</p>
+                                                        </label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -336,7 +337,7 @@
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "no priority" : priority;
-                    allday = allday.length === 0 ? "false" : allday;
+                    allday = allday == null ? "false" : allday;
                     datefrom = datefrom.length === 0 ? "no date" : datefrom;
                     timefrom = timefrom.length === 0 ? "no time" : timefrom;
                     dateto = dateto.length === 0 ? "no date" : dateto;
@@ -416,6 +417,20 @@
                 });
                 // This seems like it can be manually deleted, because the addevent is called from the modal function instead.
 
+                // Add event button
+                /*       $('#add-event').click(function () {
+                           var title = $('#title').val(),
+                               priority = $('input:radio[name=priority]:checked').val(),
+                               description = $('#description').val(),
+                               allday = $('#datefrom').val(),
+                               datefrom = $('#datefrom').val(),
+                               timefrom = $('#timefrom').val(),
+                               dateto = $('#dateto').val(),
+                               timeto = $('#timeto').val();
+
+                           addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
+                       }); */
+
                 /* initialize the calendar
                  -----------------------------------------------------------------*/
 
@@ -487,8 +502,19 @@
                     $('#calendar').fullCalendar('changeView', 'agendaDay');
                 });
 
+
+                // $(".js-status-update a").click(function () {
+                //     var selText = $(this).text();
+                //     var $this = $(this);
+                //     $this.parents('.btn-group').find('.dropdown-toggle').html(selText +
+                //         ' <span class="caret"></span>');
+                //     $this.parents('.dropdown-menu').find('li').removeClass('active');
+                //     $this.parent().addClass('active');
+                // });
+
+
                 /*
-                 * TODO: add a way to add more todo's to list
+                 * TODO: add a way to add more todos to list
                  */
 
                 // initialize sortable
@@ -509,7 +535,7 @@
                         $this.addClass("complete");
 
                         // remove this if you want to undo a check list once checked
-                        //$(this).attr("disabled", true);
+                        $(this).attr("disabled", true);
                         $(this).parent().hide();
 
                         // once clicked - add class, copy to memory then remove and add to sortable3
@@ -598,6 +624,14 @@
                     }]
                 });
 
+                $('#allday').change(function () {
+                    if ($(this).attr('checked')) {
+                        $(this).val('true');
+                    } else {
+                        $(this).val('false');
+                    }
+                });
+
                 //Timepicker element in the add task modal
                 $('#timepicker').timepicker();
 
@@ -623,6 +657,7 @@
                         $("#to").datepicker("option", selectedDate);
                     }
                 })
+
             });
         </script>
 
