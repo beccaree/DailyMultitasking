@@ -16,257 +16,253 @@
             <% include ../partials/header %>
                 <!-- END HEADER -->
 
-                <!-- Left panel : Navigation area -->
-                <% include ../partials/leftpanel %>
-                    <!-- END NAVIGATION -->
+                <!-- MAIN PANEL -->
+                <div id="main" role="main">
 
-                    <!-- MAIN PANEL -->
-                    <div id="main" role="main">
+                    <!-- MAIN CONTENT -->
+                    <div id="content">
 
-                        <!-- MAIN CONTENT -->
-                        <div id="content">
-
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                                    <h1 class="page-title txt-color-blueDark"><i class="fa fa-desktop fa-fw "></i> My Dashboard</h1>
-                                </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                                <h1 class="page-title txt-color-blueDark"><i class="fa fa-desktop fa-fw "></i> My Dashboard</h1>
                             </div>
+                        </div>
 
-                            <!-- row -->
-                            <div class="row">
+                        <!-- row -->
+                        <div class="row">
 
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-                                    <!-- new widget -->
-                                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1">
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <!-- new widget -->
+                                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1">
 
-                                        <header>
-                                            <h2> Calendar </h2>
-                                            <div class="widget-toolbar">
-                                                <!-- add: non-hidden - to disable auto hide -->
-                                                <div class="btn-group">
-                                                    <a class="btn btn-default btn-xs" type="button" href="javascript:void(0);" id="td">Day</a>
-                                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
-                                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
-                                                </div>
-                                            </div>
-                                        </header>
-
-                                        <!-- widget div-->
-                                        <div>
-                                            <div class="widget-body no-padding">
-                                                <!-- content goes here -->
-                                                <div class="widget-body-toolbar">
-                                                    <div id="calendar-buttons">
-                                                        <div class="btn-group">
-                                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="calendar">
-
-                                                </div>
-                                                <!-- end content -->
+                                    <header>
+                                        <h2> Calendar </h2>
+                                        <div class="widget-toolbar">
+                                            <!-- add: non-hidden - to disable auto hide -->
+                                            <div class="btn-group">
+                                                <a class="btn btn-default btn-xs" type="button" href="javascript:void(0);" id="td">Day</a>
+                                                <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
+                                                <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
                                             </div>
                                         </div>
-                                        <!-- end widget div -->
-                                    </div>
-                                    <!-- end widget -->
-                                </div>
+                                    </header>
 
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-
-                                    <!-- new widget -->
-                                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2">
-                                        <header>
-                                            <h2> Task List </h2>
-                                            <div class="btn-group pull-right">
-                                                <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px"><i class="fa fa-plus"></i></a>
+                                    <!-- widget div-->
+                                    <div>
+                                        <div class="widget-body no-padding">
+                                            <!-- content goes here -->
+                                            <div class="widget-body-toolbar">
+                                                <div id="calendar-buttons">
+                                                    <div class="btn-group">
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div id="calendar">
 
-                                        </header>
-
-                                        <!-- widget div-->
-                                        <div>
-                                            <div class="widget-body no-padding smart-form">
-                                                <!-- content goes here -->
-                                                <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
-                                                <ul id="sortable2" class="todo">
-                                                    <li> // This is an example of an event
-                                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                                        <p>
-                                                            <a href="javascript:void(0);" class="font-s">call Grandma</a>
-                                                            <span class="date">Nov 23, 2013</span>
-                                                        </p>
-                                                    </li>
-                                                </ul>
-
-                                                <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks Today(<small class="num-of-tasks">1</small>)</h5>
-                                                <ul id="sortable3" class="todo">
-                                                    <li class="complete">
-                                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                                        <p>
-                                                            <a href="javascript:void(0);" class="font-s">Bake cake</a>
-                                                            <span class="date">Nov 22, 2013</span>
-                                                        </p>
-                                                    </li>
-                                                </ul>
-
-                                                <!-- end content -->
                                             </div>
-
+                                            <!-- end content -->
                                         </div>
-                                        <!-- end widget div -->
                                     </div>
-                                    <!-- end widget -->
-
+                                    <!-- end widget div -->
                                 </div>
+                                <!-- end widget -->
+                            </div>
+
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                                <!-- new widget -->
+                                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2">
+                                    <header>
+                                        <h2> Task List </h2>
+                                        <div class="btn-group pull-right">
+                                            <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px"><i class="fa fa-plus"></i></a>
+                                        </div>
+
+                                    </header>
+
+                                    <!-- widget div-->
+                                    <div>
+                                        <div class="widget-body no-padding smart-form">
+                                            <!-- content goes here -->
+                                            <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
+                                            <ul id="sortable2" class="todo">
+                                                <li> // This is an example of an event
+                                                    <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                                    <p>
+                                                        <a href="javascript:void(0);" class="font-s">call Grandma</a>
+                                                        <span class="date">Nov 23, 2013</span>
+                                                    </p>
+                                                </li>
+                                            </ul>
+
+                                            <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks Today(<small class="num-of-tasks">1</small>)</h5>
+                                            <ul id="sortable3" class="todo">
+                                                <li class="complete">
+                                                    <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
+                                                    <p>
+                                                        <a href="javascript:void(0);" class="font-s">Bake cake</a>
+                                                        <span class="date">Nov 22, 2013</span>
+                                                    </p>
+                                                </li>
+                                            </ul>
+
+                                            <!-- end content -->
+                                        </div>
+
+                                    </div>
+                                    <!-- end widget div -->
+                                </div>
+                                <!-- end widget -->
 
                             </div>
-                            <!-- end row -->
 
-                            <!-- row -->
-                            <div class="row">
+                        </div>
+                        <!-- end row -->
+
+                        <!-- row -->
+                        <div class="row">
 
 
-                            </div>
-                            <!-- end row -->
+                        </div>
+                        <!-- end row -->
 
-                            <!-- Modal div-->
-                            <div id="modal_add_task" title="Add new Entity">
-                                <!-- widget div-->
-                                <div>
-                                    <div class="widget-body">
-                                        <!-- content goes here -->
-                                        <form id="add-event-form">
-                                            <fieldset>
+                        <!-- Modal div-->
+                        <div id="modal_add_task" title="Add new Entity">
+                            <!-- widget div-->
+                            <div>
+                                <div class="widget-body">
+                                    <!-- content goes here -->
+                                    <form id="add-event-form">
+                                        <fieldset>
 
-                                                <!-- Title field-->
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <label>Name</label>
-                                                            <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Item name">
-                                                            <p class="note">40 characters max</p>
-                                                        </div>
+                                            <!-- Title field-->
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Name</label>
+                                                        <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Item name">
+                                                        <p class="note">40 characters max</p>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <!-- Description field-->
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <label>Description</label>
-                                                            <textarea class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
-                                                            <p class="note">255 characters max</p>
-                                                        </div>
+                                            <!-- Description field-->
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Description</label>
+                                                        <textarea class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
+                                                        <p class="note">255 characters max</p>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <!-- Task Priority field-->
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <label>Select Task Priority</label>
-                                                            <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
-                                                                <label class="btn bg-color-red active">
+                                            <!-- Task Priority field-->
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Select Task Priority</label>
+                                                        <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
+                                                            <label class="btn bg-color-red active">
                                                             <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very High</p>
                                                         </label>
-                                                                <label class="btn bg-color-orange">
+                                                            <label class="btn bg-color-orange">
                                                             <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">High</p>
                                                         </label>
-                                                                <label class="btn bg-color-greenLight">
+                                                            <label class="btn bg-color-greenLight">
                                                             <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Medium</p>
                                                         </label>
-                                                                <label class="btn bg-color-blueLight">
+                                                            <label class="btn bg-color-blueLight">
                                                             <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Low</p>
                                                         </label>
-                                                                <label class="btn bg-color-darken">
+                                                            <label class="btn bg-color-darken">
                                                             <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very Low</p>
                                                         </label>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <!-- Date and time field-->
-                                                <div class="form-group">
-                                                    <div class="row">
+                                            <!-- Date and time field-->
+                                            <div class="form-group">
+                                                <div class="row">
 
-                                                        <div class="col-sm-12">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <label class="toggle">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <label class="toggle">
                                                                         <input name="checkbox-toggle" id="allday" type="checkbox" value="true">All Day event
                                                                     </label>
-                                                                </div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <input class="form-control" id="datefrom" type="text" placeholder="Starts">
-                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <input class="form-control" id="timefrom" type="text" placeholder="Time">
-                                                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <input class="form-control" id="dateto" type="text" placeholder="Ends">
-                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <input class="form-control" id="timeto" type="text" placeholder="Time">
-                                                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
                                                     </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="datefrom" type="text" placeholder="Starts">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="timefrom" type="text" placeholder="Time">
+                                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="dateto" type="text" placeholder="Ends">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="timeto" type="text" placeholder="Time">
+                                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
+                                            </div>
 
-                                            </fieldset>
-                                        </form>
-                                        <!-- end content -->
-                                    </div>
+                                        </fieldset>
+                                    </form>
+                                    <!-- end content -->
                                 </div>
-                                <!-- end widget div -->
                             </div>
-                            <!-- #End of new add task modal-->
-
+                            <!-- end widget div -->
                         </div>
-                        <!-- END MAIN CONTENT -->
+                        <!-- #End of new add task modal-->
 
                     </div>
-                    <!-- END MAIN PANEL -->
+                    <!-- END MAIN CONTENT -->
+
+                </div>
+                <!-- END MAIN PANEL -->
         </div>
         <!-- the following are page-specific js -->
         <!--================================================== -->
@@ -430,11 +426,11 @@
                         var title = prompt('Event Title:');
                         if (title) {
                             calendar.fullCalendar('renderEvent', {
-                                    title: title,
-                                    start: start,
-                                    end: end,
-                                    allDay: allDay
-                                }, true // make the event "stick"
+                                title: title,
+                                start: start,
+                                end: end,
+                                allDay: allDay
+                            }, true // make the event "stick"
                             );
                         }
                         calendar.fullCalendar('unselect');
