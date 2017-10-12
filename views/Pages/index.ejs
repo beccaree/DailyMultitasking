@@ -104,24 +104,12 @@
                                                 <!-- content goes here -->
                                                 <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
                                                 <ul id="sortable2" class="todo">
-                                                    <li> // This is an example of an event
-                                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                                        <p>
-                                                            <a href="javascript:void(0);" class="font-s">call Grandma</a>
-                                                            <span class="date">Nov 23, 2013</span>
-                                                        </p>
-                                                    </li>
+
                                                 </ul>
 
                                                 <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks Today(<small class="num-of-tasks">1</small>)</h5>
                                                 <ul id="sortable3" class="todo">
-                                                    <li class="complete">
-                                                        <span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span>
-                                                        <p>
-                                                            <a href="javascript:void(0);" class="font-s">Bake cake</a>
-                                                            <span class="date">Nov 22, 2013</span>
-                                                        </p>
-                                                    </li>
+
                                                 </ul>
 
                                                 <!-- end content -->
@@ -309,9 +297,21 @@
                     right: 'prev,today,next'
                 };
 
-                var initDrag = function (e) {
+                var initDrag = function (e, title, description, allDay, start, end) {
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
+
+                    var eventObject = {
+                        title: title,
+                        description: description,
+                        allDay: allDay,
+                        start: start,
+                        end: end
+                    };
+                    // store the Event Object in the DOM element so we can get to it later
+                    e.data('event', eventObject);
+
+                    console.log(e.data);
 
                     // make the event draggable using jQuery UI
                     e.draggable({
@@ -375,9 +375,9 @@
                   });
                 }
 
-              // Add event function
+                // Add event function
                 var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
-                    timeto, callback) {
+                    timeto) {
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "no priority" : priority;
@@ -419,19 +419,18 @@
 
                     $("#sortable2").effect("highlight", 800);
 
-                    initDrag(html);
+                    initDrag(html, title, description, allday, timefrom, timeto);
 
                     //check if this is the first item that has been created
-                    $.getJSON("api/achievement/", function (data){
-                      $.each(data, function (key, val) {
-                        if (val.id == 1 && !val.achieved) {
-                            updateAchievementToDatabase(val);
-                            callback()
-                        }
-                        else{
-                          callback()
-                        }
-                      });
+                    $.getJSON("api/achievement/", function (data) {
+                        $.each(data, function (key, val) {
+                            if (val.id == 1 && !val.achieved) {
+                                updateAchievementToDatabase(val);
+                                //callback()
+                            } else {
+                                callback()
+                            }
+                        });
                     });
                 };
 
@@ -445,7 +444,8 @@
                                 '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.updated +
                                 '</span> </p> </li>').prependTo('ul#sortable2');
-                            initDrag(html);
+                            var allDay = val.allday == null ? "false" : val.allday;
+                            initDrag(html, val.title, val.description, allday, 0, 0);
                         });
                     });
                 };
@@ -460,9 +460,9 @@
 
 
                 // Make items draggable
-                $('#sortable2 > li').each(function () {
-                    initDrag($(this));
-                });
+                // $('#sortable2 > li').each(function () {
+                //     initDrag($(this));
+                // });
                 // This seems like it can be manually deleted, because the addevent is called from the modal function instead.
 
                 // Add event button
@@ -512,7 +512,7 @@
                     eventRender: function (event, element) {
                         if (!event.title == "") {
                             element.find('.fc-title').append("<br/><span class='ultra-light'>" +
-                                event.type +
+                                event.description +
                                 "</span>");
                         }
                     },
@@ -599,8 +599,8 @@
                             if (val.id == 2 && !val.achieved) {
                               updateAchievementToDatabase(val);
 
-                            }
-                          });
+                                }
+                            });
                         });
 
 
@@ -652,7 +652,7 @@
                                 dateto = $('#dateto').val(),
                                 timeto = $('#timeto').val();
 
-                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto,callback );
+                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
