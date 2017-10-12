@@ -367,6 +367,15 @@
                         });
                     }
 
+                    //check if this is the first item that has been created
+                    $.getJSON("api/achievement/", function (data){
+                      $.each(data, function (key, val) {
+                        if (val.id == 1 && !val.achieved) {
+                            updateAchievementToDatabase(val);
+                        }
+                      });
+                    });
+
                     /* Add the event to the HTML list */
                     var html = $(
                         '<li><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
@@ -376,15 +385,6 @@
                     $("#sortable2").effect("highlight", 800);
 
                     initDrag(html);
-
-                    //check if this is the first event that has been created
-                    $.getJSON("api/achievement/", function (data){
-                      $.each(data, function (key, val) {
-                        if (val.id == 2 && !val.achieved) {
-                            updateAchievementToDatabase(val);
-                        }
-                      });
-                    });
                 };
 
                 /* initialize the events
@@ -548,7 +548,7 @@
                         //check if this is the first task completed
                         $.getJSON("api/achievement/", function (data){
                           $.each(data, function (key, val) {
-                            if (val.id == 3 && !val.achieved) {
+                            if (val.id == 2 && !val.achieved) {
                               putToDatabase(val);
 
                             }
@@ -605,19 +605,10 @@
                                 timeto = $('#timeto').val();
 
                             addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
-                            console.log("check achievement");
-                            //check if this is the first task created
-                            $.getJSON("api/achievement/", function (data){
-                              $.each(data, function (key, val) {
-                                if (val.id == 1 && !val.achieved) {
-                                  putToDatabase(val);
-                                }
-                              });
-                            });
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
-                            $(this).dialog("close");
-                            location.reload();
+                            // $(this).dialog("close");
+                            // location.reload();
 
 
                         }
