@@ -4,9 +4,10 @@ var mongoose = require('mongoose');  //***
 var achievementSchema = new mongoose.Schema({
     name: String,
     description: String,
+    congratulatoryMessage: String,
     id: Number,
     achieved: { type: Boolean, default: false},
-    dateAchieved: { type: Date, default: Date.now },
+    dateAchieved: { type: Date, default: Date.now }
 });
 
 var achievement = mongoose.model('achievements', achievementSchema);
@@ -14,32 +15,37 @@ module.exports = achievement;
 
 // If no tasks in DB insert a "dummy" one
 var a1 = new achievement
-a1.name         = "Created First Task";
-a1.description   = "YAY, created your first task";
+a1.name         = "Creator";
+a1.description  = "Create your first item";
+a1.congratulatoryMessage   = "Good Job, you created your first item";
 a1.id            = 1;
 a1.dateAchieved  = new Date;
 
 var a2 = new achievement
-a2.name         = "Created First Event";
-a2.description   = "YAY, created your first event";
+a2.name         = "One Down";
+a2.description   ="Complete your first task";
+a2.congratulatoryMessage   ="YAY, you completed your first task";
 a2.id            = 2;
 a2.dateAchieved  = new Date;
 
 var a3 = new achievement
-a3.name         = "Completed First Task";
-a3.description   = "YAY, you completed your first task";
+a3.name         = "All Star";
+a3.description   = "Complete all the tasks in your task list";
+a3.congratulatoryMessage   = "YAY, you completed all the tasks in your task list";
 a3.id            = 3;
 a3.dateAchieved  = new Date;
 
 var a4 = new achievement
-a4.name         = "Completed All Tasks";
-a4.description   = "YAY, you completed all the tasks in your task list";
+a4.name         = "Speedster";
+a4.description   = "Complete task before it is due";
+a4.congratulatoryMessage = "Woah, you completed a task before it was due";
 a4.id            = 4;
 a4.dateAchieved  = new Date;
 
 var a5 = new achievement
-a5.name         = "Speedster";
-a5.description   = "Woah, you completed a task before it was due";
+a5.name         = "Gimme Five";
+a5.description   = "Complete at least one task, five days in a row";
+a5.congratulatoryMessage = "You re on fire !!! thats a five day streak";
 a5.id            = 5;
 a5.dateAchieved  = new Date;
 
