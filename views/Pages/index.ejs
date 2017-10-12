@@ -97,12 +97,12 @@
                                     <div>
                                         <div class="widget-body no-padding smart-form">
                                             <!-- content goes here -->
-                                            <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
+                                            <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Your To-Do List</h5>
                                             <ul id="sortable2" class="todo">
 
                                             </ul>
 
-                                            <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks Today(<small class="num-of-tasks">1</small>)</h5>
+                                            <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Items</h5>
                                             <ul id="sortable3" class="todo">
 
                                             </ul>
@@ -296,18 +296,22 @@
                 var initDrag = function (e, title, description, allDay, start, end) {
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
-
+                    if (start === "no time") {
+                        start = "09:00";
+                    }
+                    if (end === "no time") {
+                        end = "11:00"
+                    }
+                    console.log("all day: " + allDay);
                     var eventObject = {
                         title: title,
                         description: description,
                         allDay: allDay,
-                        start: start,
-                        end: end
+                        time: start,
+                        duration: "02:00"
                     };
                     // store the Event Object in the DOM element so we can get to it later
                     e.data('event', eventObject);
-
-                    console.log(e.data);
 
                     // make the event draggable using jQuery UI
                     e.draggable({
@@ -377,13 +381,13 @@
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "no priority" : priority;
-                    allday = allday == null ? "false" : allday;
+                    allday = allday == null ? false : true;
                     datefrom = datefrom.length === 0 ? "no date" : datefrom;
                     timefrom = timefrom.length === 0 ? "no time" : timefrom;
                     dateto = dateto.length === 0 ? "no date" : dateto;
                     timeto = timeto.length === 0 ? "no time" : timeto;
 
-                    if (allday == 'true') {
+                    if (allday) {
                         /* Post the event to the API */
                         $.post("/api/task/", {
                             title: title,
@@ -414,7 +418,7 @@
                         'ul#sortable2').hide().fadeIn();
 
                     $("#sortable2").effect("highlight", 800);
-
+                    console.log("allday before initdrag:" + allday);
                     initDrag(html, title, description, allday, timefrom, timeto);
 
                     //check if this is the first item that has been created
@@ -440,8 +444,8 @@
                                 '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.updated +
                                 '</span> </p> </li>').prependTo('ul#sortable2');
-                            var allDay = val.allday == null ? "false" : val.allday;
-                            initDrag(html, val.title, val.description, allday, 0, 0);
+                            console.log("Allday in fetchevent: " + val.allday);
+                            initDrag(html, val.title, val.description, val.allday, 0, 0);
                         });
                     });
                 };
@@ -495,11 +499,11 @@
                         var title = prompt('Event Title:');
                         if (title) {
                             calendar.fullCalendar('renderEvent', {
-                                title: title,
-                                start: start,
-                                end: end,
-                                allDay: allDay
-                            }, true // make the event "stick"
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    allDay: allDay
+                                }, true // make the event "stick"
                             );
                         }
                         calendar.fullCalendar('unselect');
@@ -557,9 +561,7 @@
                 // });
 
 
-                /*
-                 * TODO: add a way to add more todos to list
-                 */
+                //TODO: List prioritising
 
                 // initialize sortable
                 $(function () {
@@ -648,7 +650,8 @@
                                 dateto = $('#dateto').val(),
                                 timeto = $('#timeto').val();
 
-                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
+                            addEvent(title, priority, description, allday, datefrom,
+                                timefrom, dateto, timeto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
