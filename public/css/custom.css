@@ -25,12 +25,8 @@ div#tab-icons {
 }
 
 .glyphicon {
-    font-size: 30px;
-    color:white;
-}
-
-.glyphicon:hover {
-    color:lightskyblue;
+    font-size: 20px;
+    color: grey;
 }
 
 li.active>a>.glyphicon {
@@ -40,8 +36,3 @@ li.active>a>.glyphicon {
 h1.page-title {
     margin-bottom:12px;
 }
-
-
-
-
-

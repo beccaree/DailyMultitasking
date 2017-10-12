@@ -69,20 +69,44 @@ router.get('/achievement/:id', function(req, res, next) {
 
 /* POST /tasks */
 router.post('/achievement/', function(req, res, next) {
+    console.log("in");
     achievement.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
     });
 });
 
+// router.put('/achievement/:id',function(req,res){
+//   achievement.findOneAndUpdate(req.params._id,req.body,function(err){
+//     if(err){
+//         return res.send(err);
+//     }
+//     console.log({message:"movie updated"});
+// });
+// });
+
 /* PUT /tasks/:id */
 router.put('/achievement/:id', function(req, res, next) {
+    console.log("in here");
     achievement.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
-        //console.log(req.body)
         if (err) return next(err);
         res.json(post);
     });
 });
+
+// update
+// router.put(function(req, res) {
+//     var values = req.body;
+//     var user_id = req.params.user_id;
+//     Value.update({user_id: user_id}, function(err, values) {
+//         if (!err) {
+//             res.json("okay");
+//         } else {
+//             res.write("fail");
+//         }
+//     });
+// })
+
 
 /* DELETE /tasks/:id */
 router.delete('/achievement/:id', function(req, res, next) {
