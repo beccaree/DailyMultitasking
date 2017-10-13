@@ -378,15 +378,16 @@
                 // Add event function
                 var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
                     timeto) {
+                    console.log("Date from in addEvent: " + datefrom);
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "no priority" : priority;
                     allday = allday == null ? false : true;
-                    datefrom = datefrom.length === 0 ? "no date" : datefrom;
-                    timefrom = timefrom.length === 0 ? "no time" : timefrom;
-                    dateto = dateto.length === 0 ? "no date" : dateto;
-                    timeto = timeto.length === 0 ? "no time" : timeto;
-
+                    datefrom = datefrom == null ? "no date" : new Date(datefrom.toISOString());
+                    timefrom = timefrom == null ? "no time" : timefrom;
+                    dateto = dateto == null ? "no date" : dateto;
+                    timeto = timeto == null ? "no time" : timeto;
+                    console.log("new date from:" + datefrom);
                     if (allday) {
                         /* Post the event to the API */
                         $.post("/api/task/", {
@@ -394,8 +395,8 @@
                             description: description,
                             priority: priority,
                             allday: allday,
-                            datefrom: datefrom,
-                            dateto: dateto
+                            start: datefrom,
+                            end: dateto
                         });
                     } else {
                         /* Post the event to the API */
@@ -404,10 +405,10 @@
                             description: description,
                             priority: priority,
                             allday: allday,
-                            datefrom: datefrom,
-                            timefrom: timefrom,
-                            dateto: dateto,
-                            timeto: timeto
+                            start: datefrom,
+                            // timefrom: timefrom,
+                            end: dateto
+                            // timeto: timeto
                         });
                     }
 
@@ -417,8 +418,7 @@
                         title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo(
                         'ul#sortable2').hide().fadeIn();
 
-                    $("#sortable2").effect("highlight", 800);
-                    console.log("allday before initdrag:" + allday);
+                    // $("#sortable2").effect("highlight", 800);
                     initDrag(html, title, description, allday, timefrom, timeto);
 
                     //check if this is the first item that has been created
@@ -645,8 +645,8 @@
                                 priority = $('input:radio[name=priority]:checked').val(),
                                 description = $('#description').val(),
                                 allday = $('#allday:checked').val(),
-                                datefrom = $('#datefrom').val(),
-                                timefrom = $('#timefrom').val(),
+                                datefrom = $('#datefrom').datepicker('getDate'),
+                                timefrom = $('#timefrom').datepicker('getDate'),
                                 dateto = $('#dateto').val(),
                                 timeto = $('#timeto').val();
 
