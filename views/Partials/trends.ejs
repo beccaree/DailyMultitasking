@@ -54,33 +54,33 @@
         </header>
 
         <div style="text-align: center;">
-            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="100" data-pie-size="80">
+            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="80">
                 <p>Sunday</p>
-                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">100</span>
+                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">0</span>
             </div>
-            <div class="easy-pie-chart txt-color-pinkDark easyPieChart" data-percent="66" data-pie-size="100">
+            <div class="easy-pie-chart txt-color-pinkDark easyPieChart" data-percent="33" data-pie-size="100">
                 <p>Monday</p>
-                <span class="percent percent-sign txt-color-pinkDark font-md" style="margin-top: 0px;">66</span>
+                <span class="percent percent-sign txt-color-pinkDark font-md" style="margin-top: 0px;">33</span>
             </div>
-            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="50" data-pie-size="80">
+            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="80">
                 <p>Tuesday</p>
-                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">50</span>
+                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">0</span>
             </div>
-            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="75" data-pie-size="80">
+            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="80">
                 <p>Wednesday</p>
-                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">75</span>
+                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">0</span>
             </div>
             <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="80">
                 <p>Thursday</p>
                 <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">0</span>
             </div>
-            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="100" data-pie-size="80">
+            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="80">
                 <p>Friday</p>
-                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">100</span>
+                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">0</span>
             </div>
-            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="70" data-pie-size="80">
+            <div class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="80">
                 <p>Saturday</p>
-                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">70</span>
+                <span class="percent percent-sign txt-color-blue font-md" style="margin-top: 0px;">0</span>
             </div>
         </div>
 
@@ -100,52 +100,53 @@
     /*
      * Run all morris chart on this page
      */
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         pageSetUp();
 
         if ($('#trends-graph').length) {
 
             Morris.Area({
-                element : 'trends-graph',
-                data : [{
-                    date : '2010 Q1',
-                    numTasks : 2,
+                element: 'trends-graph',
+                data: [{
+                    date: '2010 Q1',
+                    numTasks: 0,
                 }, {
-                    date : '2010 Q2',
-                    numTasks : 2,
+                    date: '2010 Q2',
+                    numTasks: 0,
                 }, {
-                    date : '2010 Q3',
-                    numTasks : 4,
+                    date: '2010 Q3',
+                    numTasks: 0,
                 }, {
-                    date : '2010 Q4',
-                    numTasks : 3,
+                    date: '2010 Q4',
+                    numTasks: 0,
                 }, {
-                    date : '2011 Q1',
-                    numTasks : 6,
+                    date: '2011 Q1',
+                    numTasks: 0,
                 }, {
-                    date : '2011 Q2',
-                    numTasks : 5,
+                    date: '2011 Q2',
+                    numTasks: 0,
                 }, {
-                    date : '2011 Q3',
-                    numTasks : 4,
+                    date: '2011 Q3',
+                    numTasks: 0,
                 }, {
-                    date : '2011 Q4',
-                    numTasks : 15,
+                    date: '2011 Q4',
+                    numTasks: 0,
                 }, {
-                    date : '2012 Q1',
-                    numTasks : 10,
+                    date: '2012 Q1',
+                    numTasks: 0,
                 }, {
-                    date : '2012 Q2',
-                    numTasks : 8,
+                    date: '2012 Q2',
+                    numTasks: 1,
                 }],
-                xkey : 'date',
-                ykeys : ['numTasks'],
-                labels : ["Tasks Complete"],
-                pointSize : 2,
-                hideHover : 'auto'
+                xkey: 'date',
+                ykeys: ['numTasks'],
+                labels: ["Tasks Complete"],
+                pointSize: 2,
+                hideHover: 'auto'
             });
 
         }
     })
+
 </script>

@@ -1,44 +1,42 @@
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id='achievementDiv' >
-  <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id='achievementDiv'>
+    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
-    <header>
-        <span class="widget-icon"> <i class="fa fa-star"></i> </span>
-        <h2>Achievements</h2>
-    </header>
-    <div>
+        <header>
+            <span class="widget-icon"> <i class="fa fa-star"></i> </span>
+            <h2>Achievements</h2>
+        </header>
+        <div>
 
-        <!-- widget content -->
-        <div class="widget-body no-padding">
+            <!-- widget content -->
+            <div class="widget-body no-padding">
 
-            <ul id="achievementList" style="list-style: none"></ul>
+                <ul id="achievementList" style="list-style: none"></ul>
+
+            </div>
+            <!-- end widget content -->
 
         </div>
-        <!-- end widget content -->
-
     </div>
-  </div>
 </div>
 
-<script  type="text/javascript">
+<script type="text/javascript">
+    // Add events from the API
+    var fetchAchievements = function () {
+        $.getJSON("api/achievement/", function (data) {
+            $.each(data, function (key, val) {
+                //if achieved
+                if (val.achieved) {
+                    $('<li> <span class="glyphicon glyphicon-check"></span><b style="color:#8342f4">' + val.name + ":</b> " + val.description + '</li>').appendTo('ul#achievementList');
+                } else {
+                    $('<li> <span class="glyphicon glyphicon-unchecked"></span> <b style="color:#8342f4">' + val.name + ":</b> " + val.description + '</li>').appendTo('ul#achievementList');
+                }
+            });
+        });
+    };
 
-
-	// Add events from the API
-	var fetchAchievements = function () {
-		$.getJSON("api/achievement/", function (data){
-			$.each(data, function (key, val) {
-  			//if achieved
-  			if(val.achieved){
-            $('<li> <span class="glyphicon glyphicon-check"></span><b style="color:#8342f4">'+val.name+":</b> "+val.description+'</li>').appendTo('ul#achievementList');
-        }else{
-          $('<li> <span class="glyphicon glyphicon-unchecked"></span> <b style="color:#8342f4">'+val.name+":</b> "+val.description+'</li>').appendTo('ul#achievementList');
-        }
-			});
-		});
-	};
-
-	$(document).ready(function () {
-		//your code here
-		fetchAchievements();
-	});
+    $(document).ready(function () {
+        //your code here
+        fetchAchievements();
+    });
 
 </script>
