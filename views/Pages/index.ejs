@@ -34,7 +34,10 @@
                             <!-- Modal content -->
                             <div class="modal-content">
                                 <span class="close">&times;</span>
-                                <p id="achievementMessages">Some text in the Modal..</p>
+                                <h1 id ="achievementMessage1">Some text in the Modal..</h1>
+                                <h3 id ="achievementMessage2">Some text in the Modal..</h3>
+                              </div>
+
                             </div>
 
                         </div>
@@ -333,8 +336,9 @@
                 var span = document.getElementsByClassName("close")[0];
 
                 // When the user clicks the button, open the modal
-                var popupModal = function (text) {
-                    $('#achievementMessages').text(text);
+                var popupModal = function(text1, text2) {
+                  $('#achievementMessage1').text(text1);
+                  $('#achievementMessage2').text(text2);
                     modal.style.display = "block";
                 }
 
@@ -354,25 +358,25 @@
 
 
                 //
-                var updateAchievementToDatabase = function (val) {
-                    var objID = val._id;;
-                    console.log("updating /api/achievement/" + objID);
+                var updateAchievementToDatabase = function (val){
+                  var objID = val._id;;
+                  console.log("updating /api/achievement/"+objID);
 
-                    $.ajax({
-                        url: "/api/achievement/" + objID,
-                        type: 'PUT',
-                        data: {
-                            name: val.name,
-                            description: val.description,
-                            id: val.id,
-                            achieved: true,
-                            dateAchieved: Date.now
-                        },
-                        success: function (data) {
-                            //alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
-                            popupModal("Achievement Complete: \"" + val.name + "\" \n" + val.congratulatoryMessage);
-                        }
-                    });
+                  $.ajax({
+                    url: "/api/achievement/"+objID,
+                    type: 'PUT',
+                    data: {
+                      name: val.name,
+                      description: val.description,
+                      id: val.id,
+                      achieved: true,
+                      dateAchieved: Date.now
+                    },
+                    success: function(data) {
+                      //alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
+                      popupModal("Achievement Complete: \"" + val.name + "\"", val.congratulatoryMessage);
+                    }
+                  });
                 }
 
                 // Add event function
