@@ -15,7 +15,9 @@
 
         -->
         <header>
-            <span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+            <span class="widget-icon">
+                <i class="fa fa-bar-chart-o"></i>
+            </span>
             <h2>Task Trends</h2>
         </header>
 
@@ -25,14 +27,14 @@
             <!-- widget edit box -->
             <div class="jarviswidget-editbox">
                 <!-- This area used as dropdown edit box -->
-                <input type="text">
+
             </div>
             <!-- end widget edit box -->
 
             <!-- widget content -->
             <div class="widget-body no-padding">
 
-                <div id="trends-graph" class="chart no-padding"></div>
+                <div id="year-graph" class="chart no-padding"></div>
 
             </div>
             <!-- end widget content -->
@@ -49,7 +51,9 @@
     <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
 
         <header>
-            <span class="widget-icon"> <i class="fa fa-pie-chart"></i> </span>
+            <span class="widget-icon">
+                <i class="fa fa-pie-chart"></i>
+            </span>
             <h2>Daily Progress</h2>
         </header>
 
@@ -104,48 +108,48 @@
 
         pageSetUp();
 
-        if ($('#trends-graph').length) {
-
-            Morris.Area({
-                element: 'trends-graph',
-                data: [{
-                    date: '2017 Oct 7',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 8',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 9',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 10',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 11',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 12',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 13',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 14',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 15',
-                    numTasks: 0,
-                }, {
-                    date: '2017 Oct 16',
-                    numTasks: 1,
-                }],
-                xkey: 'date',
-                ykeys: ['numTasks'],
-                labels: ["Tasks Complete"],
-                pointSize: 2,
-                hideHover: 'auto'
+        if ($('#year-graph').length) {
+            var day_data = [{
+                "period" : getFormattedDate(0),
+                "numTasks" : 1
+            }, {
+                "period" : getFormattedDate(1),
+                "numTasks" : 0
+            }, {
+                "period" : getFormattedDate(2),
+                "numTasks" : 0
+            }, {
+                "period" : getFormattedDate(3),
+                "numTasks" : 0
+            }, {
+                "period" : getFormattedDate(4),
+                "numTasks" : 0
+            }, {
+                "period" : getFormattedDate(5),
+                "numTasks" : 0
+            }, {
+                "period" : getFormattedDate(6),
+                "numTasks" : 0
+            }];
+            Morris.Line({
+                element : 'year-graph',
+                data : day_data,
+                xkey : 'period',
+                ykeys : ['numTasks'],
+                labels : ['Tasks Completed']
             });
+        }
 
+        function getFormattedDate(offset) {
+            var date = new Date();
+
+            date.setDate(date.getDate() - offset);
+
+            var d = date.getDate();
+            var m = date.getMonth()+1;
+            var y = date.getFullYear();
+
+            return y + "-" + m + "-" + d;
         }
     })
 
