@@ -16,28 +16,23 @@
             <% include ../partials/header %>
                 <!-- END HEADER -->
 
-                <!-- Left panel : Navigation area -->
-                <% include ../partials/leftpanel %>
-                    <!-- END NAVIGATION -->
+                <!-- MAIN PANEL -->
+                <div id="main" role="main">
 
-                    <!-- MAIN PANEL -->
-                    <div id="main" role="main">
+                    <!-- MAIN CONTENT -->
+                    <div id="content">
 
-                        <!-- MAIN CONTENT -->
-                        <div id="content">
-
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                                    <h1 class="page-title txt-color-blueDark"><i class="fa fa-desktop fa-fw "></i> My Dashboard</h1>
-                                </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                                <h1 class="page-title txt-color-blueDark"><i class="fa fa-desktop fa-fw "></i> My Dashboard</h1>
                             </div>
+                        </div>
 
+                        <!-- The Modal for the achievement messages -->
+                        <div id="myModal" class="modal">
 
-                            <!-- The Modal for the achievement messages -->
-                            <div id="myModal" class="modal">
-
-                              <!-- Modal content -->
-                              <div class="modal-content">
+                            <!-- Modal content -->
+                            <div class="modal-content">
                                 <span class="close">&times;</span>
                                 <h1 id ="achievementMessage1">Some text in the Modal..</h1>
                                 <h3 id ="achievementMessage2">Some text in the Modal..</h3>
@@ -45,229 +40,232 @@
 
                             </div>
 
-                            <!-- row -->
-                            <div class="row">
+                        </div>
 
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-                                    <!-- new widget -->
-                                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1">
+                        <!-- row -->
+                        <div class="row">
 
-                                        <header>
-                                            <h2> Calendar </h2>
-                                            <div class="widget-toolbar">
-                                                <!-- add: non-hidden - to disable auto hide -->
-                                                <div class="btn-group">
-                                                    <a class="btn btn-default btn-xs" type="button" href="javascript:void(0);" id="td">Day</a>
-                                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
-                                                    <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
-                                                </div>
-                                            </div>
-                                        </header>
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <!-- new widget -->
+                                <div class="jarviswidget" id="wid-id-1">
 
-                                        <!-- widget div-->
-                                        <div>
-                                            <div class="widget-body no-padding">
-                                                <!-- content goes here -->
-                                                <div class="widget-body-toolbar">
-                                                    <div id="calendar-buttons">
-                                                        <div class="btn-group">
-                                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
-                                                            <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="calendar">
-
-                                                </div>
-                                                <!-- end content -->
+                                    <header>
+                                        <h2> Calendar </h2>
+                                        <div class="widget-toolbar">
+                                            <!-- add: non-hidden - to disable auto hide -->
+                                            <div class="btn-group">
+                                                <a class="btn btn-default btn-xs" type="button" href="javascript:void(0);" id="td">Day</a>
+                                                <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="ag">Week</a>
+                                                <a class="btn btn-xs btn-default" type="button" href="javascript:void(0);" id="mt">Month</a>
                                             </div>
                                         </div>
-                                        <!-- end widget div -->
-                                    </div>
-                                    <!-- end widget -->
-                                </div>
+                                    </header>
 
-                                <div class="col-sm-6 col-md-6 col-lg-6">
 
-                                    <!-- new widget -->
-                                    <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2">
-                                        <header>
-                                            <h2> Task List </h2>
-                                            <div class="btn-group pull-right">
-                                                <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px"><i class="fa fa-plus"></i></a>
+                                    <!-- widget div-->
+                                    <div>
+                                        <div class="widget-body no-padding">
+                                            <!-- content goes here -->
+                                            <div class="widget-body-toolbar">
+                                                <div id="calendar-buttons">
+                                                    <div class="btn-group">
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div id="calendar">
 
-                                        </header>
-
-                                        <!-- widget div-->
-                                        <div>
-                                            <div class="widget-body no-padding smart-form">
-                                                <!-- content goes here -->
-                                                <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Unsolved Tasks (<small class="num-of-tasks">5</small>)</h5>
-                                                <ul id="sortable2" class="todo">
-
-                                                </ul>
-
-                                                <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Tasks Today(<small class="num-of-tasks">1</small>)</h5>
-                                                <ul id="sortable3" class="todo">
-
-                                                </ul>
-
-                                                <!-- end content -->
                                             </div>
-
+                                            <!-- end content -->
                                         </div>
-                                        <!-- end widget div -->
-                                    </div>
-                                    <!-- end widget -->
-
-                                </div>
-
-                            </div>
-                            <!-- end row -->
-
-                            <!-- row -->
-                            <div class="row">
-
-
-                            </div>
-                            <!-- end row -->
-
-                            <!-- Modal div-->
-                            <div id="modal_add_task" title="Add new Entity">
-                                <!-- widget div-->
-                                <div>
-                                    <div class="widget-body">
-                                        <!-- content goes here -->
-                                        <form id="add-event-form">
-                                            <fieldset>
-
-                                                <!-- Title field-->
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <label>Name</label>
-                                                            <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Item name">
-                                                            <p class="note">40 characters max</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Description field-->
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <label>Description</label>
-                                                            <textarea class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
-                                                            <p class="note">255 characters max</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Task Priority field-->
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <label>Select Task Priority</label>
-                                                            <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
-                                                                <label class="btn bg-color-red active">
-                                                            <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
-                                                            <i class="fa fa-check txt-color-white"></i>
-                                                            <p class="txt-color-white">Very High</p>
-                                                        </label>
-                                                                <label class="btn bg-color-orange">
-                                                            <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
-                                                            <i class="fa fa-check txt-color-white"></i>
-                                                            <p class="txt-color-white">High</p>
-                                                        </label>
-                                                                <label class="btn bg-color-greenLight">
-                                                            <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
-                                                            <i class="fa fa-check txt-color-white"></i>
-                                                            <p class="txt-color-white">Medium</p>
-                                                        </label>
-                                                                <label class="btn bg-color-blueLight">
-                                                            <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
-                                                            <i class="fa fa-check txt-color-white"></i>
-                                                            <p class="txt-color-white">Low</p>
-                                                        </label>
-                                                                <label class="btn bg-color-darken">
-                                                            <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
-                                                            <i class="fa fa-check txt-color-white"></i>
-                                                            <p class="txt-color-white">Very Low</p>
-                                                        </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Date and time field-->
-                                                <div class="form-group">
-                                                    <div class="row">
-
-                                                        <div class="col-sm-12">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <label class="toggle">
-                                                                        <input name="checkbox-toggle" id="allday" type="checkbox" value="true">All Day event
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <input class="form-control" id="datefrom" type="text" placeholder="Starts">
-                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <input class="form-control" id="timefrom" type="text" placeholder="Time">
-                                                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <input class="form-control" id="dateto" type="text" placeholder="Ends">
-                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <input class="form-control" id="timeto" type="text" placeholder="Time">
-                                                                    <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-
-                                            </fieldset>
-                                        </form>
-                                        <!-- end content -->
                                     </div>
                                 </div>
                                 <!-- end widget div -->
                             </div>
-                            <!-- #End of new add task modal-->
+                            <!-- end widget -->
+
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+
+                                <!-- new widget -->
+                                <div class="jarviswidget" id="wid-id-2">
+                                    <header>
+                                        <h2> Task List </h2>
+                                        <div class="btn-group pull-right">
+                                            <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px"><i class="fa fa-plus"></i></a>
+                                        </div>
+                                    </header>
+
+                                    <!-- widget div-->
+                                    <div>
+                                        <div class="widget-body no-padding smart-form">
+                                            <!-- content goes here -->
+                                            <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Your To-Do List</h5>
+                                            <ul id="sortable2" class="todo">
+
+                                            </ul>
+
+                                            <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Items</h5>
+                                            <ul id="sortable3" class="todo">
+
+                                            </ul>
+
+                                            <!-- end content -->
+                                        </div>
+
+
+                                    </div>
+                                    <!-- end widget div -->
+                                </div>
+                                <!-- end widget -->
+
+                            </div>
 
                         </div>
-                        <!-- END MAIN CONTENT -->
+                        <!-- end row -->
+
+                        <!-- row -->
+                        <div class="row">
+
+
+                        </div>
+                        <!-- end row -->
+
+                        <!-- Modal div-->
+                        <div id="modal_add_task" style="display: none;" title="Add new Entity">
+                            <!-- widget div-->
+                            <div>
+                                <div class="widget-body">
+                                    <!-- content goes here -->
+                                    <form id="add-event-form">
+                                        <fieldset>
+
+                                            <!-- Title field-->
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Name</label>
+                                                        <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Item name">
+                                                        <p class="note">40 characters max</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Description field-->
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Description</label>
+                                                        <textarea class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
+                                                        <p class="note">255 characters max</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Task Priority field-->
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Select Task Priority</label>
+                                                        <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
+                                                            <label class="btn bg-color-red active">
+                                                            <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Very High</p>
+                                                        </label>
+                                                            <label class="btn bg-color-orange">
+                                                            <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">High</p>
+                                                        </label>
+                                                            <label class="btn bg-color-greenLight">
+                                                            <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Medium</p>
+                                                        </label>
+                                                            <label class="btn bg-color-blueLight">
+                                                            <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Low</p>
+                                                        </label>
+                                                            <label class="btn bg-color-darken">
+                                                            <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
+                                                            <i class="fa fa-check txt-color-white"></i>
+                                                            <p class="txt-color-white">Very Low</p>
+                                                        </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Date and time field-->
+                                            <div class="form-group">
+                                                <div class="row">
+
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <label class="toggle">
+                                                                        <input name="checkbox-toggle" id="allday" type="checkbox" value="true">All Day event
+                                                                    </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="datefrom" type="text" placeholder="Starts">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="timefrom" type="text" placeholder="Time">
+                                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="dateto" type="text" placeholder="Ends">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" id="timeto" type="text" placeholder="Time">
+                                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+                                    </form>
+                                    <!-- end content -->
+                                </div>
+                            </div>
+                            <!-- end widget div -->
+                        </div>
+                        <!-- #End of new add task modal-->
 
                     </div>
-                    <!-- END MAIN PANEL -->
+                    <!-- END MAIN CONTENT -->
+
+                </div>
+                <!-- END MAIN PANEL -->
         </div>
         <!-- the following are page-specific js -->
         <!--================================================== -->
@@ -301,18 +299,22 @@
                 var initDrag = function (e, title, description, allDay, start, end) {
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
-
+                    if (start === "no time") {
+                        start = "09:00";
+                    }
+                    if (end === "no time") {
+                        end = "11:00"
+                    }
+                    console.log("all day: " + allDay);
                     var eventObject = {
                         title: title,
                         description: description,
                         allDay: allDay,
-                        start: start,
-                        end: end
+                        time: start,
+                        duration: "02:00"
                     };
                     // store the Event Object in the DOM element so we can get to it later
                     e.data('event', eventObject);
-
-                    console.log(e.data);
 
                     // make the event draggable using jQuery UI
                     e.draggable({
@@ -322,10 +324,10 @@
                     });
                 };
 
-                var callback = function(){
-                  console.log("in callback")
-                  $("#modal_add_task").dialog("close");
-                  location.reload();
+                var callback = function () {
+                    console.log("in callback")
+                    $("#modal_add_task").dialog("close");
+                    location.reload();
                 }
 
                 // Get the modal
@@ -341,13 +343,13 @@
                 }
 
                 // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
+                span.onclick = function () {
                     modal.style.display = "none";
                     callback()
                 }
 
                 // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
+                window.onclick = function (event) {
                     if (event.target == modal) {
                         modal.style.display = "none";
                     }
@@ -380,24 +382,25 @@
                 // Add event function
                 var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
                     timeto) {
+                    console.log("Date from in addEvent: " + datefrom);
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "no priority" : priority;
-                    allday = allday == null ? "false" : allday;
-                    datefrom = datefrom.length === 0 ? "no date" : datefrom;
-                    timefrom = timefrom.length === 0 ? "no time" : timefrom;
-                    dateto = dateto.length === 0 ? "no date" : dateto;
-                    timeto = timeto.length === 0 ? "no time" : timeto;
-
-                    if (allday == 'true') {
+                    allday = allday == null ? false : true;
+                    datefrom = datefrom == null ? "no date" : new Date(datefrom.toISOString());
+                    timefrom = timefrom == null ? "no time" : timefrom;
+                    dateto = dateto == null ? "no date" : dateto;
+                    timeto = timeto == null ? "no time" : timeto;
+                    console.log("new date from:" + datefrom);
+                    if (allday) {
                         /* Post the event to the API */
                         $.post("/api/task/", {
                             title: title,
                             description: description,
                             priority: priority,
                             allday: allday,
-                            datefrom: datefrom,
-                            dateto: dateto
+                            start: datefrom,
+                            end: dateto
                         });
                     } else {
                         /* Post the event to the API */
@@ -406,10 +409,10 @@
                             description: description,
                             priority: priority,
                             allday: allday,
-                            datefrom: datefrom,
-                            timefrom: timefrom,
-                            dateto: dateto,
-                            timeto: timeto
+                            start: datefrom,
+                            // timefrom: timefrom,
+                            end: dateto
+                            // timeto: timeto
                         });
                     }
 
@@ -419,8 +422,7 @@
                         title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo(
                         'ul#sortable2').hide().fadeIn();
 
-                    $("#sortable2").effect("highlight", 800);
-
+                    // $("#sortable2").effect("highlight", 800);
                     initDrag(html, title, description, allday, timefrom, timeto);
 
                     //check if this is the first item that has been created
@@ -446,8 +448,8 @@
                                 '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.updated +
                                 '</span> </p> </li>').prependTo('ul#sortable2');
-                            var allDay = val.allday == null ? "false" : val.allday;
-                            initDrag(html, val.title, val.description, allday, 0, 0);
+                            console.log("Allday in fetchevent: " + val.allday);
+                            initDrag(html, val.title, val.description, val.allday, 0, 0);
                         });
                     });
                 };
@@ -481,7 +483,7 @@
                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
                        }); */
 
-                /* initialize the calendar
+                /* initialise the calendar
                  -----------------------------------------------------------------*/
 
                 $('#calendar').fullCalendar({
@@ -489,9 +491,9 @@
                     firstDay: 0,
                     header: hdr,
                     editable: true,
-                    droppable: true, // this allows things to be dropped onto the calendar !!!
+                    droppable: true, // this allows things to be dropped onto the calendar
                     eventSources: [{
-                        url: '/api/task/', // use the `url` property
+                        url: '/api/task/',
                         error: function () {
                             alert('there was an error while fetching events!');
                         },
@@ -563,9 +565,7 @@
                 // });
 
 
-                /*
-                 * TODO: add a way to add more todos to list
-                 */
+                //TODO: List prioritising
 
                 // initialize sortable
                 $(function () {
@@ -596,10 +596,10 @@
                         });
 
                         //check if this is the first task completed
-                        $.getJSON("api/achievement/", function (data){
-                          $.each(data, function (key, val) {
-                            if (val.id == 2 && !val.achieved) {
-                              updateAchievementToDatabase(val);
+                        $.getJSON("api/achievement/", function (data) {
+                            $.each(data, function (key, val) {
+                                if (val.id == 2 && !val.achieved) {
+                                    updateAchievementToDatabase(val);
 
                                 }
                             });
@@ -649,12 +649,13 @@
                                 priority = $('input:radio[name=priority]:checked').val(),
                                 description = $('#description').val(),
                                 allday = $('#allday:checked').val(),
-                                datefrom = $('#datefrom').val(),
-                                timefrom = $('#timefrom').val(),
+                                datefrom = $('#datefrom').datepicker('getDate'),
+                                timefrom = $('#timefrom').datepicker('getDate'),
                                 dateto = $('#dateto').val(),
                                 timeto = $('#timeto').val();
 
-                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
+                            addEvent(title, priority, description, allday, datefrom,
+                                timefrom, dateto, timeto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
