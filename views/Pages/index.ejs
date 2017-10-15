@@ -394,15 +394,16 @@
                     timeto) {
                     console.log("Date from in addEvent: " + datefrom);
                     title = title.length === 0 ? "Untitled Event" : title;
-                    description = description.length === 0 ? "No Description" : description;
-                    priority = priority.length === 0 ? "no priority" : priority;
+                    description = description.length === 0 ? "No Description for event" : description;
+                    priority = priority.length === 0 ? "none" : priority;
                     allday = allday == null ? false : true;
-                    datefrom = datefrom == null ? "no date" : new Date(datefrom.toISOString());
-                    timefrom = timefrom == null ? "no time" : timefrom;
-                    dateto = dateto == null ? "no date" : dateto;
-                    timeto = timeto == null ? "no time" : timeto;
+                    // Validation neede here
+                    datefrom = datefrom == null ? "2017-01-01" : datefrom;
+                    timefrom = timefrom == null ? "12:00:01" : timefrom;
+                    dateto = dateto == null ? "2017-01-01" : dateto;
+                    timeto = timeto == null ? "12:00:01" : timeto;
                     console.log("new date from:" + datefrom);
-                    if (allday) {
+                    if (allday == true) {
                         /* Post the event to the API */
                         $.post("/api/task/", {
                             title: title,
@@ -420,9 +421,9 @@
                             priority: priority,
                             allday: allday,
                             start: datefrom,
-                            // timefrom: timefrom,
-                            end: dateto
-                            // timeto: timeto
+                            timefrom: timefrom,
+                            end: dateto,
+                            timeto: timeto
                         });
                     }
 
