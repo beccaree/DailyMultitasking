@@ -24,7 +24,8 @@
 
                         <div class="row">
                             <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                                <h1 class="page-title txt-color-blueDark"><i class="fa fa-desktop fa-fw "></i> My Dashboard</h1>
+                                <h1 class="page-title txt-color-blueDark">
+                                    <i class="fa fa-desktop fa-fw "></i> My Dashboard</h1>
                             </div>
                         </div>
 
@@ -34,13 +35,12 @@
                             <!-- Modal content -->
                             <div class="modal-content">
                                 <span class="close">&times;</span>
-                                <h1 id ="achievementMessage1">Some text in the Modal..</h1>
-                                <h3 id ="achievementMessage2">Some text in the Modal..</h3>
-                              </div>
-
+                                <h1 id="achievementMessage1">Some text in the Modal..</h1>
+                                <h3 id="achievementMessage2">Some text in the Modal..</h3>
                             </div>
 
                         </div>
+
 
                         <!-- row -->
                         <div class="row">
@@ -69,8 +69,12 @@
                                             <div class="widget-body-toolbar">
                                                 <div id="calendar-buttons">
                                                     <div class="btn-group">
-                                                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev"><i class="fa fa-chevron-left"></i></a>
-                                                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next"><i class="fa fa-chevron-right"></i></a>
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-prev">
+                                                            <i class="fa fa-chevron-left"></i>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="btn btn-default btn-xs" id="btn-next">
+                                                            <i class="fa fa-chevron-right"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,7 +96,9 @@
                                     <header>
                                         <h2> Task List </h2>
                                         <div class="btn-group pull-right">
-                                            <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px"><i class="fa fa-plus"></i></a>
+                                            <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
                                         </div>
                                     </header>
 
@@ -100,12 +106,14 @@
                                     <div>
                                         <div class="widget-body no-padding smart-form">
                                             <!-- content goes here -->
-                                            <h5 class="todo-group-title"><i class="fa fa-exclamation"></i> Your To-Do List</h5>
+                                            <h5 class="todo-group-title">
+                                                <i class="fa fa-exclamation"></i> Your To-Do List</h5>
                                             <ul id="sortable2" class="todo">
 
                                             </ul>
 
-                                            <h5 class="todo-group-title"><i class="fa fa-check"></i> Completed Items</h5>
+                                            <h5 class="todo-group-title">
+                                                <i class="fa fa-check"></i> Completed Items</h5>
                                             <ul id="sortable3" class="todo">
 
                                             </ul>
@@ -124,149 +132,151 @@
                         </div>
                         <!-- end row -->
 
-                        <!-- row -->
-                        <div class="row">
+                    </div>
 
+                    <!-- Modal div-->
+                    <div id="modal_add_task" style="display: none;" title="Add new Entity">
+                        <!-- widget div-->
+                        <div>
+                            <div class="widget-body">
+                                <!-- content goes here -->
+                                <form id="add-event-form">
+                                    <fieldset>
 
-                        </div>
-                        <!-- end row -->
-
-                        <!-- Modal div-->
-                        <div id="modal_add_task" style="display: none;" title="Add new Entity">
-                            <!-- widget div-->
-                            <div>
-                                <div class="widget-body">
-                                    <!-- content goes here -->
-                                    <form id="add-event-form">
-                                        <fieldset>
-
-                                            <!-- Title field-->
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <label>Name</label>
-                                                        <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Item name">
-                                                        <p class="note">40 characters max</p>
-                                                    </div>
+                                        <!-- Title field-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label>Name</label>
+                                                    <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Item name">
+                                                    <p class="note">40 characters max</p>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!-- Description field-->
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <label>Description</label>
-                                                        <textarea class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
-                                                        <p class="note">255 characters max</p>
-                                                    </div>
+                                        <!-- Description field-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
+                                                    <p class="note">255 characters max</p>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!-- Task Priority field-->
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <label>Select Task Priority</label>
-                                                        <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
-                                                            <label class="btn bg-color-red active">
+                                        <!-- Task Priority field-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label>Select Task Priority</label>
+                                                    <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
+                                                        <label class="btn bg-color-red active">
                                                             <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very High</p>
                                                         </label>
-                                                            <label class="btn bg-color-orange">
+                                                        <label class="btn bg-color-orange">
                                                             <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">High</p>
                                                         </label>
-                                                            <label class="btn bg-color-greenLight">
+                                                        <label class="btn bg-color-greenLight">
                                                             <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Medium</p>
                                                         </label>
-                                                            <label class="btn bg-color-blueLight">
+                                                        <label class="btn bg-color-blueLight">
                                                             <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Low</p>
                                                         </label>
-                                                            <label class="btn bg-color-darken">
+                                                        <label class="btn bg-color-darken">
                                                             <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very Low</p>
                                                         </label>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!-- Date and time field-->
-                                            <div class="form-group">
-                                                <div class="row">
+                                        <!-- Date and time field-->
+                                        <div class="form-group">
+                                            <div class="row">
 
-                                                    <div class="col-sm-12">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <label class="toggle">
-                                                                        <input name="checkbox-toggle" id="allday" type="checkbox" value="true">All Day event
-                                                                    </label>
-                                                            </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <label class="toggle">
+                                                                <input name="checkbox-toggle" id="allday" type="checkbox" value="true">All Day event
+                                                            </label>
                                                         </div>
                                                     </div>
-
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" id="datefrom" type="text" placeholder="Starts">
-                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" id="timefrom" type="text" placeholder="Time">
-                                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" id="dateto" type="text" placeholder="Ends">
-                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" id="timeto" type="text" placeholder="Time">
-                                                                <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
                                                 </div>
-                                            </div>
 
-                                        </fieldset>
-                                    </form>
-                                    <!-- end content -->
-                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" id="datefrom" type="text" placeholder="Starts">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" id="timefrom" type="text" placeholder="Time">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-clock-o"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" id="dateto" type="text" placeholder="Ends">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" id="timeto" type="text" placeholder="Time">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-clock-o"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                                <!-- end content -->
                             </div>
-                            <!-- end widget div -->
                         </div>
-                        <!-- #End of new add task modal-->
-
+                        <!-- end widget div -->
                     </div>
-                    <!-- END MAIN CONTENT -->
+                    <!-- #End of new add task modal-->
 
                 </div>
-                <!-- END MAIN PANEL -->
+                <!-- END MAIN CONTENT -->
+
         </div>
+        <!-- END MAIN PANEL -->
         <!-- the following are page-specific js -->
         <!--================================================== -->
 
@@ -336,9 +346,9 @@
                 var span = document.getElementsByClassName("close")[0];
 
                 // When the user clicks the button, open the modal
-                var popupModal = function(text1, text2) {
-                  $('#achievementMessage1').text(text1);
-                  $('#achievementMessage2').text(text2);
+                var popupModal = function (text1, text2) {
+                    $('#achievementMessage1').text(text1);
+                    $('#achievementMessage2').text(text2);
                     modal.style.display = "block";
                 }
 
@@ -358,25 +368,25 @@
 
 
                 //
-                var updateAchievementToDatabase = function (val){
-                  var objID = val._id;;
-                  console.log("updating /api/achievement/"+objID);
+                var updateAchievementToDatabase = function (val) {
+                    var objID = val._id;;
+                    console.log("updating /api/achievement/" + objID);
 
-                  $.ajax({
-                    url: "/api/achievement/"+objID,
-                    type: 'PUT',
-                    data: {
-                      name: val.name,
-                      description: val.description,
-                      id: val.id,
-                      achieved: true,
-                      dateAchieved: Date.now
-                    },
-                    success: function(data) {
-                      //alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
-                      popupModal("Achievement Complete: \"" + val.name + "\"", val.congratulatoryMessage);
-                    }
-                  });
+                    $.ajax({
+                        url: "/api/achievement/" + objID,
+                        type: 'PUT',
+                        data: {
+                            name: val.name,
+                            description: val.description,
+                            id: val.id,
+                            achieved: true,
+                            dateAchieved: Date.now
+                        },
+                        success: function (data) {
+                            //alert("Achievement Complete: \"" + val.name + "\"\n" + val.congratulatoryMessage);
+                            popupModal("Achievement Complete: \"" + val.name + "\"", val.congratulatoryMessage);
+                        }
+                    });
                 }
 
                 // Add event function
@@ -439,7 +449,7 @@
                 };
 
                 /* initialize the events
-                 -----------------------------------------------------------------*/
+                    -----------------------------------------------------------------*/
                 // Add events from the API
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
@@ -471,20 +481,20 @@
 
                 // Add event button
                 /*       $('#add-event').click(function () {
-                           var title = $('#title').val(),
-                               priority = $('input:radio[name=priority]:checked').val(),
-                               description = $('#description').val(),
-                               allday = $('#datefrom').val(),
-                               datefrom = $('#datefrom').val(),
-                               timefrom = $('#timefrom').val(),
-                               dateto = $('#dateto').val(),
-                               timeto = $('#timeto').val();
-
-                           addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
-                       }); */
+                            var title = $('#title').val(),
+                                priority = $('input:radio[name=priority]:checked').val(),
+                                description = $('#description').val(),
+                                allday = $('#datefrom').val(),
+                                datefrom = $('#datefrom').val(),
+                                timefrom = $('#timefrom').val(),
+                                dateto = $('#dateto').val(),
+                                timeto = $('#timeto').val();
+    
+                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
+                        }); */
 
                 /* initialise the calendar
-                 -----------------------------------------------------------------*/
+                    -----------------------------------------------------------------*/
 
                 $('#calendar').fullCalendar({
                     allDayDefault: true,
@@ -503,11 +513,11 @@
                         var title = prompt('Event Title:');
                         if (title) {
                             calendar.fullCalendar('renderEvent', {
-                                    title: title,
-                                    start: start,
-                                    end: end,
-                                    allDay: allDay
-                                }, true // make the event "stick"
+                                title: title,
+                                start: start,
+                                end: end,
+                                allDay: allDay
+                            }, true // make the event "stick"
                             );
                         }
                         calendar.fullCalendar('unselect');
