@@ -39,8 +39,8 @@ router.put('/task/:id', function(req, res, next) {
 });
 
 /* DELETE /tasks/:id */
-router.get('/task/:id', function(req, res, next) {
-    task.findByIdAndRemove(req.params.id, req.body, {new: true}, function (err, post) {
+router.delete('/task/:id', function(req, res, next) {
+    task.findByIdAndRemove(req.params.id, req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
     });

@@ -701,17 +701,17 @@
 
             var deleteItem = function (tid) {
                 console.log("delete task " + tid);
-                $.get("/api/task/"+tid, {});
-                // $.ajax({
-                //     url: "api/task/" + tid,
-                //     type: 'GET',
-                //     success: function () {
-                //         console.log("deleted");
-                //     },
-                //     error: function (error) {
-                //         console.log(error);
-                //     }
-                // });
+                 $.ajax({
+                     url: "api/task/" + tid,
+                     type: 'delete',
+                     data: tid,
+                     success: function () {
+                         console.log("deleted");
+                     },
+                     error: function (error) {
+                         console.log(error);
+                     }
+                 });
             }
         </script>
 
