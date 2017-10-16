@@ -496,7 +496,7 @@
                             var html = $(
                                 '<li class="loadedListItem" id="' + val._id + '"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.start +
-                                '</span> </p> <button class="icon-button" onclick="deleteItem(' + val._id + ')" style="float:right;"><i class="fa fa-times"></i></button> </li>').prependTo('ul#sortable2');
+                                '</span> </p> <button class="icon-button" onclick="deleteItem(\'' + val._id + '\')" style="float:right;"><i class="fa fa-times"></i></button> </li>').prependTo('ul#sortable2');
                             initDrag(html, val.title, val.description, val.allday, 0, 0);
                         });
                     });
@@ -701,16 +701,17 @@
 
             var deleteItem = function (tid) {
                 console.log("delete task " + tid);
-                $.ajax({
-                    url: "api/task/" + tid,
-                    type: 'DELETE',
-                    success: function () {
-                        console.log("deleted");
-                    },
-                    error: function() {
-                        console.log(error);
-                    }
-                });
+                $.get("/api/task/"+tid, {});
+                // $.ajax({
+                //     url: "api/task/" + tid,
+                //     type: 'GET',
+                //     success: function () {
+                //         console.log("deleted");
+                //     },
+                //     error: function (error) {
+                //         console.log(error);
+                //     }
+                // });
             }
         </script>
 

@@ -14,12 +14,12 @@ router.get('/task/', function(req, res, next) {
 });
 
 /* GET /tasks/id */
-router.get('/task/:id', function(req, res, next) {
-    task.findById(req.params.id, function (err, post) {
-        if (err) return next(err);
-        res.json(post);
-    });
-});
+// router.get('/task/:id', function(req, res, next) {
+//     task.findById(req.params.id, function (err, post) {
+//         if (err) return next(err);
+//         res.json(post);
+//     });
+// });
 
 /* POST /tasks */
 router.post('/task/', function(req, res, next) {
@@ -39,7 +39,7 @@ router.put('/task/:id', function(req, res, next) {
 });
 
 /* DELETE /tasks/:id */
-router.delete('/task/:id', function(req, res, next) {
+router.get('/task/:id', function(req, res, next) {
     task.findByIdAndRemove(req.params.id, req.body, {new: true}, function (err, post) {
         if (err) return next(err);
         res.json(post);
