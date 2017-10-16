@@ -148,7 +148,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <label>Name</label>
-                                                    <input class="form-control" id="title" name="title" maxlength="40" type="text" placeholder="Item name">
+                                                    <input id="title" name="title" class="form-control"  maxlength="40" type="text" placeholder="Task title">
                                                     <p class="note">40 characters max</p>
                                                 </div>
                                             </div>
@@ -159,7 +159,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <label>Description</label>
-                                                    <textarea class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
+                                                    <textarea id="description" name="description" class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
                                                     <p class="note">255 characters max</p>
                                                 </div>
                                             </div>
@@ -171,8 +171,13 @@
                                                 <div class="col-sm-12">
                                                     <label>Select Task Priority</label>
                                                     <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
+                                                        <label class="btn bg-color-grayDark active">
+                                                            <input type="radio" name="priority" id="option0" value="bg-color-darken txt-color-white"checked>
+                                                            <i class="fa fa-check txt-color-black"></i>
+                                                            <p class="txt-color-white">none</p>
+                                                        </label>
                                                         <label class="btn bg-color-red active">
-                                                            <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white" checked>
+                                                            <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very High</p>
                                                         </label>
@@ -209,7 +214,7 @@
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <label class="toggle">
-                                                                <input name="checkbox-toggle" id="allday" type="checkbox" value="true">All Day event
+                                                                <input name="checkbox-toggle" id="allday" type="checkbox" value="false">All Day event
                                                             </label>
                                                         </div>
                                                     </div>
@@ -218,10 +223,10 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <input class="form-control" id="datefrom" type="text" placeholder="Starts">
-                                                            <span class="input-group-addon">
-                                                                <i class="fa fa-calendar"></i>
-                                                            </span>
+                                                                <input class="form-control" id="datefrom" type="date">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -229,7 +234,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <input class="form-control" id="timefrom" type="text" placeholder="Time">
+                                                            <input class="form-control" id="timefrom" type="time">
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o"></i>
                                                             </span>
@@ -240,7 +245,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <input class="form-control" id="dateto" type="text" placeholder="Ends">
+                                                            <input class="form-control" id="dateto" type="date">
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-calendar"></i>
                                                             </span>
@@ -251,18 +256,16 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <input class="form-control" id="timeto" type="text" placeholder="Time">
+                                                            <input name="Time to" class="form-control" id="timeto" type="time">
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-clock-o"></i>
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </div>
-
 
                                             </div>
                                         </div>
-
                                     </fieldset>
                                 </form>
                                 <!-- end content -->
@@ -293,6 +296,42 @@
 
                 pageSetUp();
 
+                var errorClass = 'invalid';
+                var errorElement = 'em';
+                // Form validation
+                var $AddTaskModel = $("#modal_add_task").validate({
+                    errorClass		: errorClass,
+                    errorElement	: errorElement,
+                    highlight: function(element) {
+                        $(element).parent().removeClass('state-success').addClass("state-error");
+                        $(element).removeClass('valid');
+                    },
+                    unhighlight: function(element) {
+                        $(element).parent().removeClass("state-error").addClass('state-success');
+                        $(element).addClass('valid');
+                    },
+                    // Rules for form validation
+                    rules : {
+                        title : {
+                            required : true,
+                            text : true
+                        }
+                    },
+
+                    // Messages for form validation
+                    messages : {
+                        title : {
+                            required : 'Please enter your a title',
+                            title : 'Please enter a title for the task'
+                        }
+                    },
+
+                    // Do not change code below
+                    errorPlacement : function(error, element) {
+                        error.insertAfter(element.parent());
+                    }
+                });
+
                 "use strict";
 
                 var date = new Date();
@@ -315,7 +354,7 @@
                     if (end === "no time") {
                         end = "11:00"
                     }
-                    console.log("all day: " + allDay);
+                    //console.log("all day: " + allDay);
                     var eventObject = {
                         title: title,
                         description: description,
@@ -397,12 +436,9 @@
                     description = description.length === 0 ? "No Description for event" : description;
                     priority = priority.length === 0 ? "none" : priority;
                     allday = allday == null ? false : true;
-                    // Validation neede here
-                    datefrom = datefrom == null ? "2017-01-01" : datefrom;
-                    timefrom = timefrom == null ? "12:00:01" : timefrom;
-                    dateto = dateto == null ? "2017-01-01" : dateto;
-                    timeto = timeto == null ? "12:00:01" : timeto;
-                    console.log("new date from:" + datefrom);
+                    // Validation needed here
+                    console.log("info" + allday);
+
                     if (allday == true) {
                         /* Post the event to the API */
                         $.post("/api/task/", {
@@ -455,11 +491,13 @@
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
+                            if(val.start === null){
+                                val.start = "No date for task";
+                            }
                             var html = $(
                                 '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
-                                val.title + ' </a> <span class="date">' + val.updated +
+                                val.title + ' </a> <span class="date">' + val.start +
                                 '</span> </p> </li>').prependTo('ul#sortable2');
-                            console.log("Allday in fetchevent: " + val.allday);
                             initDrag(html, val.title, val.description, val.allday, 0, 0);
                         });
                     });
@@ -472,27 +510,6 @@
 
                 //removeEvents();
                 fetchEvent();
-
-
-                // Make items draggable
-                // $('#sortable2 > li').each(function () {
-                //     initDrag($(this));
-                // });
-                // This seems like it can be manually deleted, because the addevent is called from the modal function instead.
-
-                // Add event button
-                /*       $('#add-event').click(function () {
-                            var title = $('#title').val(),
-                                priority = $('input:radio[name=priority]:checked').val(),
-                                description = $('#description').val(),
-                                allday = $('#datefrom').val(),
-                                datefrom = $('#datefrom').val(),
-                                timefrom = $('#timefrom').val(),
-                                dateto = $('#dateto').val(),
-                                timeto = $('#timeto').val();
-    
-                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
-                        }); */
 
                 /* initialise the calendar
                     -----------------------------------------------------------------*/
@@ -623,9 +640,6 @@
 
                 })
 
-
-
-
                 // count tasks
                 function countTasks() {
                     $('.todo-group-title').each(function () {
@@ -665,18 +679,17 @@
                                 dateto = $('#dateto').val(),
                                 timeto = $('#timeto').val();
 
-                            addEvent(title, priority, description, allday, datefrom,
-                                timefrom, dateto, timeto);
+                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
                             // location.reload();
 
-
                         }
                     }]
                 });
 
+                // TODO Remove fields if they cant be entered
                 $('#allday').change(function () {
                     if ($(this).attr('checked')) {
                         $(this).val('true');
@@ -684,32 +697,6 @@
                         $(this).val('false');
                     }
                 });
-
-                //Timepicker element in the add task modal
-                $('#timepicker').timepicker();
-
-                // Date Range Picker used in the add task modal
-                $("#datefrom").datepicker({
-                    changeMonth: false,
-                    numberOfMonths: 1,
-                    prevText: '<i class="fa fa-chevron-left"></i>',
-                    nextText: '<i class="fa fa-chevron-right"></i>',
-                    onClose: function (selectedDate) {
-                        $("#to").datepicker("option", selectedDate);
-                    }
-                })
-
-                // Date Range Picker used in the add task modal
-                $("#dateto").datepicker({
-                    defaultDate: "+1w",
-                    changeMonth: false,
-                    numberOfMonths: 1,
-                    prevText: '<i class="fa fa-chevron-left"></i>',
-                    nextText: '<i class="fa fa-chevron-right"></i>',
-                    onClose: function (selectedDate) {
-                        $("#to").datepicker("option", selectedDate);
-                    }
-                })
 
             });
         </script>
