@@ -148,7 +148,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <label>Name</label>
-                                                    <input id="title" name="title" class="form-control"  maxlength="40" type="text" placeholder="Task title">
+                                                    <input id="title" name="title" class="form-control" maxlength="40" type="text" placeholder="Task title">
                                                     <p class="note">40 characters max</p>
                                                 </div>
                                             </div>
@@ -159,7 +159,8 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <label>Description</label>
-                                                    <textarea id="description" name="description" class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
+                                                    <textarea id="description" name="description" class="form-control" placeholder="Item description" rows="3" maxlength="255"
+                                                        id="description"></textarea>
                                                     <p class="note">255 characters max</p>
                                                 </div>
                                             </div>
@@ -223,8 +224,8 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                                <input class="form-control" id="datefrom" type="text">
-                                                                <span class="input-group-addon">
+                                                            <input class="form-control" id="datefrom" type="text">
+                                                            <span class="input-group-addon">
                                                                     <i class="fa fa-calendar"></i>
                                                                 </span>
                                                         </div>
@@ -295,7 +296,7 @@
             $(document).ready(function () {
 
                 pageSetUp();
-                
+
                 "use strict";
 
                 var date = new Date();
@@ -393,16 +394,22 @@
                 }
 
                 // Add event function
-                var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto, timeto) {
+                var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
+                    timeto) {
                     console.log("Date from in addEvent: " + datefrom);
                     title = title.length === 0 ? "Untitled Event" : title;
-                    description = description.length === 0 ? "No Description for event" : description;
+                    description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "none" : priority;
                     allday = allday == null ? false : true;
                     // Validation needed here
-                    console.log("info" + allday);
-
-                    if (allday == true) {
+                    if (datefrom == null) {
+                        $.post("/api/task/", {
+                            title: title,
+                            description: description,
+                            priority: priority,
+                            hasDate: false
+                        });
+                    } else if (allday == true) {
                         /* Post the event to the API */
                         $.post("/api/task/", {
                             title: title,
@@ -410,7 +417,8 @@
                             priority: priority,
                             allday: allday,
                             start: datefrom,
-                            end: dateto
+                            end: dateto,
+                            hasDate: true
                         });
                     } else {
                         /* Post the event to the API */
@@ -422,7 +430,8 @@
                             start: datefrom,
                             timefrom: timefrom,
                             end: dateto,
-                            timeto: timeto
+                            timeto: timeto,
+                            hasDate: true
                         });
                     }
 
@@ -454,7 +463,7 @@
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
-                            if(val.start === null){
+                            if (val.start === null) {
                                 val.start = "No date for task";
                             }
                             var html = $(
@@ -482,23 +491,25 @@
                     firstDay: 0,
                     header: hdr,
                     editable: true,
+                    timezone: "Pacific/Auckland",
                     droppable: true, // this allows things to be dropped onto the calendar
                     eventSources: [{
-                        url: '/api/task/',
+                        url: '/api/calendar/',
                         error: function () {
                             alert('there was an error while fetching events!');
                         },
                     }],
 
-                    select: function (start, end, allDay) {
+                    select: function (start, end, allDay, hasDate) {
                         var title = prompt('Event Title:');
+                        console.log("hasDate: " + hasDate);
                         if (title) {
                             calendar.fullCalendar('renderEvent', {
-                                title: title,
-                                start: start,
-                                end: end,
-                                allDay: allDay
-                            }, true // make the event "stick"
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    allDay: allDay
+                                }, true // make the event "stick"
                             );
                         }
                         calendar.fullCalendar('unselect');
@@ -642,7 +653,8 @@
                                 dateto = $('#dateto').datepicker('getDate'),
                                 timeto = $('#timeto').val();
 
-                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
+                            addEvent(title, priority, description, allday, datefrom,
+                                timefrom, dateto, timeto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");

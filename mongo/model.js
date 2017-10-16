@@ -22,7 +22,8 @@ var taskschema = new mongoose.Schema({
     updated: { type: Date, default: Date.now },
     start: { type: Date, default: Date.now },
     end: { type: Date, default: Date.now },
-    allday: Boolean
+    allday: Boolean,
+    hasDate: Boolean
 });
 
 var task = mongoose.model('task', taskschema);
