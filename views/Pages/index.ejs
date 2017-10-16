@@ -148,7 +148,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <label>Name</label>
-                                                    <input id="title" name="title" class="form-control"  maxlength="40" type="text" placeholder="Task title">
+                                                    <input id="title" name="title" class="form-control" maxlength="40" type="text" placeholder="Task title">
                                                     <p class="note">40 characters max</p>
                                                 </div>
                                             </div>
@@ -159,7 +159,8 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <label>Description</label>
-                                                    <textarea id="description" name="description" class="form-control" placeholder="Item description" rows="3" maxlength="255" id="description"></textarea>
+                                                    <textarea id="description" name="description" class="form-control" placeholder="Item description" rows="3" maxlength="255"
+                                                        id="description"></textarea>
                                                     <p class="note">255 characters max</p>
                                                 </div>
                                             </div>
@@ -172,7 +173,7 @@
                                                     <label>Select Task Priority</label>
                                                     <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
                                                         <label class="btn bg-color-grayDark active">
-                                                            <input type="radio" name="priority" id="option0" value="bg-color-darken txt-color-white"checked>
+                                                            <input type="radio" name="priority" id="option0" value="bg-color-darken txt-color-white" checked>
                                                             <i class="fa fa-check txt-color-black"></i>
                                                             <p class="txt-color-white">none</p>
                                                         </label>
@@ -223,10 +224,10 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                                <input class="form-control" id="datefrom" type="date">
-                                                                <span class="input-group-addon">
-                                                                    <i class="fa fa-calendar"></i>
-                                                                </span>
+                                                            <input class="form-control" id="datefrom" type="date">
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -300,34 +301,34 @@
                 var errorElement = 'em';
                 // Form validation
                 var $AddTaskModel = $("#modal_add_task").validate({
-                    errorClass		: errorClass,
-                    errorElement	: errorElement,
-                    highlight: function(element) {
+                    errorClass: errorClass,
+                    errorElement: errorElement,
+                    highlight: function (element) {
                         $(element).parent().removeClass('state-success').addClass("state-error");
                         $(element).removeClass('valid');
                     },
-                    unhighlight: function(element) {
+                    unhighlight: function (element) {
                         $(element).parent().removeClass("state-error").addClass('state-success');
                         $(element).addClass('valid');
                     },
                     // Rules for form validation
-                    rules : {
-                        title : {
-                            required : true,
-                            text : true
+                    rules: {
+                        title: {
+                            required: true,
+                            text: true
                         }
                     },
 
                     // Messages for form validation
-                    messages : {
-                        title : {
-                            required : 'Please enter your a title',
-                            title : 'Please enter a title for the task'
+                    messages: {
+                        title: {
+                            required: 'Please enter your a title',
+                            title: 'Please enter a title for the task'
                         }
                     },
 
                     // Do not change code below
-                    errorPlacement : function(error, element) {
+                    errorPlacement: function (error, element) {
                         error.insertAfter(element.parent());
                     }
                 });
@@ -404,11 +405,9 @@
                     }
                 }
 
-
-
                 //
                 var updateAchievementToDatabase = function (val) {
-                    var objID = val._id;;
+                    var objID = val._id;
                     console.log("updating /api/achievement/" + objID);
 
                     $.ajax({
@@ -491,13 +490,13 @@
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
-                            if(val.start === null){
+                            if (val.start === null) {
                                 val.start = "No date for task";
                             }
                             var html = $(
-                                '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                                '<li class="loadedListItem" id="' + val._id + '"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.start +
-                                '</span> </p> </li>').prependTo('ul#sortable2');
+                                '</span> </p> <button class="icon-button" onclick="deleteItem(' + val._id + ')" style="float:right;"><i class="fa fa-times"></i></button> </li>').prependTo('ul#sortable2');
                             initDrag(html, val.title, val.description, val.allday, 0, 0);
                         });
                     });
@@ -699,6 +698,20 @@
                 });
 
             });
+
+            var deleteItem = function (tid) {
+                console.log("delete task " + tid);
+                $.ajax({
+                    url: "api/task/" + tid,
+                    type: 'DELETE',
+                    success: function () {
+                        console.log("deleted");
+                    },
+                    error: function() {
+                        console.log(error);
+                    }
+                });
+            }
         </script>
 
 </body>
