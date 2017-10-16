@@ -1,0 +1,81 @@
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id='achievementDiv'>
+    <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+        <header>
+            <span class="widget-icon"> <i class="fa fa-star"></i> </span>
+            <h2>Leadboard</h2>
+        </header>
+        <div>
+
+            <!-- widget content -->
+            <div class="widget-body no-padding">
+
+              <select class="div-toggle" data-target=".my-info-1">
+                <option value="daily" data-show=".daily">Daily</option>
+                <option value="weekly" data-show=".weekly">Weekly</option>
+              </select>
+
+              <div class="my-info-1">
+                //daily table
+                <div class="daily hide">
+                  <table>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Name</th>
+                      <th>Score %</th>
+                    </tr>
+                    <tr>
+                      <td>Alfreds Futterkiste</td>
+                      <td>Maria Anders</td>
+                      <td>Germany</td>
+                    </tr>
+                    <tr>
+                      <td>Centro comercial Moctezuma</td>
+                      <td>Francisco Chang</td>
+                      <td>Mexico</td>
+                    </tr>
+                    <tr>
+                      <td>Ernst Handel</td>
+                      <td>Roland Mendel</td>
+                      <td>Austria</td>
+                    </tr>
+                    <tr>
+                      <td>Island Trading</td>
+                      <td>Helen Bennett</td>
+                      <td>UK</td>
+                    </tr>
+                    <tr>
+                      <td>Laughing Bacchus Winecellars</td>
+                      <td>Yoshi Tannamuri</td>
+                      <td>Canada</td>
+                    </tr>
+                    <tr>
+                      <td>Magazzini Alimentari Riuniti</td>
+                      <td>Giovanni Rovelli</td>
+                      <td>Italy</td>
+                    </tr>
+                  </table>
+                </div>
+
+
+                <div class="weekly hide">A pome is...</div>
+              </div>
+
+            </div>
+            <!-- end widget content -->
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  $(document).on('change', '.div-toggle', function() {
+    var target = $(this).data('target');
+    var show = $("option:selected", this).data('show');
+    $(target).children().addClass('hide');
+    $(show).removeClass('hide');
+  });
+  $(document).ready(function(){
+      $('.div-toggle').trigger('change');
+  });
+</script>
