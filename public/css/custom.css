@@ -12,12 +12,21 @@ This is the last CSS file which is included. This should overwrite the rest of t
  td, th {
      border: 1px solid #dddddd;
      text-align: left;
+     font-size:14px;
      padding: 8px;
  }
 
  tr:nth-child(even) {
      background-color: #dddddd;
  }
+
+select {
+  width:150px;
+  height:25px;
+  margin: 5px;
+  font-size:14px;
+ }
+
 
 /* datepicker calendar modal is on top */
 #ui-datepicker-div{
