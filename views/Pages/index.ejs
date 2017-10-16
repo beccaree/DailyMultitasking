@@ -313,12 +313,7 @@
                 var initDrag = function (e, title, description, allDay, start, end) {
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
-                    if (start === "no time") {
-                        start = "09:00";
-                    }
-                    if (end === "no time") {
-                        end = "11:00";
-                    }
+
                     //console.log("all day: " + allDay);
                     var eventObject = {
                         title: title,
@@ -463,8 +458,8 @@
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
-                            if (val.start === null) {
-                                val.start = "No date for task";
+                            if (!val.hasDate) {
+                                val.start = "Not Scheduled";
                             }
                             var html = $(
                                 '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
