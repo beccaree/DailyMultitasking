@@ -310,7 +310,7 @@
                     right: 'prev,today,next'
                 };
 
-                var initDrag = function (e, title, description, allDay, start, end) {
+                var initDrag = function (e, title, description, allDay, start, end, id) {
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
 
@@ -319,7 +319,8 @@
                         description: description,
                         allDay: allDay,
                         time: start,
-                        duration: "02:00"
+                        duration: "02:00",
+                        id: id
                     };
                     // store the Event Object in the DOM element so we can get to it later
                     e.data('event', eventObject);
@@ -470,20 +471,15 @@
                             var html = $(
                                 '<li class="loadedListItem" id="' + val._id +
                                 '"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
-                                val.title + ' </a> <span class="date">' + val.start +
-                                '</span><span id="tester" class="line" style="border-top: 4px solid  ' +
+                                val.title + ' </a></br><i class="date">' + val.start +
+                                '</i><span id="tester" class="line" style="border-top: 4px solid  ' +
                                 borderColor +
                                 '"></span></p><button class="icon-button" onclick="deleteItem(\'' +
                                 val._id +
                                 '\')" style="float:right;margin-top:15px;"><i class="fa fa-times fa-lg"></i></button><select class="prioSelect"><option value="A"' +
-                                noneSelected + '>No Priority</option><option value="B"' +
-                                highSelected +
-                                '>High Priority</option><option value="C"' +
-                                medSelected +
-                                '>Medium Priority</option><option value="D"' +
-                                lowSelected + '>Low Priority</option></select></li>'
+                                noneSelected + '>No Priority</option><option value="B"' + highSelected + '>High Priority</option><option value="C"' + medSelected + '>Medium Priority</option><option value="D"' + lowSelected + '>Low Priority</option></select></li>'
                             ).prependTo('ul#sortable2');
-                            initDrag(html, val.title, val.description, val.allday, 0, 0);
+                            initDrag(html, val.title, val.description, val.allday, val.start, val.end, val._id);
                         });
                     });
                 };
@@ -522,12 +518,18 @@
                     editable: true,
                     timezone: "Pacific/Auckland",
                     droppable: true, // this allows things to be dropped onto the calendar
+                    drop: function(date) {
+                    // retrieve the dropped element's stored Event Object
+                    var originalEventObject = $(this).data();
+                        $('#' + originalEventObject.event.id + " p i").replaceWith( '<span class=\"date\"> ' + date.toString() + '</span>' );
+                    },
                     eventSources: [{
                         url: '/api/calendar/',
                         error: function () {
                             alert('there was an error while fetching events!');
                         },
                     }],
+
 
                     select: function (start, end, allDay, hasDate) {
                         var title = prompt('Event Title:');
@@ -546,9 +548,7 @@
 
                     eventRender: function (event, element) {
                         if (!event.title == "") {
-                            element.find('.fc-title').append("<br/><span class='ultra-light'>" +
-                                event.description +
-                                "</span>");
+                            element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description + "</span>");
                         }
                     },
 
