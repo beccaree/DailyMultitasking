@@ -489,16 +489,10 @@
                     editable: true,
                     timezone: "Pacific/Auckland",
                     droppable: true, // this allows things to be dropped onto the calendar
-                    drop: function(date, jsEvent, ui, resourceId ) {
-
+                    drop: function(date) {
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data();
-
-                    // we need to copy it, so that multiple events don't have a reference to the same object
-
-                    // assign it the date that was reported
-
-                        console.log("Dropped on:" + jsEvent + " date:  " + date.toString() + " jsEvent: " + jsEvent + " Resid: " + resourceId + " data " + originalEventObject );
+                        $('#' + originalEventObject.event.id + " p span").replaceWith( '<span class=\"date\"> ' + date.toString() + '</span>' );
                     },
                     eventSources: [{
                         url: '/api/calendar/',
@@ -506,6 +500,7 @@
                             alert('there was an error while fetching events!');
                         },
                     }],
+
 
                     select: function (start, end, allDay, hasDate) {
                         var title = prompt('Event Title:');
