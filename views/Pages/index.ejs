@@ -668,7 +668,7 @@
 
                             var datefrom = $('#datefrom').datepicker('getDate');
                             var timefrom = $('#timefrom').val();
-                            if (datefrom !== null) {
+                            if (timefrom === null) {
                                 var timearrayfrom = timefrom.split(":");
                                 datefrom.setHours(timearrayfrom[0]);
                                 datefrom.setMinutes(timearrayfrom[1]);
@@ -676,7 +676,7 @@
 
                             var dateto = $('#dateto').datepicker('getDate');
                             var timeto = $('#timeto').val();
-                            if (dateto !== null) {
+                            if (timeto === null) {
                                 var timearrayto = timeto.split(":");
                                 dateto.setHours(timearrayto[0]);
                                 dateto.setMinutes(timearrayto[1]);
