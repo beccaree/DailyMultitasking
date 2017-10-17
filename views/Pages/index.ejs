@@ -668,7 +668,7 @@
 
                             var datefrom = $('#datefrom').datepicker('getDate');
                             var timefrom = $('#timefrom').val();
-                            if (timefrom === null) {
+                            if ((timefrom !== null) && (datefrom !== null)) {
                                 var timearrayfrom = timefrom.split(":");
                                 datefrom.setHours(timearrayfrom[0]);
                                 datefrom.setMinutes(timearrayfrom[1]);
@@ -676,7 +676,7 @@
 
                             var dateto = $('#dateto').datepicker('getDate');
                             var timeto = $('#timeto').val();
-                            if (timeto === null) {
+                            if ((timeto !== null) && (dateto !== null)) {
                                 var timearrayto = timeto.split(":");
                                 dateto.setHours(timearrayto[0]);
                                 dateto.setMinutes(timearrayto[1]);
@@ -689,14 +689,12 @@
                             var priority = $('input:radio[name=priority]:checked').val();
                             var description = $('#description').val();
                             var allday = $('#allday:checked').val();
-                            var datefrom = datefrom;
-                            var dateto = dateto;
 
                             addEvent(title, priority, description, allday, datefrom, dateto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
-                            // $(this).dialog("close");
-                            // location.reload();
+                            $(this).dialog("close");
+                            location.reload();
 
                         }
                     }]
