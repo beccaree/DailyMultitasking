@@ -314,7 +314,6 @@
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
 
-                    //console.log("all day: " + allDay);
                     var eventObject = {
                         title: title,
                         description: description,
@@ -335,7 +334,6 @@
                 };
 
                 var callback = function () {
-                    console.log("in callback")
                     $("#modal_add_task").dialog("close");
                     location.reload();
                 }
@@ -391,11 +389,11 @@
                 var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
                     timeto) {
                     console.log("Date from in addEvent: " + datefrom);
+                    console.log("timefrom " + timefrom);
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "none" : priority;
                     allday = allday == null ? false : true;
-                    console.log(priority);
                     // Validation needed here
                     if (datefrom == null) {
                         $.post("/api/task/", {
@@ -430,17 +428,6 @@
                         });
                     }
 
-                    /* Add the event to the HTML list */
-                    // var html = $(
-                    //     '<li><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
-                    //     title +
-                    //     ' </a> <span class="date">Nov 23, 2013</span> </p><select class="prioSelect" style="float:right; margin-top:10px;"><option value="A">No Priority</option><option value="B">High Priority</option><option value="C">Medium Priority</option><option value="D">Low Priority</option></select></li>'
-                    // ).prependTo(
-                    //     'ul#sortable2').hide().fadeIn();
-
-                    // $("#sortable2").effect("highlight", 800);
-                    // initDrag(html, title, description, allday, timefrom, timeto);
-
                     //check if this is the first item that has been created
                     $.getJSON("api/achievement/", function (data) {
                         $.each(data, function (key, val) {
@@ -460,7 +447,6 @@
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
-                            console.log("prio in fetch " + val.prio);
                             var borderColor = "white";
                             var noneSelected = 'selected="selected"';
                             var highSelected = '';
@@ -474,7 +460,6 @@
                                 noneSelected = '';
                                 highSelected = 'selected="selected"';
                             } else if (val.prio === "medium") {
-                                console.log("we are in medium");
                                 borderColor = "#ff944d;";
                                 noneSelected = '';
                                 medSelected = 'selected="selected"';
@@ -483,7 +468,6 @@
                                 noneSelected = '';
                                 lowSelected = 'selected="selected"';
                             }
-                            console.log(borderColor);
                             var html = $(
                                 '<li class="loadedListItem" id="' + val._id +
                                 '"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
@@ -601,18 +585,6 @@
                     $('#calendar').fullCalendar('changeView', 'agendaDay');
                 });
 
-
-                // $(".js-status-update a").click(function () {
-                //     var selText = $(this).text();
-                //     var $this = $(this);
-                //     $this.parents('.btn-group').find('.dropdown-toggle').html(selText +
-                //         ' <span class="caret"></span>');
-                //     $this.parents('.dropdown-menu').find('li').removeClass('active');
-                //     $this.parent().addClass('active');
-                // });
-
-
-                //TODO: List prioritising
 
                 // initialize sortable
                 $(function () {
@@ -765,7 +737,6 @@
             });
 
             var deleteItem = function (tid) {
-                console.log("delete task " + tid);
                 $.ajax({
                     url: "api/task/" + tid,
                     type: 'delete',
