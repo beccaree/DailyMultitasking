@@ -80,7 +80,7 @@ h1.page-title {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 40%;
 }
 
 /* The Close Button */
@@ -97,3 +97,28 @@ h1.page-title {
     text-decoration: none;
     cursor: pointer;
 }
+
+.icon-button {
+    background-color: Transparent;
+     background-repeat:no-repeat;
+     border: none;
+     cursor:pointer;
+     overflow: hidden;
+     outline:none;
+   }
+
+.prioSelect {
+    float:right;
+    margin-top:12px;
+    margin-right: 10px;
+}
+
+.todo>li>p>:first-child {
+    color: #626262;
+    font-size: large;
+}
+
+span.line{
+    display:block;
+    width:120px;
+ }
