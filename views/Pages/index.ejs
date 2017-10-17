@@ -96,7 +96,7 @@
                                     <header>
                                         <h2> Task List </h2>
                                         <div class="btn-group pull-right">
-                                            <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px">
+                                            <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:12px">
                                                 <i class="fa fa-plus"></i>
                                             </a>
                                         </div>
@@ -177,31 +177,31 @@
                                                             <i class="fa fa-check txt-color-black"></i>
                                                             <p class="txt-color-white">none</p>
                                                         </label>
-                                                        <label class="btn bg-color-red active">
+                                                        <!-- <label class="btn bg-color-red active">
                                                             <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very High</p>
-                                                        </label>
-                                                        <label class="btn bg-color-orange">
+                                                        </label> -->
+                                                        <label class="btn bg-color-red">
                                                             <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">High</p>
                                                         </label>
-                                                        <label class="btn bg-color-greenLight">
+                                                        <label class="btn bg-color-orange">
                                                             <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Medium</p>
                                                         </label>
-                                                        <label class="btn bg-color-blueLight">
+                                                        <label class="btn bg-color-greenLight">
                                                             <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Low</p>
                                                         </label>
-                                                        <label class="btn bg-color-darken">
+                                                        <!-- <label class="btn bg-color-darken">
                                                             <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very Low</p>
-                                                        </label>
+                                                        </label> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -433,7 +433,9 @@
                     /* Add the event to the HTML list */
                     var html = $(
                         '<li><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
-                        title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo(
+                        title +
+                        ' </a> <span class="date">Nov 23, 2013</span> </p><select class="prioSelect" style="float:right; margin-top:10px;"><option value="A">No Priority</option><option value="B">High Priority</option><option value="C">Medium Priority</option><option value="D">Low Priority</option></select></li>'
+                    ).prependTo(
                         'ul#sortable2').hide().fadeIn();
 
                     // $("#sortable2").effect("highlight", 800);
@@ -464,7 +466,8 @@
                             var html = $(
                                 '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.start +
-                                '</span> </p> </li>').prependTo('ul#sortable2');
+                                '</span></p> <select class="prioSelect" style="float:right;margin-top:12px;"><option value="A">No Priority</option><option value="B">High Priority</option><option value="C">Medium Priority</option><option value="D">Low Priority</option></select></li>'
+                            ).prependTo('ul#sortable2');
                             initDrag(html, val.title, val.description, val.allday, 0, 0);
                         });
                     });
