@@ -13,6 +13,13 @@ router.get('/task/', function(req, res, next) {
     });
 });
 
+router.get('/calendar/', function(req, res, next) {
+    task.find({ hasDate: true },function (err, task) {
+        if (err) return next(err);
+        res.json(task);
+    });
+});
+
 /* GET /tasks/id */
 // router.get('/task/:id', function(req, res, next) {
 //     task.findById(req.params.id, function (err, post) {

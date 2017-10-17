@@ -224,10 +224,10 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <input class="form-control" id="datefrom" type="date">
+                                                            <input class="form-control" id="datefrom" type="text">
                                                             <span class="input-group-addon">
-                                                                <i class="fa fa-calendar"></i>
-                                                            </span>
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -246,7 +246,7 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <div class="input-group">
-                                                            <input class="form-control" id="dateto" type="date">
+                                                            <input class="form-control" id="dateto" type="text">
                                                             <span class="input-group-addon">
                                                                 <i class="fa fa-calendar"></i>
                                                             </span>
@@ -297,42 +297,6 @@
 
                 pageSetUp();
 
-                var errorClass = 'invalid';
-                var errorElement = 'em';
-                // Form validation
-                var $AddTaskModel = $("#modal_add_task").validate({
-                    errorClass: errorClass,
-                    errorElement: errorElement,
-                    highlight: function (element) {
-                        $(element).parent().removeClass('state-success').addClass("state-error");
-                        $(element).removeClass('valid');
-                    },
-                    unhighlight: function (element) {
-                        $(element).parent().removeClass("state-error").addClass('state-success');
-                        $(element).addClass('valid');
-                    },
-                    // Rules for form validation
-                    rules: {
-                        title: {
-                            required: true,
-                            text: true
-                        }
-                    },
-
-                    // Messages for form validation
-                    messages: {
-                        title: {
-                            required: 'Please enter your a title',
-                            title: 'Please enter a title for the task'
-                        }
-                    },
-
-                    // Do not change code below
-                    errorPlacement: function (error, element) {
-                        error.insertAfter(element.parent());
-                    }
-                });
-
                 "use strict";
 
                 var date = new Date();
@@ -349,12 +313,7 @@
                 var initDrag = function (e, title, description, allDay, start, end) {
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
-                    if (start === "no time") {
-                        start = "09:00";
-                    }
-                    if (end === "no time") {
-                        end = "11:00"
-                    }
+
                     //console.log("all day: " + allDay);
                     var eventObject = {
                         title: title,
@@ -432,13 +391,18 @@
                     timeto) {
                     console.log("Date from in addEvent: " + datefrom);
                     title = title.length === 0 ? "Untitled Event" : title;
-                    description = description.length === 0 ? "No Description for event" : description;
+                    description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "none" : priority;
                     allday = allday == null ? false : true;
                     // Validation needed here
-                    console.log("info" + allday);
-
-                    if (allday == true) {
+                    if (datefrom == null) {
+                        $.post("/api/task/", {
+                            title: title,
+                            description: description,
+                            priority: priority,
+                            hasDate: false
+                        });
+                    } else if (allday == true) {
                         /* Post the event to the API */
                         $.post("/api/task/", {
                             title: title,
@@ -446,7 +410,8 @@
                             priority: priority,
                             allday: allday,
                             start: datefrom,
-                            end: dateto
+                            end: dateto,
+                            hasDate: true
                         });
                     } else {
                         /* Post the event to the API */
@@ -458,7 +423,8 @@
                             start: datefrom,
                             timefrom: timefrom,
                             end: dateto,
-                            timeto: timeto
+                            timeto: timeto,
+                            hasDate: true
                         });
                     }
 
@@ -490,8 +456,8 @@
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
-                            if (val.start === null) {
-                                val.start = "No date for task";
+                            if (!val.hasDate) {
+                                val.start = "Not Scheduled";
                             }
                             var html = $(
                                 '<li class="loadedListItem" id="' + val._id + '"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
@@ -518,23 +484,25 @@
                     firstDay: 0,
                     header: hdr,
                     editable: true,
+                    timezone: "Pacific/Auckland",
                     droppable: true, // this allows things to be dropped onto the calendar
                     eventSources: [{
-                        url: '/api/task/',
+                        url: '/api/calendar/',
                         error: function () {
                             alert('there was an error while fetching events!');
                         },
                     }],
 
-                    select: function (start, end, allDay) {
+                    select: function (start, end, allDay, hasDate) {
                         var title = prompt('Event Title:');
+                        console.log("hasDate: " + hasDate);
                         if (title) {
                             calendar.fullCalendar('renderEvent', {
-                                title: title,
-                                start: start,
-                                end: end,
-                                allDay: allDay
-                            }, true // make the event "stick"
+                                    title: title,
+                                    start: start,
+                                    end: end,
+                                    allDay: allDay
+                                }, true // make the event "stick"
                             );
                         }
                         calendar.fullCalendar('unselect');
@@ -674,11 +642,12 @@
                                 description = $('#description').val(),
                                 allday = $('#allday:checked').val(),
                                 datefrom = $('#datefrom').datepicker('getDate'),
-                                timefrom = $('#timefrom').datepicker('getDate'),
-                                dateto = $('#dateto').val(),
+                                timefrom = $('#timefrom').val(),
+                                dateto = $('#dateto').datepicker('getDate'),
                                 timeto = $('#timeto').val();
 
-                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
+                            addEvent(title, priority, description, allday, datefrom,
+                                timefrom, dateto, timeto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
@@ -687,6 +656,32 @@
                         }
                     }]
                 });
+
+                //Timepicker element in the add task modal
+                $('#timepicker').timepicker();
+
+                // Date Range Picker used in the add task modal
+                $("#datefrom").datepicker({
+                    changeMonth: false,
+                    numberOfMonths: 1,
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                    onClose: function (selectedDate) {
+                        $("#to").datepicker("option", selectedDate);
+                    }
+                })
+
+                // Date Range Picker used in the add task modal
+                $("#dateto").datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: false,
+                    numberOfMonths: 1,
+                    prevText: '<i class="fa fa-chevron-left"></i>',
+                    nextText: '<i class="fa fa-chevron-right"></i>',
+                    onClose: function (selectedDate) {
+                        $("#to").datepicker("option", selectedDate);
+                    }
+                })
 
                 // TODO Remove fields if they cant be entered
                 $('#allday').change(function () {
