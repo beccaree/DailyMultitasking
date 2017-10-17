@@ -689,17 +689,36 @@
                         "class": "btn btn-primary",
                         click: function () {
                             console.log("clicked create");
+
+
+
+                            var datefrom = $('#datefrom').datepicker('getDate');
+                            var timefrom = $('#timefrom').val();
+                            if(datefrom === null){
+                                var timearrayfrom = timefrom.split(":");
+                                datefrom.setHours(timearrayfrom[0]);
+                                datefrom.setMinutes(timearrayfrom[1]);
+                            }
+
+                            var dateto = $('#dateto').datepicker('getDate');
+                            var timeto = $('#timeto').val();
+                            if(dateto === null){
+                                var timearrayto = timefrom.split(":");
+                                datefrom.setHours(timearrayto[0]);
+                                datefrom.setMinutes(timearrayto[1]);
+                            }
+
+                            console.log(datefrom);
+                            console.log(dateto);
+
                             var title = $('#title').val(),
                                 priority = $('input:radio[name=priority]:checked').val(),
                                 description = $('#description').val(),
                                 allday = $('#allday:checked').val(),
-                                datefrom = $('#datefrom').datepicker('getDate'),
-                                timefrom = $('#timefrom').val(),
-                                dateto = $('#dateto').datepicker('getDate'),
-                                timeto = $('#timeto').val();
+                                datefrom = datefrom
+                                dateto = dateto,
 
-                            addEvent(title, priority, description, allday, datefrom,
-                                timefrom, dateto, timeto);
+                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
@@ -743,7 +762,6 @@
                         $(this).val('false');
                     }
                 });
-
             });
 
             var deleteItem = function (tid) {
