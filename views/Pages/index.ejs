@@ -310,7 +310,7 @@
                     right: 'prev,today,next'
                 };
 
-                var initDrag = function (e, title, description, allDay, start, end) {
+                var initDrag = function (e, title, description, allDay, start, end, id) {
                     // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                     // it doesn't need to have a start or end
 
@@ -320,7 +320,8 @@
                         description: description,
                         allDay: allDay,
                         time: start,
-                        duration: "02:00"
+                        duration: "02:00",
+                        id: id
                     };
                     // store the Event Object in the DOM element so we can get to it later
                     e.data('event', eventObject);
@@ -462,10 +463,10 @@
                                 val.start = "Not Scheduled";
                             }
                             var html = $(
-                                '<li class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                                '<li id="'+ val._id +'" class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.start +
                                 '</span> </p> </li>').prependTo('ul#sortable2');
-                            initDrag(html, val.title, val.description, val.allday, 0, 0);
+                            initDrag(html, val.title, val.description, val.allday, val.start, val.end, val._id);
                         });
                     });
                 };
@@ -488,6 +489,17 @@
                     editable: true,
                     timezone: "Pacific/Auckland",
                     droppable: true, // this allows things to be dropped onto the calendar
+                    drop: function(date, jsEvent, ui, resourceId ) {
+
+                    // retrieve the dropped element's stored Event Object
+                    var originalEventObject = $(this).data();
+
+                    // we need to copy it, so that multiple events don't have a reference to the same object
+
+                    // assign it the date that was reported
+
+                        console.log("Dropped on:" + jsEvent + " date:  " + date.toString() + " jsEvent: " + jsEvent + " Resid: " + resourceId + " data " + originalEventObject );
+                    },
                     eventSources: [{
                         url: '/api/calendar/',
                         error: function () {
@@ -512,9 +524,7 @@
 
                     eventRender: function (event, element) {
                         if (!event.title == "") {
-                            element.find('.fc-title').append("<br/><span class='ultra-light'>" +
-                                event.description +
-                                "</span>");
+                            element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description + "</span>");
                         }
                     },
 
