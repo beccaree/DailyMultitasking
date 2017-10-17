@@ -487,20 +487,15 @@
                             var html = $(
                                 '<li class="loadedListItem" id="' + val._id +
                                 '"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
-                                val.title + ' </a> <span class="date">' + val.start +
-                                '</span><span id="tester" class="line" style="border-top: 4px solid  ' +
+                                val.title + ' </a></br><i class="date">' + val.start +
+                                '</i><span id="tester" class="line" style="border-top: 4px solid  ' +
                                 borderColor +
                                 '"></span></p><button class="icon-button" onclick="deleteItem(\'' +
                                 val._id +
                                 '\')" style="float:right;margin-top:15px;"><i class="fa fa-times fa-lg"></i></button><select class="prioSelect"><option value="A"' +
-                                noneSelected + '>No Priority</option><option value="B"' +
-                                highSelected +
-                                '>High Priority</option><option value="C"' +
-                                medSelected +
-                                '>Medium Priority</option><option value="D"' +
-                                lowSelected + '>Low Priority</option></select></li>'
+                                noneSelected + '>No Priority</option><option value="B"' + highSelected + '>High Priority</option><option value="C"' + medSelected + '>Medium Priority</option><option value="D"' + lowSelected + '>Low Priority</option></select></li>'
                             ).prependTo('ul#sortable2');
-                            initDrag(html, val.title, val.description, val.allday, 0, 0);
+                            initDrag(html, val.title, val.description, val.allday, val.start, val.end, val._id);
                         });
                     });
                 };
@@ -542,7 +537,7 @@
                     drop: function(date) {
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data();
-                        $('#' + originalEventObject.event.id + " p span").replaceWith( '<span class=\"date\"> ' + date.toString() + '</span>' );
+                        $('#' + originalEventObject.event.id + " p i").replaceWith( '<span class=\"date\"> ' + date.toString() + '</span>' );
                     },
                     eventSources: [{
                         url: '/api/calendar/',
