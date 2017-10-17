@@ -389,7 +389,6 @@
                 var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
                     timeto) {
                     console.log("Date from in addEvent: " + datefrom);
-                    console.log("timefrom " + timefrom);
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "none" : priority;
@@ -477,9 +476,15 @@
                                 '"></span></p><button class="icon-button" onclick="deleteItem(\'' +
                                 val._id +
                                 '\')" style="float:right;margin-top:15px;"><i class="fa fa-times fa-lg"></i></button><select class="prioSelect"><option value="A"' +
-                                noneSelected + '>No Priority</option><option value="B"' + highSelected + '>High Priority</option><option value="C"' + medSelected + '>Medium Priority</option><option value="D"' + lowSelected + '>Low Priority</option></select></li>'
+                                noneSelected + '>No Priority</option><option value="B"' +
+                                highSelected +
+                                '>High Priority</option><option value="C"' +
+                                medSelected +
+                                '>Medium Priority</option><option value="D"' +
+                                lowSelected + '>Low Priority</option></select></li>'
                             ).prependTo('ul#sortable2');
-                            initDrag(html, val.title, val.description, val.allday, val.start, val.end, val._id);
+                            initDrag(html, val.title, val.description, val.allday, val.start,
+                                val.end, val._id);
                         });
                     });
                 };
@@ -518,10 +523,11 @@
                     editable: true,
                     timezone: "Pacific/Auckland",
                     droppable: true, // this allows things to be dropped onto the calendar
-                    drop: function(date) {
-                    // retrieve the dropped element's stored Event Object
-                    var originalEventObject = $(this).data();
-                        $('#' + originalEventObject.event.id + " p i").replaceWith( '<span class=\"date\"> ' + date.toString() + '</span>' );
+                    drop: function (date) {
+                        // retrieve the dropped element's stored Event Object
+                        var originalEventObject = $(this).data();
+                        $('#' + originalEventObject.event.id + " p i").replaceWith(
+                            '<span class=\"date\"> ' + date.toString() + '</span>');
                     },
                     eventSources: [{
                         url: '/api/calendar/',
@@ -548,7 +554,8 @@
 
                     eventRender: function (event, element) {
                         if (!event.title == "") {
-                            element.find('.fc-title').append("<br/><span class='ultra-light'>" + event.description + "</span>");
+                            element.find('.fc-title').append("<br/><span class='ultra-light'>" +
+                                event.description + "</span>");
                         }
                     },
 
@@ -666,7 +673,7 @@
 
                             var datefrom = $('#datefrom').datepicker('getDate');
                             var timefrom = $('#timefrom').val();
-                            if(datefrom === null){
+                            if (datefrom === null) {
                                 var timearrayfrom = timefrom.split(":");
                                 datefrom.setHours(timearrayfrom[0]);
                                 datefrom.setMinutes(timearrayfrom[1]);
@@ -674,10 +681,10 @@
 
                             var dateto = $('#dateto').datepicker('getDate');
                             var timeto = $('#timeto').val();
-                            if(dateto === null){
-                                var timearrayto = timefrom.split(":");
-                                datefrom.setHours(timearrayto[0]);
-                                datefrom.setMinutes(timearrayto[1]);
+                            if (dateto === null) {
+                                var timearrayto = timeto.split(":");
+                                dateto.setHours(timearrayto[0]);
+                                dateto.setMinutes(timearrayto[1]);
                             }
 
                             console.log(datefrom);
@@ -688,9 +695,10 @@
                                 description = $('#description').val(),
                                 allday = $('#allday:checked').val(),
                                 datefrom = datefrom
-                                dateto = dateto,
+                            dateto = dateto,
 
-                            addEvent(title, priority, description, allday, datefrom, timefrom, dateto, timeto);
+                                addEvent(title, priority, description, allday, datefrom,
+                                    timefrom, dateto, timeto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
