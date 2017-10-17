@@ -318,8 +318,8 @@
                         title: title,
                         description: description,
                         allDay: allDay,
-                        time: start,
-                        duration: "02:00",
+                        start: start,
+                        end: end,
                         id: id
                     };
                     // store the Event Object in the DOM element so we can get to it later
@@ -386,8 +386,7 @@
                 }
 
                 // Add event function
-                var addEvent = function (title, priority, description, allday, datefrom, timefrom, dateto,
-                    timeto) {
+                var addEvent = function (title, priority, description, allday, datefrom, dateto) {
                     console.log("Date from in addEvent: " + datefrom);
                     title = title.length === 0 ? "Untitled Event" : title;
                     description = description.length === 0 ? "No Description" : description;
@@ -420,9 +419,7 @@
                             prio: priority,
                             allday: allday,
                             start: datefrom,
-                            timefrom: timefrom,
                             end: dateto,
-                            timeto: timeto,
                             hasDate: true
                         });
                     }
@@ -669,11 +666,9 @@
                         click: function () {
                             console.log("clicked create");
 
-
-
                             var datefrom = $('#datefrom').datepicker('getDate');
                             var timefrom = $('#timefrom').val();
-                            if (datefrom === null) {
+                            if (datefrom !== null) {
                                 var timearrayfrom = timefrom.split(":");
                                 datefrom.setHours(timearrayfrom[0]);
                                 datefrom.setMinutes(timearrayfrom[1]);
@@ -681,24 +676,23 @@
 
                             var dateto = $('#dateto').datepicker('getDate');
                             var timeto = $('#timeto').val();
-                            if (dateto === null) {
+                            if (dateto !== null) {
                                 var timearrayto = timeto.split(":");
                                 dateto.setHours(timearrayto[0]);
                                 dateto.setMinutes(timearrayto[1]);
                             }
 
-                            console.log(datefrom);
-                            console.log(dateto);
+                            console.log("Datefrom:" + datefrom);
+                            console.log("Dateto:" + dateto);
 
-                            var title = $('#title').val(),
-                                priority = $('input:radio[name=priority]:checked').val(),
-                                description = $('#description').val(),
-                                allday = $('#allday:checked').val(),
-                                datefrom = datefrom
-                            dateto = dateto,
+                            var title = $('#title').val();
+                            var priority = $('input:radio[name=priority]:checked').val();
+                            var description = $('#description').val();
+                            var allday = $('#allday:checked').val();
+                            var datefrom = datefrom;
+                            var dateto = dateto;
 
-                                addEvent(title, priority, description, allday, datefrom,
-                                    timefrom, dateto, timeto);
+                            addEvent(title, priority, description, allday, datefrom, dateto);
 
                             //TODO is there anyway to make this close after the alertbox is closed and not before? the reload means you cant see the alerbox
                             // $(this).dialog("close");
@@ -724,7 +718,6 @@
 
                 // Date Range Picker used in the add task modal
                 $("#dateto").datepicker({
-                    defaultDate: "+1w",
                     changeMonth: false,
                     numberOfMonths: 1,
                     prevText: '<i class="fa fa-chevron-left"></i>',
