@@ -15,7 +15,7 @@ var taskschema = new mongoose.Schema({
     type: String,
     title: String,
     description: String,
-    prio: Number,
+    prio: String,
     id: Number,
     done: Boolean,
     created: { type: Date, default: Date.now },

@@ -96,7 +96,7 @@
                                     <header>
                                         <h2> Task List </h2>
                                         <div class="btn-group pull-right">
-                                            <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:10px">
+                                            <a id="btn_add_task" class="btn btn-default btn-circle" style="margin-right:12px">
                                                 <i class="fa fa-plus"></i>
                                             </a>
                                         </div>
@@ -173,35 +173,35 @@
                                                     <label>Select Task Priority</label>
                                                     <div class="btn-group btn-group-justified btn-select-tick" data-toggle="buttons">
                                                         <label class="btn bg-color-grayDark active">
-                                                            <input type="radio" name="priority" id="option0" value="bg-color-darken txt-color-white"checked>
+                                                            <input type="radio" name="priority" id="option0" value="none" checked>
                                                             <i class="fa fa-check txt-color-black"></i>
                                                             <p class="txt-color-white">none</p>
                                                         </label>
-                                                        <label class="btn bg-color-red active">
+                                                        <!-- <label class="btn bg-color-red active">
                                                             <input type="radio" name="priority" id="option1" value="bg-color-darken txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very High</p>
-                                                        </label>
-                                                        <label class="btn bg-color-orange">
-                                                            <input type="radio" name="priority" id="option2" value="bg-color-blue txt-color-white">
+                                                        </label> -->
+                                                        <label class="btn bg-color-red">
+                                                            <input type="radio" name="priority" id="option2" value="high">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">High</p>
                                                         </label>
-                                                        <label class="btn bg-color-greenLight">
-                                                            <input type="radio" name="priority" id="option3" value="bg-color-orange txt-color-white">
+                                                        <label class="btn bg-color-orange">
+                                                            <input type="radio" name="priority" id="option3" value="medium">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Medium</p>
                                                         </label>
-                                                        <label class="btn bg-color-blueLight">
-                                                            <input type="radio" name="priority" id="option4" value="bg-color-greenLight txt-color-white">
+                                                        <label class="btn bg-color-greenLight">
+                                                            <input type="radio" name="priority" id="option4" value="low">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Low</p>
                                                         </label>
-                                                        <label class="btn bg-color-darken">
+                                                        <!-- <label class="btn bg-color-darken">
                                                             <input type="radio" name="priority" id="option5" value="bg-color-blueLight txt-color-white">
                                                             <i class="fa fa-check txt-color-white"></i>
                                                             <p class="txt-color-white">Very Low</p>
-                                                        </label>
+                                                        </label> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -365,11 +365,9 @@
                     }
                 }
 
-
-
                 //
                 var updateAchievementToDatabase = function (val) {
-                    var objID = val._id;;
+                    var objID = val._id;
                     console.log("updating /api/achievement/" + objID);
 
                     $.ajax({
@@ -397,12 +395,13 @@
                     description = description.length === 0 ? "No Description" : description;
                     priority = priority.length === 0 ? "none" : priority;
                     allday = allday == null ? false : true;
+                    console.log(priority);
                     // Validation needed here
                     if (datefrom == null) {
                         $.post("/api/task/", {
                             title: title,
                             description: description,
-                            priority: priority,
+                            prio: priority,
                             hasDate: false
                         });
                     } else if (allday == true) {
@@ -410,7 +409,7 @@
                         $.post("/api/task/", {
                             title: title,
                             description: description,
-                            priority: priority,
+                            prio: priority,
                             allday: allday,
                             start: datefrom,
                             end: dateto,
@@ -421,7 +420,7 @@
                         $.post("/api/task/", {
                             title: title,
                             description: description,
-                            priority: priority,
+                            prio: priority,
                             allday: allday,
                             start: datefrom,
                             timefrom: timefrom,
@@ -432,13 +431,15 @@
                     }
 
                     /* Add the event to the HTML list */
-                    var html = $(
-                        '<li><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
-                        title + ' </a> <span class="date">Nov 23, 2013</span> </p> </li>').prependTo(
-                        'ul#sortable2').hide().fadeIn();
+                    // var html = $(
+                    //     '<li><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                    //     title +
+                    //     ' </a> <span class="date">Nov 23, 2013</span> </p><select class="prioSelect" style="float:right; margin-top:10px;"><option value="A">No Priority</option><option value="B">High Priority</option><option value="C">Medium Priority</option><option value="D">Low Priority</option></select></li>'
+                    // ).prependTo(
+                    //     'ul#sortable2').hide().fadeIn();
 
                     // $("#sortable2").effect("highlight", 800);
-                    initDrag(html, title, description, allday, timefrom, timeto);
+                    // initDrag(html, title, description, allday, timefrom, timeto);
 
                     //check if this is the first item that has been created
                     $.getJSON("api/achievement/", function (data) {
@@ -459,14 +460,47 @@
                 var fetchEvent = function () {
                     $.getJSON("api/task/", function (data) {
                         $.each(data, function (key, val) {
+                            console.log("prio in fetch " + val.prio);
+                            var borderColor = "white";
+                            var noneSelected = 'selected="selected"';
+                            var highSelected = '';
+                            var medSelected = '';
+                            var lowSelected = ''
                             if (!val.hasDate) {
                                 val.start = "Not Scheduled";
                             }
+                            if (val.prio === "high") {
+                                borderColor = "#ff4d4d;";
+                                noneSelected = '';
+                                highSelected = 'selected="selected"';
+                            } else if (val.prio === "medium") {
+                                console.log("we are in medium");
+                                borderColor = "#ff944d;";
+                                noneSelected = '';
+                                medSelected = 'selected="selected"';
+                            } else if (val.prio === "low") {
+                                borderColor = "#4dff4d;";
+                                noneSelected = '';
+                                lowSelected = 'selected="selected"';
+                            }
+                            console.log(borderColor);
                             var html = $(
-                                '<li id="'+ val._id +'" class="loadedListItem"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
+                                '<li class="loadedListItem" id="' + val._id +
+                                '"><span class="handle"><label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i></label></span> <p> <a href="javascript:void(0);" class="font-s"> ' +
                                 val.title + ' </a> <span class="date">' + val.start +
-                                '</span> </p> </li>').prependTo('ul#sortable2');
-                            initDrag(html, val.title, val.description, val.allday, val.start, val.end, val._id);
+                                '</span><span id="tester" class="line" style="border-top: 4px solid  ' +
+                                borderColor +
+                                '"></span></p><button class="icon-button" onclick="deleteItem(\'' +
+                                val._id +
+                                '\')" style="float:right;margin-top:15px;"><i class="fa fa-times fa-lg"></i></button><select class="prioSelect"><option value="A"' +
+                                noneSelected + '>No Priority</option><option value="B"' +
+                                highSelected +
+                                '>High Priority</option><option value="C"' +
+                                medSelected +
+                                '>Medium Priority</option><option value="D"' +
+                                lowSelected + '>Low Priority</option></select></li>'
+                            ).prependTo('ul#sortable2');
+                            initDrag(html, val.title, val.description, val.allday, 0, 0);
                         });
                     });
                 };
@@ -475,6 +509,22 @@
                 var removeEvents = function () {
                     $('ul#sortable2').empty();
                 };
+
+                $(document.body).on('change', '.prioSelect', function () {
+                    console.log("in change function");
+                    if ($(this).val() == 'A') {
+                        $(this).siblings("p").children(".line").css("border-color", "white");
+                    }
+                    if ($(this).val() == 'B') {
+                        $(this).siblings("p").children(".line").css("border-color", "#ff4d4d");
+                    }
+                    if ($(this).val() == 'C') {
+                        $(this).siblings("p").children(".line").css("border-color", "#ff944d");
+                    }
+                    if ($(this).val() == 'D') {
+                        $(this).siblings("p").children(".line").css("border-color", "#4dff4d");
+                    }
+                });
 
                 //removeEvents();
                 fetchEvent();
@@ -700,6 +750,22 @@
                 });
 
             });
+
+            var deleteItem = function (tid) {
+                console.log("delete task " + tid);
+                $.ajax({
+                    url: "api/task/" + tid,
+                    type: 'delete',
+                    data: tid,
+                    success: function () {
+                        // TODO Remove element if operation is successful
+                        $('#' + tid).remove();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            }
         </script>
 
 </body>
