@@ -3,8 +3,11 @@ Advanced HCI - Daily Multitasking Personal Information System4
 
 ## Members:
 Gwyneth Bassett
+
 Stefan Joergensen
+
 Rebecca Lee
+
 Kristy Tsoi
 
 ## Installing and Running the Program
