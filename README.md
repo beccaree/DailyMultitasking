@@ -1,7 +1,7 @@
 # TaskRacer
 Advanced HCI - Project 6 - Daily Multitasking Personal Information System
 
-## Members:
+## Members
 Gwyneth Bassett
 
 Stefan Joergensen
@@ -20,3 +20,8 @@ Kristy Tsoi
 7) Run `npm update`
 8) Run `node www` to run
 9) Go to browser and navigate to `http://localhost:2000/`
+
+## Additional information
+Link to our user study: https://docs.google.com/forms/d/e/1FAIpQLSf7SV80oEGmNF0JoH261FLy9VWVVNhnPvqjMnORvrC9TlKZyA/viewform?usp=sf_link#responses (feel free to request list of questions and processes)
+
+Log files of commits can be found in this folder
