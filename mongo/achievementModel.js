@@ -24,21 +24,21 @@ a1.dateAchieved  = new Date;
 var a2 = new achievement
 a2.name         = "One Down";
 a2.description   ="Complete your first task";
-a2.congratulatoryMessage   ="YAY, you completed your first task";
+a2.congratulatoryMessage   ="Good Job, you completed your first task";
 a2.id            = 2;
 a2.dateAchieved  = new Date;
 
 var a3 = new achievement
 a3.name         = "All Star";
 a3.description   = "Complete all the tasks in your task list";
-a3.congratulatoryMessage   = "YAY, you completed all the tasks in your task list";
+a3.congratulatoryMessage   = "Good Job, you completed all the tasks in your task list";
 a3.id            = 3;
 a3.dateAchieved  = new Date;
 
 var a4 = new achievement
 a4.name         = "Speedster";
 a4.description   = "Complete task before it is due";
-a4.congratulatoryMessage = "Woah, you completed a task before it was due";
+a4.congratulatoryMessage = "Good Job, you completed a task before it was due";
 a4.id            = 4;
 a4.dateAchieved  = new Date;
 
