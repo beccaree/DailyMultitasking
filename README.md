@@ -1,5 +1,5 @@
 # TaskRacer
-Advanced HCI - Daily Multitasking Personal Information System4
+Advanced HCI - Project 6 - Daily Multitasking Personal Information System
 
 ## Members:
 Gwyneth Bassett
