@@ -24,4 +24,4 @@ Kristy Tsoi
 ## Additional information
 Link to our user study: https://docs.google.com/forms/d/e/1FAIpQLSf7SV80oEGmNF0JoH261FLy9VWVVNhnPvqjMnORvrC9TlKZyA/viewform?usp=sf_link#responses (feel free to request list of questions and processes)
 
-if more information on contributions is needed we can add you to the repository on GitHub.
+If more information on contributions is needed we can add you to the repository on GitHub.
